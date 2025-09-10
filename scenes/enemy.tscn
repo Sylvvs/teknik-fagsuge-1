@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjcm1x4mkmyo1"]
+[gd_scene load_steps=7 format=3 uid="uid://bgm2dymvpo7pj"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scenes/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
