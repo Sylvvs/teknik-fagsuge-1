@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg2swnia0xlws"]
+[gd_scene load_steps=13 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -100,10 +100,10 @@ tracks/2/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbo
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -112,10 +112,10 @@ tracks/3/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbo
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_3vyb7"]
