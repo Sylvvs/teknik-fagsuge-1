@@ -5,6 +5,8 @@ const JUMP = 400;
 const GRAV = 800;
 
 var SPRITE;
+@onready var ap = $"Animation Handler/AnimationPlayer"
+@onready var sprite = $"Animation Handler/Sprite2D"
 
 func _ready():
 	pass
@@ -24,3 +26,17 @@ func _physics_process(delta):
 		
 	velocity.y = velocity.y + GRAV * delta;
 	move_and_slide()
+	
+	if abs(velocity.x) > 0:
+		if velocity.x < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+		ap.play('walk')
+	if velocity.x == 0 and velocity.y == 0:
+		ap.play('idle')
+
+
+func _on_sword_hitbox_area_entered(area: Area2D) -> void:
+	
+	pass 
