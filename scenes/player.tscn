@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg2swnia0xlws"]
+[gd_scene load_steps=13 format=3 uid="uid://dg2swnia0xlws"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -100,10 +100,10 @@ tracks/2/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbo
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -112,10 +112,10 @@ tracks/3/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbo
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_3vyb7"]
@@ -196,13 +196,6 @@ _data = {
 &"walk": SubResource("Animation_g2els")
 }
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_dqkch"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qlg0r"]
-states/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_dqkch")
-states/BlendSpace2D/position = Vector2(413.008, 61.5)
-graph_offset = Vector2(123.508, 0)
-
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -243,11 +236,5 @@ autoplay = "idle"
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 visible = false
 zoom = Vector2(2, 2)
-
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
-root_node = NodePath("../..")
-tree_root = SubResource("AnimationNodeStateMachine_qlg0r")
-anim_player = NodePath("../Animation Handler/AnimationPlayer")
-parameters/BlendSpace2D/blend_position = Vector2(0, 0)
 
 [connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_area_entered"]

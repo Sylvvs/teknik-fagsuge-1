@@ -7,6 +7,7 @@ const GRAV = 800;
 var SPRITE;
 @onready var ap = $"Animation Handler/AnimationPlayer"
 @onready var sprite = $"Animation Handler/Sprite2D"
+@onready var sword = $"Animation Handler/Sprite2D/Sword Hitbox"
 
 func _ready():
 	pass
@@ -29,8 +30,10 @@ func _physics_process(delta):
 	if abs(velocity.x) > 0:
 		if velocity.x < 0:
 			sprite.flip_h = true
+			sword.scale.x = -1
 		else:
 			sprite.flip_h = false
+			sword.scale.x = 1
 		ap.speed_scale = 2.7
 		ap.play('walk')
 	if velocity.x == 0 and velocity.y == 0:
@@ -40,7 +43,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		ap.speed_scale = 2
 		ap.play('attack')
-		await ap.animation_finished
+	
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
