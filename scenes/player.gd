@@ -9,9 +9,9 @@ var SPRITE;
 @onready var sprite = $"Animation Handler/Sprite2D"
 @onready var sword = $"Animation Handler/Sprite2D/Sword Hitbox"
 
+
 func _ready():
 	pass
-
 func _physics_process(delta):
 	set_up_direction(Vector2.UP)
 	if Input.is_action_pressed("ui_left"):
