@@ -1,7 +1,36 @@
 extends Node2D
 
-@onready var player : PackedScene = load("res://scenes/player.tscn")
+@onready var player_scene : PackedScene = load("res://scenes/player.tscn")
+@onready var tilemap := $TileMapLayer  # adjust path to your TileMapLayer
+var player
+var camera
+
+var map_left: float
+var map_top: float
+var map_right: float
+var map_bottom: float
 
 func _ready() -> void:
-	var playerModel = player.instantiate()
-	add_child(playerModel)
+	player = player_scene.instantiate()
+	add_child(player)
+
+	camera = player.get_node("CharacterBody2D/Camera2D")
+
+	var used_rect = tilemap.get_used_rect()  
+	var cell_size = tilemap.tile_set.tile_size
+
+	map_left = tilemap.position.x + used_rect.position.x * cell_size.x
+	map_top = tilemap.position.y + used_rect.position.y * cell_size.y
+	map_right = map_left + used_rect.size.x * cell_size.x
+	map_bottom = map_top + used_rect.size.y * cell_size.y
+
+func _process(_delta: float) -> void:
+	if camera:
+		var half_screen = (get_viewport_rect().size / 2) / camera.zoom
+		var desired_pos = player.get_node("CharacterBody2D").global_position
+		print(desired_pos)
+
+		var clamped_x = clamp(desired_pos.x, map_left + half_screen.x, map_right - half_screen.x)
+		var clamped_y = clamp(desired_pos.y, map_top + half_screen.y, map_bottom - half_screen.y)
+
+		camera.global_position = Vector2(clamped_x, clamped_y)

@@ -32,9 +32,16 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
+		ap.speed_scale = 2.7
 		ap.play('walk')
 	if velocity.x == 0 and velocity.y == 0:
+		ap.speed_scale = 1
 		ap.play('idle')
+		
+	if Input.is_action_pressed("ui_accept"):
+		ap.speed_scale = 2
+		ap.play('attack')
+		await ap.animation_finished
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
