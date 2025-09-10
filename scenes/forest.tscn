@@ -3341,7 +3341,7 @@ scroll_scale = Vector2(0.1, 1)
 texture = ExtResource("3_bgcxa")
 
 [node name="BackTrees" type="Parallax2D" parent="ForestBackground"]
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.2, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/BackTrees"]
 texture = ExtResource("3_3knxq")
@@ -3371,7 +3371,7 @@ scroll_scale = Vector2(0.6, 1)
 texture = ExtResource("8_di0nb")
 
 [node name="TopTrees" type="Parallax2D" parent="ForestBackground"]
-scroll_scale = Vector2(0, 1)
+scroll_scale = Vector2(0.8, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/TopTrees"]
 texture = ExtResource("9_pyn53")
