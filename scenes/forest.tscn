@@ -6170,7 +6170,6 @@ sources/0 = SubResource("TileSetAtlasSource_0afsd")
 sources/1 = SubResource("TileSetAtlasSource_yj5dr")
 
 [node name="Forest" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_0afsd")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
