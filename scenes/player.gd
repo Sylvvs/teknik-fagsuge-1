@@ -41,7 +41,7 @@ func _physics_process(delta):
 		ap.play('idle')
 		
 	if Input.is_action_pressed("ui_accept"):
-		ap.speed_scale = 2
+		ap.speed_scale = 5
 		ap.play('attack')
 	
 
