@@ -32,8 +32,10 @@ func _physics_process(delta):
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
+		ap.speed_scale = 2.7
 		ap.play('walk')
 	if velocity.x == 0 and velocity.y == 0:
+		ap.speed_scale = 1
 		ap.play('idle')
 
 
