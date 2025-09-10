@@ -29,7 +29,6 @@ func _process(_delta: float) -> void:
 	if camera:
 		var half_screen = (get_viewport_rect().size / 2) / camera.zoom
 		var desired_pos = player.get_node("CharacterBody2D").global_position
-		
 
 		var clamped_x = clamp(desired_pos.x, map_left + half_screen.x, map_right - half_screen.x)
 		var clamped_y = clamp(desired_pos.y, map_top + half_screen.y, map_bottom - half_screen.y)
