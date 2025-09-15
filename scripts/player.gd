@@ -44,7 +44,7 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	var enemy: EnemySignal_Enemy = area.owner
 	if enemy:
 		enemy.apply_damage(20)
-	pass 
+	
 
 func update_animations():
 	if velocity == Vector2.ZERO:
