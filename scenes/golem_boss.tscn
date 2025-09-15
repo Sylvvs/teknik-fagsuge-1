@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=22 format=3 uid="uid://11k4gkw30r7i"]
 
+[ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
 [ext_resource type="Texture2D" uid="uid://c6h8k68dees6j" path="res://sprites/weapon PNG/Laser_sheet.png" id="2_s54pl"]
 [ext_resource type="Script" uid="uid://3b3vjd0v14vr" path="res://scripts/state.gd" id="3_cx2hw"]
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
-[ext_resource type="Script" path="res://scripts/idle.gd" id="4_5raa4"]
+[ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
+[ext_resource type="Script" uid="uid://rtb050ofy5oa" path="res://scripts/Follow.gd" id="5_jidqh"]
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"
@@ -337,6 +339,7 @@ radius = 100.0
 position = Vector2(576, 341)
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_jiwok")
 
 [node name="Golem" type="Sprite2D" parent="."]
 texture = ExtResource("1_o8j3a")
@@ -425,7 +428,7 @@ script = ExtResource("3_mwilj")
 script = ExtResource("4_5raa4")
 
 [node name="Follow" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_cx2hw")
+script = ExtResource("5_jidqh")
 
 [node name="MeleeAttack" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_cx2hw")
