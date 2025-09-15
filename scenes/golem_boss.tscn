@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=28 format=3 uid="uid://11k4gkw30r7i"]
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
@@ -7,10 +7,12 @@
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
 [ext_resource type="Script" uid="uid://rtb050ofy5oa" path="res://scripts/Follow.gd" id="5_jidqh"]
-[ext_resource type="Script" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
-[ext_resource type="Script" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
+[ext_resource type="Script" uid="uid://b6t3rg18ehfj7" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
+[ext_resource type="Script" uid="uid://burpf3gnefk1x" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
 [ext_resource type="PackedScene" uid="uid://1ucfm3l35uv6" path="res://scenes/bullet.tscn" id="9_dxa6x"]
 [ext_resource type="Script" uid="uid://03vxux64ra2q" path="res://scripts/dash.gd" id="10_egbyw"]
+[ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scenes/LaserBeam.gd" id="11_4y8e0"]
+[ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scenes/ArmorBuff.gd" id="12_33i4v"]
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"
@@ -31,7 +33,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -59,7 +61,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -88,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +118,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -133,7 +135,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pivot/Beam:frame")
+tracks/0/path = NodePath("Pivot/Beam:frame")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -141,6 +143,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FiniteStateMachine/LaserBeam")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_target"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_u8b2w"]
@@ -163,7 +179,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,7 +194,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("pivot/Beam:frame")
+tracks/0/path = NodePath("Pivot/Beam:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -231,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -278,7 +294,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -307,7 +323,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("pivot/Beam:frame")
+tracks/1/path = NodePath("Pivot/Beam:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -349,9 +365,9 @@ texture = ExtResource("1_o8j3a")
 hframes = 10
 vframes = 10
 
-[node name="pivot" type="Node2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
 
-[node name="Beam" type="Sprite2D" parent="pivot"]
+[node name="Beam" type="Sprite2D" parent="Pivot"]
 position = Vector2(100, 1)
 texture = ExtResource("2_s54pl")
 vframes = 15
@@ -444,10 +460,10 @@ bullet_node = ExtResource("9_dxa6x")
 script = ExtResource("10_egbyw")
 
 [node name="LaserBeam" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_cx2hw")
+script = ExtResource("11_4y8e0")
 
 [node name="ArmorBuff" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_cx2hw")
+script = ExtResource("12_33i4v")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_cx2hw")
