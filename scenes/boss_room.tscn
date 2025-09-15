@@ -3334,4 +3334,4 @@ tile_set = SubResource("TileSet_pmh52")
 [node name="Logic" type="Node2D" parent="."]
 
 [node name="Spawn" type="Marker2D" parent="Logic"]
-position = Vector2(25, 405)
+position = Vector2(1120, 424)

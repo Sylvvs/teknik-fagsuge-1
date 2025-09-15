@@ -9,7 +9,7 @@ var direction : Vector2
 
 func _ready():
 	set_physics_process(false)	
-	print(player.position)
+	
 #
 func _process(_delta):
 	pass
@@ -19,12 +19,15 @@ func _physics_process(delta):
 	if not player or not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player")
 		if not player:
-			print("No player in group")
+			
 			return
-	print(position)
-	print("Following node:", player.name, " Class:", player.get_class(), " Position:", player.position)
 	
-	direction = player.position - position
+	direction = player.global_position - position
+	
+	if direction.x > 0:
+		sprite.flip_h = false
+	else :
+		sprite.flip_h = true
 	velocity = direction.normalized() * 40
 	move_and_slide()
 	
