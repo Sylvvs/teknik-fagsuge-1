@@ -22,7 +22,11 @@ func _process(_delta: float) -> void:
 	if camera and player:
 		var half_screen = (get_viewport_rect().size / 2) / camera.zoom
 		var desired_pos = player.get_node("CharacterBody2D").global_position
-		
+
+		if current_room.name == "BossRoom":
+			if current_room.get_node("GolemBoss"):
+				desired_pos = (desired_pos + current_room.get_node("GolemBoss").position) / 2
+
 		if forcing_movement:
 			var player_body = player.get_node("CharacterBody2D")
 			player_body.velocity.x = forced_direction.x * player_body.SPEED
