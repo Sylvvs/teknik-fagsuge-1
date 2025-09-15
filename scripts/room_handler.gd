@@ -15,8 +15,7 @@ func load_room(id):
 	
 	tilemap = current_room.get_node("TileMapLayer") 
 	
-	player = player_scene.instantiate()
-	add_child(player)
+	handle_logic()
 
 	camera = player.get_node("CharacterBody2D/Camera2D")
 
@@ -27,6 +26,17 @@ func load_room(id):
 	map_top = tilemap.position.y + used_rect.position.y * cell_size.y
 	map_right = map_left + used_rect.size.x * cell_size.x
 	map_bottom = map_top + used_rect.size.y * cell_size.y
+
+func handle_logic():
+	for child in current_room.get_node("Logic").get_children():
+		match child.name:
+			"Spawn":
+				player = player_scene.instantiate()
+				add_child(player)
+				player.position = child.position;
+			"IdkGoblinMaybe":
+				print("hi twin")
+			
 
 @onready var player_scene : PackedScene = load("res://scenes/player.tscn")
 var tilemap 
