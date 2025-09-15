@@ -350,6 +350,7 @@ tracks/2/keys = {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="Animation" id="Animation_ur7pv"]
 resource_name = "hurt"
 length = 0.6
@@ -390,6 +391,8 @@ tracks/2/keys = {
 "values": [false]
 }
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]

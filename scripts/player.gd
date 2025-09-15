@@ -5,10 +5,14 @@ const JUMP = 400;
 const GRAV = 800;
 var health = 100;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 var is_knockback = false
 var knockback_velocity = Vector2.ZERO  # Store knockback velocity
 var knockback_duration = 0.6  # Duration of knockback effect
 var knockback_timer = 0.0
+=======
+var handler;
+>>>>>>> Stashed changes
 =======
 var handler;
 >>>>>>> Stashed changes
