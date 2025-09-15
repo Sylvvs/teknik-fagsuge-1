@@ -52,8 +52,6 @@ func _physics_process(delta):
 		
 	velocity.y = velocity.y + GRAV * delta;
 	move_and_slide()
-	
-	
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
