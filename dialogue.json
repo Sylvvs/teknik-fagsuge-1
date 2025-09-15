@@ -1,0 +1,39 @@
+{
+  "npc_villager": {
+	"states": {
+	  "default": {
+		"dialogues": [
+		  {
+			"lines": ["Hello traveler! What do you want to know?"],
+			"choices": [
+			  {
+				"text": "Tell me about the woods",
+				"lines": ["The woods are dark and full of monsters."],
+				"set_state": "asked_about_woods"
+			  },
+			  {
+				"text": "Tell me about the village",
+				"lines": ["The village is peaceful, but danger is near."],
+				"set_state": "asked_about_village"
+			  }
+			]
+		  }
+		]
+	  },
+	  "asked_about_woods": {
+		"dialogues": [
+		  {
+			"lines": ["You should really avoid the woods at night."]
+		  }
+		]
+	  },
+	  "asked_about_village": {
+		"dialogues": [
+		  {
+			"lines": ["The village chief has been worried lately..."]
+		  }
+		]
+	  }
+	}
+  }
+}
