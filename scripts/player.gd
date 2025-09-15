@@ -46,14 +46,26 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 		enemy.apply_damage(20)
 	
 
+var is_jumping = false
+
 func update_animations():
-	if velocity == Vector2.ZERO:
-		at["parameters/AnimationNodeStateMachine/conditions/idle"] = true
-		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = false
+	# Movement conditions
+	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
+	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
+
+	# Attack
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = Input.is_action_just_pressed("attack")
+
+	# Jump input
+	if Input.is_action_just_pressed("jump"):
+		is_jumping = true
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
+	elif velocity.y < 0 and is_jumping:
+		# Still rising in jump
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
 	else:
-		at["parameters/AnimationNodeStateMachine/conditions/idle"] = false
-		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = true
-	if Input.is_action_just_pressed("attack"):
-		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
-	else:
-		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
+		is_jumping = false
+
+	# Falling
+	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
