@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqnyw1wd3b44i" path="res://sprites/forest background/Layer_0004_Lights.png" id="7_cf55d"]
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="8_di0nb"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
+[ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3knxq"]
 texture = ExtResource("1_xijx7")
@@ -3397,3 +3398,7 @@ position = Vector2(935, 641)
 position = Vector2(59, -103)
 scale = Vector2(5, 20)
 shape = SubResource("RectangleShape2D_j3csf")
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("11_ercsu")]
+position = Vector2(560, 699)
