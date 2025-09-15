@@ -74,6 +74,7 @@ func update_animations(delta):
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
 
 func take_damage(amount):
+	print(amount)
 	reset_all_conditions()
 	health -= amount
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
