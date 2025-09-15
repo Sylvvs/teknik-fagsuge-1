@@ -281,7 +281,7 @@ states/idle/node = SubResource("AnimationNodeAnimation_4ra3w")
 states/idle/position = Vector2(372, 42)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5uy6h"), "idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_c4w8v"), "Hurt", "idle", SubResource("AnimationNodeStateMachineTransition_xwavj")]
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_7p1mj")
 
 [node name="Animation Handler Enemy" type="Node2D" parent="."]

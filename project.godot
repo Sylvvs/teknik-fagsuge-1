@@ -22,6 +22,7 @@ DialogueManager="*res://scripts/DialogueManager.gd/"
 [global_group]
 
 player=""
+enemies=""
 
 [input]
 

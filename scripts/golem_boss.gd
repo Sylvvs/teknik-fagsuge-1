@@ -19,7 +19,6 @@ func _physics_process(delta):
 	if not player or not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player")
 		if not player:
-			
 			return
 	
 	direction = player.global_position - position
@@ -28,6 +27,6 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	else :
 		sprite.flip_h = true
-	velocity = direction.normalized() * 40
+	velocity = direction.normalized() * 80
 	move_and_slide()
 	
