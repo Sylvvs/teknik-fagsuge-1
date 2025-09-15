@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://vv5wy43wa1ns"]
+[gd_scene load_steps=15 format=4 uid="uid://vv5wy43wa1ns"]
 
 [ext_resource type="Script" uid="uid://bvvxw5em7cuwj" path="res://scripts/forest.gd" id="1_0afsd"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_xijx7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqnyw1wd3b44i" path="res://sprites/forest background/Layer_0004_Lights.png" id="7_cf55d"]
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="8_di0nb"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
+[ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0afsd"]
 texture = ExtResource("1_xijx7")
@@ -3387,3 +3388,8 @@ tile_set = SubResource("TileSet_bgcxa")
 position = Vector2(160, 706)
 
 [node name="IdkGoblinMaybe" type="Marker2D" parent="Logic"]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("11_ercsu")]
+position = Vector2(560, 699)
