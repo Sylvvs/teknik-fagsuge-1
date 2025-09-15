@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=11 format=3 uid="uid://db6xhv4t0h1td"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=31 format=3 uid="uid://db6xhv4t0h1td"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
 animation = &"attack"
@@ -8,6 +8,17 @@ stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xvbpu"]
+animation = &"fall"
+use_custom_timeline = true
+timeline_length = 0.3
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2lmno"]
+animation = &"hurt"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qlg0r"]
 animation = &"idle"
 use_custom_timeline = true
@@ -15,6 +26,14 @@ timeline_length = 1.5
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ghsaa"]
+animation = &"jump"
+use_custom_timeline = true
+timeline_length = 0.3
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tuyoq"]
 animation = &"walk"
@@ -53,10 +72,87 @@ advance_condition = &"is_moving"
 advance_mode = 2
 advance_condition = &"attacking"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2lmno"]
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ykrpm"]
+advance_mode = 2
+advance_condition = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfr2u"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_weyxy"]
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v1el1"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0uk38"]
+advance_mode = 2
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xg1qe"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jmvei"]
+advance_mode = 2
+advance_condition = &"attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nmifs"]
+advance_mode = 2
+advance_condition = &"attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujvqm"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rf3xd"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b61eh"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yw52n"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icigv"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smpga"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s70ya"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oh7fh"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_moving"
+
 [resource]
 states/Start/position = Vector2(199.5, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_dqkch")
 states/attack/position = Vector2(485.511, -15.0657)
+states/fall/node = SubResource("AnimationNodeAnimation_xvbpu")
+states/fall/position = Vector2(725.511, 99.2204)
+states/hurt/node = SubResource("AnimationNodeAnimation_2lmno")
+states/hurt/position = Vector2(694.011, 233.434)
 states/idle/node = SubResource("AnimationNodeAnimation_qlg0r")
 states/idle/position = Vector2(386, 100.062)
 states/walk/node = SubResource("AnimationNodeAnimation_tuyoq")

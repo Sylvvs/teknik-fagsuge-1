@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b25q0pou6ghh5"
-path="res://.godot/imported/HEALING NO EFFECT.png-c83374407614cf7c64227aed655683d5.ctex"
+uid="uid://bv6ud1yq8dak8"
+path="res://.godot/imported/ATTACK 2.png-50fd9f67a1c8ace9187763c1c250e96b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HEALING NO EFFECT.png"
-dest_files=["res://.godot/imported/HEALING NO EFFECT.png-c83374407614cf7c64227aed655683d5.ctex"]
+source_file="res://sprites/player sprites/ATTACK 2.png"
+dest_files=["res://.godot/imported/ATTACK 2.png-50fd9f67a1c8ace9187763c1c250e96b.ctex"]
 
 [params]
 

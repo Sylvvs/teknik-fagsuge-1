@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://clayo7ixecqlk"]
+[gd_scene load_steps=14 format=4 uid="uid://clayo7ixecqlk"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_8607o"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_qkl76"]
@@ -3327,6 +3327,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_p753g")
 sources/1 = SubResource("TileSetAtlasSource_0lqfi")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8607o"]
+
 [node name="Forest2" type="Node2D"]
 
 [node name="ForestBackground" type="Node2D" parent="."]
@@ -3382,6 +3384,14 @@ tile_set = SubResource("TileSet_o8t35")
 [node name="Logic" type="Node2D" parent="."]
 
 [node name="Spawn" type="Marker2D" parent="Logic"]
-position = Vector2(160, 706)
+position = Vector2(185, 711)
 
 [node name="IdkGoblinMaybe" type="Marker2D" parent="Logic"]
+
+[node name="forest" type="Area2D" parent="Logic"]
+position = Vector2(935, 641)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest"]
+position = Vector2(-911, -102)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_8607o")

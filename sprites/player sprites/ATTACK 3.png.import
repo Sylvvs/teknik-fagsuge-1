@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8opcih8e22ov"
-path="res://.godot/imported/JUMP-FALL.png-21fb2e2f8ff6f9645319d7d4fee391bc.ctex"
+uid="uid://dhg68xpgpg62m"
+path="res://.godot/imported/ATTACK 3.png-f112330f944692a5f606cd7df966ae65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://JUMP-FALL.png"
-dest_files=["res://.godot/imported/JUMP-FALL.png-21fb2e2f8ff6f9645319d7d4fee391bc.ctex"]
+source_file="res://sprites/player sprites/ATTACK 3.png"
+dest_files=["res://.godot/imported/ATTACK 3.png-f112330f944692a5f606cd7df966ae65.ctex"]
 
 [params]
 
