@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk5df8tx8iskw"]
+
+[ext_resource type="Script" path="res://scripts/room_handler.gd" id="1_3fgcb"]
+
+[node name="RoomHandler" type="Node2D"]
+script = ExtResource("1_3fgcb")
