@@ -363,7 +363,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-544.598, 62.5675)
+graph_offset = Vector2(-431, 115)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")

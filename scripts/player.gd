@@ -10,6 +10,10 @@ var knockback_velocity = Vector2.ZERO  # Store knockback velocity
 var knockback_duration = 0.6  # Duration of knockback effect
 var knockback_timer = 0.0
 
+var attack_cooldown = false
+var attack_timer = 0.0
+var attack_cooldown_duration = 0.25
+
 var handler;
 
 
@@ -30,9 +34,10 @@ func _process(delta: float) -> void:
 		knockback_timer -= delta
 		if knockback_timer <= 0:
 				is_knockback = false
-
-	if Input.is_action_just_pressed("testing"):
-		take_damage(1)
+	if attack_cooldown:
+		attack_timer -= delta
+		if attack_timer <= 0:
+			attack_cooldown = false
 
 
 func _physics_process(delta):
@@ -73,7 +78,13 @@ func update_animations(delta):
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
 	# Attack
-	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = Input.is_action_just_pressed("attack")
+	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+		attack_cooldown = true
+		attack_timer = attack_cooldown_duration
+	else:
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	
 	# Jump input
 	if Input.is_action_just_pressed("jump"):
 		is_jumping = true
