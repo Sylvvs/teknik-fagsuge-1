@@ -7,8 +7,12 @@ var health = 100;
 
 var is_knockback = false
 var knockback_velocity = Vector2.ZERO  # Store knockback velocity
-var knockback_duration = 0.6  # Duration of knockback effect
+var knockback_duration = 0.15  # Duration of knockback effect
 var knockback_timer = 0.0
+
+var attack_cooldown = false
+var attack_timer = 0.0
+var attack_cooldown_duration = 0.25
 
 var handler;
 
@@ -30,9 +34,10 @@ func _process(delta: float) -> void:
 		knockback_timer -= delta
 		if knockback_timer <= 0:
 				is_knockback = false
-
-	if Input.is_action_just_pressed("testing"):
-		take_damage(1)
+	if attack_cooldown:
+		attack_timer -= delta
+		if attack_timer <= 0:
+			attack_cooldown = false
 
 
 func _physics_process(delta):
@@ -43,12 +48,14 @@ func _physics_process(delta):
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
 	elif Input.is_action_pressed("ui_left"):
-		sprite.flip_h = true
-		sword.scale.x = -1
+		if not is_attacking:
+			sprite.flip_h = true
+			sword.scale.x = -1
 		velocity.x = -SPEED;
 	elif Input.is_action_pressed("ui_right"):
-		sprite.flip_h = false
-		sword.scale.x = 1
+		if not is_attacking:
+			sprite.flip_h = false
+			sword.scale.x = 1
 		velocity.x = SPEED;
 	else:
 		velocity.x = 0
@@ -61,19 +68,26 @@ func _physics_process(delta):
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
-	var enemy: EnemySignal_Enemy = area.owner
-	if enemy:
+	if area.owner.is_in_group('enemies'):
+		var enemy: EnemySignal_Enemy = area.owner
 		enemy.apply_damage(20)
 	
 
 var is_jumping = false
-
+var is_attacking = false
 func update_animations(delta):
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
 	# Attack
-	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = Input.is_action_just_pressed("attack")
+	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+		attack_cooldown = true
+		is_attacking = true
+		attack_timer = attack_cooldown_duration
+	else:
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	
 	# Jump input
 	if Input.is_action_just_pressed("jump"):
 		is_jumping = true
@@ -96,13 +110,13 @@ func take_damage(amount):
 	knockback_velocity = Vector2.ZERO
 	
 	if velocity.x > 0 or velocity.x == 0:
-		knockback_velocity.x = -SPEED * 0.5
+		knockback_velocity.x = -SPEED
 		knockback_velocity.y = -50
 	elif velocity.x < 0:
-		knockback_velocity.x = SPEED * 0.5
+		knockback_velocity.x = SPEED
 		knockback_velocity.y = -50
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.15).timeout
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
 
 
@@ -119,3 +133,6 @@ func reset_all_conditions():
 	var base_path = "parameters/AnimationNodeStateMachine/conditions/"
 	for key in condition_keys:
 		at[base_path + key] = false
+
+func _on_attack_animation_finished():
+	is_attacking = false

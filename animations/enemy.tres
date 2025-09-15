@@ -1,0 +1,31 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://deg6gbck48fd"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md0e3"]
+animation = &"Hurt"
+use_custom_timeline = true
+timeline_length = 0.2
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ra3w"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5uy6h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c4w8v"]
+advance_mode = 2
+advance_condition = &"hurting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwavj"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/Hurt/node = SubResource("AnimationNodeAnimation_md0e3")
+states/Hurt/position = Vector2(544.5, 74.5)
+states/idle/node = SubResource("AnimationNodeAnimation_4ra3w")
+states/idle/position = Vector2(372, 42)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5uy6h"), "idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_c4w8v"), "Hurt", "idle", SubResource("AnimationNodeStateMachineTransition_xwavj")]
+graph_offset = Vector2(-80, -54)

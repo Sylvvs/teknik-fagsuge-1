@@ -15,7 +15,10 @@ func exit():
 	set_physics_process(false)
 
 func transition():
-	pass
+	var distance = owner.direction.length()
+	
+	if distance > 30:
+		get_parent().change_state("Follow")
 
 func _physics_process(_delta):
 	transition()
