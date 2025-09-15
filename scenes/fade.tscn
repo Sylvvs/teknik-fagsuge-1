@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dsoj6xwixi71r"]
+
+[node name="Fade" type="ColorRect"]
+z_index = 100
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
