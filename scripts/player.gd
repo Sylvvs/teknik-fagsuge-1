@@ -8,15 +8,25 @@ var SPRITE;
 @onready var ap = $"Animation Handler/AnimationPlayer"
 @onready var sprite = $"Animation Handler/Sprite2D"
 @onready var sword = $"Animation Handler/Sprite2D/Sword Hitbox"
+@onready var at : AnimationTree = $"AnimationTree"
 
 
 func _ready():
-	pass
+	at.active = true
+
+func _process(delta: float) -> void:
+	update_animations()
+
+
 func _physics_process(delta):
 	set_up_direction(Vector2.UP)
 	if Input.is_action_pressed("ui_left"):
+		sprite.flip_h = true
+		sword.scale.x = -1
 		velocity.x = -SPEED;
 	elif Input.is_action_pressed("ui_right"):
+		sprite.flip_h = false
+		sword.scale.x = 1
 		velocity.x = SPEED;
 	else:
 		velocity.x = 0
@@ -27,25 +37,23 @@ func _physics_process(delta):
 	velocity.y = velocity.y + GRAV * delta;
 	move_and_slide()
 	
-	if abs(velocity.x) > 0:
-		if velocity.x < 0:
-			sprite.flip_h = true
-			sword.scale.x = -1
-		else:
-			sprite.flip_h = false
-			sword.scale.x = 1
-		ap.speed_scale = 2.7
-		ap.play('walk')
-	if velocity.x == 0 and velocity.y == 0:
-		ap.speed_scale = 1
-		ap.play('idle')
-		
-	if Input.is_action_pressed("ui_accept"):
-		ap.speed_scale = 5
-		ap.play('attack')
 	
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
-	
+	var enemy: EnemySignal_Enemy = area.owner
+	if enemy:
+		enemy.apply_damage(20)
 	pass 
+
+func update_animations():
+	if velocity == Vector2.ZERO:
+		at["parameters/AnimationNodeStateMachine/conditions/idle"] = true
+		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = false
+	else:
+		at["parameters/AnimationNodeStateMachine/conditions/idle"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = true
+	if Input.is_action_just_pressed("attack"):
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+	else:
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false

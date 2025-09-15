@@ -1,16 +1,14 @@
 extends Node2D
 
-var current_room
+var current_room = "none";
 	
 func load_room(id):
 	var next_room = load("res://scenes/"+id+".tscn").instantiate()
 	print(next_room)
 	add_child(next_room)
 	
-	if current_room:
-		print("deleting NOW")
+	if current_room != "none":
 		current_room.queue_free()
-		player.queue_free()
 	
 	current_room = next_room
 	# current_room.connect("level_changed", Callable(self, "load_room"))
@@ -30,6 +28,7 @@ func load_room(id):
 	map_bottom = map_top + used_rect.size.y * cell_size.y
 
 func handle_logic():
+	print("hwat the fcj")
 	for child in current_room.get_node("Logic").get_children():
 		match child.name:
 			"Spawn":
@@ -40,12 +39,14 @@ func handle_logic():
 				print("hi twin")
 		if child is Area2D:
 			print("hi")
-			child.body_entered.connect(func(body):
-				if body.name == "CharacterBody2D":
-					load_room(child.name)
-			)
+			child.body_entered.connect(_on_area_entered.bind(child.name))
+			
 
 
+func _on_area_entered(body: Node, room_name: String) -> void:
+	if body == player:
+		print("Player entered area:", room_name)
+		load_room(room_name)
 
 @onready var player_scene : PackedScene = load("res://scenes/player.tscn")
 var tilemap 
