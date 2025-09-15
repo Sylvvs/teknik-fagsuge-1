@@ -18,9 +18,7 @@ func _ready() -> void:
 	fade_rect.size = get_viewport().size
 	load_room("forest")
 
-
 func _process(_delta: float) -> void:
-	print(fade_rect.color)
 	if camera and player:
 		var half_screen = (get_viewport_rect().size / 2) / camera.zoom
 		var desired_pos = player.get_node("CharacterBody2D").global_position
