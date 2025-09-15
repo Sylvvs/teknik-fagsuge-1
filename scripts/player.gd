@@ -7,7 +7,7 @@ var health = 100;
 
 var is_knockback = false
 var knockback_velocity = Vector2.ZERO  # Store knockback velocity
-var knockback_duration = 0.6  # Duration of knockback effect
+var knockback_duration = 0.15  # Duration of knockback effect
 var knockback_timer = 0.0
 
 var attack_cooldown = false
@@ -110,13 +110,13 @@ func take_damage(amount):
 	knockback_velocity = Vector2.ZERO
 	
 	if velocity.x > 0 or velocity.x == 0:
-		knockback_velocity.x = -SPEED * 0.5
+		knockback_velocity.x = -SPEED
 		knockback_velocity.y = -50
 	elif velocity.x < 0:
-		knockback_velocity.x = SPEED * 0.5
+		knockback_velocity.x = SPEED
 		knockback_velocity.y = -50
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.15).timeout
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
 
 

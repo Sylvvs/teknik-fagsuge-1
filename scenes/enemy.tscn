@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgm2dymvpo7pj"]
+[gd_scene load_steps=14 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://deg6gbck48fd" path="res://animations/enemy.tres" id="3_4ra3w"]
 
 [sub_resource type="Animation" id="Animation_md0e3"]
 resource_name = "Attack"
@@ -257,29 +258,15 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 13.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_md0e3"]
-animation = &"Hurt"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5uy6h"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ra3w"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5uy6h"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c4w8v"]
-advance_mode = 2
-advance_condition = &"hurting"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwavj"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_md0e3"]
-states/Hurt/node = SubResource("AnimationNodeAnimation_md0e3")
-states/Hurt/position = Vector2(543.5, 72.5)
-states/idle/node = SubResource("AnimationNodeAnimation_4ra3w")
-states/idle/position = Vector2(372, 42)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5uy6h"), "idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_c4w8v"), "Hurt", "idle", SubResource("AnimationNodeStateMachineTransition_xwavj")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c4w8v"]
+graph_offset = Vector2(-356, 81)
+nodes/AnimationNodeStateMachine/node = ExtResource("3_4ra3w")
+nodes/AnimationNodeStateMachine/position = Vector2(-200, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5uy6h")
+nodes/TimeScale/position = Vector2(106, 167)
+node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
 
 [node name="Enemy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_7p1mj")
@@ -306,8 +293,9 @@ disabled = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Animation Handler Enemy")
-tree_root = SubResource("AnimationNodeStateMachine_md0e3")
+tree_root = SubResource("AnimationNodeBlendTree_c4w8v")
 anim_player = NodePath("../Animation Handler Enemy/AnimationPlayer")
-parameters/conditions/hurting = false
+parameters/AnimationNodeStateMachine/conditions/hurting = false
+parameters/TimeScale/scale = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
