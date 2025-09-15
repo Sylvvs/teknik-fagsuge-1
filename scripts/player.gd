@@ -4,6 +4,10 @@ var SPEED = 200;
 const JUMP = 400;
 const GRAV = 800;
 var health = 100;
+var is_knockback = false
+var knockback_velocity = Vector2.ZERO  # Store knockback velocity
+var knockback_duration = 0.6  # Duration of knockback effect
+var knockback_timer = 0.0
 
 var SPRITE;
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -17,13 +21,22 @@ func _ready():
 
 func _process(delta: float) -> void:
 	update_animations(delta)
+	
+	if is_knockback:
+		knockback_timer -= delta
+		if knockback_timer <= 0:
+				is_knockback = false
+
 	if Input.is_action_just_pressed("testing"):
 		take_damage(1)
 
 
 func _physics_process(delta):
 	set_up_direction(Vector2.UP)
-	if Input.is_action_pressed("ui_left"):
+	if  is_knockback:
+		velocity = knockback_velocity
+		velocity.y += GRAV * delta
+	elif Input.is_action_pressed("ui_left"):
 		sprite.flip_h = true
 		sword.scale.x = -1
 		velocity.x = -SPEED;
@@ -50,9 +63,6 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	
 
 var is_jumping = false
-var is_hitstunned = false
-var hitstun_time = 0.5  # duration of hitstun in seconds
-var hitstun_timer = 0.0
 
 func update_animations(delta):
 	# Movement conditions
@@ -77,6 +87,16 @@ func take_damage(amount):
 	print(amount)
 	reset_all_conditions()
 	health -= amount
+	is_knockback = true
+	knockback_timer = knockback_duration
+	knockback_velocity = Vector2.ZERO
+	
+	if velocity.x > 0:
+		knockback_velocity.x = -SPEED * 0.5
+		knockback_velocity.y = -50
+	elif velocity.x < 0:
+		knockback_velocity.x = SPEED * 0.5
+		knockback_velocity.y = -50
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
 	await get_tree().create_timer(0.6).timeout
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
