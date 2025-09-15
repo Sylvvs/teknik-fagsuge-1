@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://vv5wy43wa1ns"]
+[gd_scene load_steps=17 format=4 uid="uid://vv5wy43wa1ns"]
 
 [ext_resource type="Script" uid="uid://bvvxw5em7cuwj" path="res://scripts/forest.gd" id="1_0afsd"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_xijx7"]
@@ -3331,6 +3331,11 @@ sources/1 = SubResource("TileSetAtlasSource_j3csf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3csf"]
 
+[sub_resource type="GDScript" id="GDScript_ercsu"]
+script/source = "extends Marker2D
+
+"
+
 [node name="Forest" type="Node2D"]
 script = ExtResource("1_0afsd")
 
@@ -3397,7 +3402,9 @@ shape = SubResource("RectangleShape2D_j3csf")
 [node name="Spawn" type="Marker2D" parent="Logic"]
 position = Vector2(160, 706)
 
-[node name="IdkGoblinMaybe" type="Marker2D" parent="Logic"]
+[node name="NPC" type="Marker2D" parent="Logic"]
+position = Vector2(405, 709)
+script = SubResource("GDScript_ercsu")
 
 [node name="forest2" type="Area2D" parent="Logic"]
 position = Vector2(935, 641)
