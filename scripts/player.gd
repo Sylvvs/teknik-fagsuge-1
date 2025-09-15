@@ -4,10 +4,14 @@ var SPEED = 200;
 const JUMP = 400;
 const GRAV = 800;
 var health = 100;
+<<<<<<< Updated upstream
 var is_knockback = false
 var knockback_velocity = Vector2.ZERO  # Store knockback velocity
 var knockback_duration = 0.6  # Duration of knockback effect
 var knockback_timer = 0.0
+=======
+var handler;
+>>>>>>> Stashed changes
 
 var SPRITE;
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -32,6 +36,8 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta):
+	if handler and handler.forcing_movement:
+		return
 	set_up_direction(Vector2.UP)
 	if  is_knockback:
 		velocity = knockback_velocity
