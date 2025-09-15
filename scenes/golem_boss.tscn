@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
 [ext_resource type="Script" uid="uid://rtb050ofy5oa" path="res://scripts/Follow.gd" id="5_jidqh"]
-[ext_resource type="Script" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
-[ext_resource type="Script" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
+[ext_resource type="Script" uid="uid://b6t3rg18ehfj7" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
+[ext_resource type="Script" uid="uid://burpf3gnefk1x" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
 [ext_resource type="PackedScene" uid="uid://1ucfm3l35uv6" path="res://scenes/bullet.tscn" id="9_dxa6x"]
 [ext_resource type="Script" uid="uid://03vxux64ra2q" path="res://scripts/dash.gd" id="10_egbyw"]
 
