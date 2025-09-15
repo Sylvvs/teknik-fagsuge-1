@@ -2,7 +2,7 @@ extends Node2D
 class_name State
 
 @onready var debug = owner.find_child("debug")
-@onready var player = owner.get_parent().find_child("player")
+@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var animation_player = owner.find_child("AnimationPlayer")
 
 func _ready():
@@ -15,10 +15,11 @@ func exit():
 	set_physics_process(false)
 
 func transition():
-	var distance = owner.direction.length()
-	
-	if distance > 30:
-		get_parent().change_state("Follow")
+	pass
+	#var distance = owner.direction.length()
+	#
+	#if distance > 30:
+		#get_parent().change_state("Follow")
 
 func _physics_process(_delta):
 	transition()

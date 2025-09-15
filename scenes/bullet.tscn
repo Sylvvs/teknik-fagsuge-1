@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://1ucfm3l35uv6"]
 
-[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://gqux16q4yvxh" path="res://scripts/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://c4fmdi5hxw3o7" path="res://sprites/weapon PNG/arm_projectile_glowing.png" id="2_l5glv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
