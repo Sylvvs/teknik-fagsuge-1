@@ -52,10 +52,8 @@ func update_animations():
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
-
 	# Attack
 	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = Input.is_action_just_pressed("attack")
-
 	# Jump input
 	if Input.is_action_just_pressed("jump"):
 		is_jumping = true
@@ -66,6 +64,5 @@ func update_animations():
 	else:
 		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
 		is_jumping = false
-
 	# Falling
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
