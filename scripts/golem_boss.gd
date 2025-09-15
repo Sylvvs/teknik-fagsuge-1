@@ -13,7 +13,6 @@ func _ready():
 	
 #
 func _process(_delta):
-	print(player)
 	if not player or not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 		if not player:
