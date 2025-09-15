@@ -48,12 +48,14 @@ func _physics_process(delta):
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
 	elif Input.is_action_pressed("ui_left"):
-		sprite.flip_h = true
-		sword.scale.x = -1
+		if not is_attacking:
+			sprite.flip_h = true
+			sword.scale.x = -1
 		velocity.x = -SPEED;
 	elif Input.is_action_pressed("ui_right"):
-		sprite.flip_h = false
-		sword.scale.x = 1
+		if not is_attacking:
+			sprite.flip_h = false
+			sword.scale.x = 1
 		velocity.x = SPEED;
 	else:
 		velocity.x = 0
@@ -72,7 +74,7 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	
 
 var is_jumping = false
-
+var is_attacking = false
 func update_animations(delta):
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
@@ -81,6 +83,7 @@ func update_animations(delta):
 	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
 		attack_cooldown = true
+		is_attacking = true
 		attack_timer = attack_cooldown_duration
 	else:
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
@@ -130,3 +133,6 @@ func reset_all_conditions():
 	var base_path = "parameters/AnimationNodeStateMachine/conditions/"
 	for key in condition_keys:
 		at[base_path + key] = false
+
+func _on_attack_animation_finished():
+	is_attacking = false
