@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=25 format=3 uid="uid://11k4gkw30r7i"]
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
 [ext_resource type="Script" uid="uid://rtb050ofy5oa" path="res://scripts/Follow.gd" id="5_jidqh"]
+[ext_resource type="Script" uid="uid://b6t3rg18ehfj7" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
+[ext_resource type="Script" uid="uid://burpf3gnefk1x" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
+[ext_resource type="PackedScene" uid="uid://cel7ekkqi62cw" path="res://scenes/bullet.tscn" id="9_dxa6x"]
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"
@@ -430,7 +433,11 @@ script = ExtResource("4_5raa4")
 script = ExtResource("5_jidqh")
 
 [node name="MeleeAttack" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_cx2hw")
+script = ExtResource("7_5l412")
+
+[node name="HomingMissile" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("8_isqk6")
+bullet_node = ExtResource("9_dxa6x")
 
 [node name="LaserBeam" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_cx2hw")
@@ -442,9 +449,6 @@ script = ExtResource("3_cx2hw")
 script = ExtResource("3_cx2hw")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_cx2hw")
-
-[node name="HomingMissile" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("3_cx2hw")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
