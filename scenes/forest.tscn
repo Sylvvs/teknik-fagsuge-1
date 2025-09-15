@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://vv5wy43wa1ns"]
+[gd_scene load_steps=20 format=4 uid="uid://vv5wy43wa1ns"]
 
 [ext_resource type="Script" uid="uid://bvvxw5em7cuwj" path="res://scripts/forest.gd" id="1_0afsd"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_xijx7"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="8_di0nb"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
 [ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
+[ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="12_dabdc"]
+[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/test_npc.gd" id="13_cf55d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ercsu"]
 texture = ExtResource("1_xijx7")
@@ -3336,6 +3338,9 @@ script/source = "extends Marker2D
 
 "
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_di0nb"]
+radius = 29.14
+
 [node name="Forest" type="Node2D"]
 script = ExtResource("1_0afsd")
 
@@ -3420,3 +3425,17 @@ shape = SubResource("RectangleShape2D_j3csf")
 position = Vector2(560, 699)
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="Npcs" type="Node2D" parent="."]
+
+[node name="Test NPC" type="Area2D" parent="Npcs"]
+position = Vector2(345, 704)
+script = ExtResource("13_cf55d")
+npc_id = "npc_villager"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npcs/Test NPC"]
+shape = SubResource("CircleShape2D_di0nb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Npcs/Test NPC"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_dabdc")

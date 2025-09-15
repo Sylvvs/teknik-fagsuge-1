@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dts64q0r1hp15"]
+[gd_scene load_steps=2 format=3 uid="uid://dts64q0r1hp15"]
+
+[ext_resource type="PackedScene" uid="uid://dffr4a21qtxuo" path="res://scenes/dialogue_box2.tscn" id="1_rc1id"]
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -8,36 +10,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 1102.0
-offset_bottom = 250.0
-
-[node name="Dialogue" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 80.0
-offset_right = 1032.0
-offset_bottom = 180.0
-theme_override_font_sizes/normal_font_size = 20
-text = "HOLY yap sesh bro holy fuck we yapping *intense intro music*"
-
-[node name="DialogueOptions" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 852.0
-offset_top = 200.0
-offset_right = 1052.0
-offset_bottom = 350.0
-
-[node name="Name" type="RichTextLabel" parent="Panel"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 620.0
-offset_bottom = 80.0
-theme_override_font_sizes/normal_font_size = 38
-text = "Vro"
-context_menu_enabled = true
-vertical_alignment = 1
+[node name="CanvasLayer" parent="." instance=ExtResource("1_rc1id")]

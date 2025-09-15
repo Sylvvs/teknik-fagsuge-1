@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dsoj6xwixi71r"]
+[gd_scene load_steps=0 format=3 uid="uid://dsoj6xwixi71r"]
 
 [node name="Fade" type="ColorRect"]
 z_index = 100
