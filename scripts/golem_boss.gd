@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var logic_pos = get_parent().find_child("Logic")
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 
 @onready var sprite = $Golem
 
@@ -13,8 +13,9 @@ func _ready():
 	
 #
 func _process(_delta):
+	print(player)
 	if not player or not is_instance_valid(player):
-		player = get_tree().get_first_node_in_group("player")
+		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 		if not player:
 			return
 	direction = player.global_position - position

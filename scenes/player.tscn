@@ -384,7 +384,7 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
 nodes/TimeScale/position = Vector2(30, 150)
 node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["player"]]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemies", "player"]]
 script = ExtResource("1_3vyb7")
