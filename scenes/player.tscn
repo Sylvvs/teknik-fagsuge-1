@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=16 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://blxwdg8k1f8s8" path="res://sprites/player sprites/RUN.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://b0hnct6w70uij" path="res://sprites/player sprites/ATTACK 1.png" id="4_qlg0r"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://db6xhv4t0h1td" path="res://animations/player.tres" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0
@@ -196,6 +197,16 @@ _data = {
 &"walk": SubResource("Animation_g2els")
 }
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
+graph_offset = Vector2(-422.472, 81.7198)
+nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
+nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
+nodes/TimeScale/position = Vector2(30, 150)
+node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
+
 [node name="Player" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -231,10 +242,18 @@ root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_g2els")
 }
-autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 visible = false
 zoom = Vector2(2, 2)
+
+[node name="AnimationTree" type="AnimationTree" parent="CharacterBody2D"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_fjrip")
+anim_player = NodePath("../Animation Handler/AnimationPlayer")
+parameters/AnimationNodeStateMachine/conditions/attacking = false
+parameters/AnimationNodeStateMachine/conditions/idle = false
+parameters/AnimationNodeStateMachine/conditions/is_moving = false
+parameters/TimeScale/scale = 1.0
 
 [connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_area_entered"]
