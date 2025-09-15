@@ -17,6 +17,8 @@ func _ready():
 
 func _process(delta: float) -> void:
 	update_animations(delta)
+	if Input.is_action_just_pressed("testing"):
+		take_damage(1)
 
 
 func _physics_process(delta):
@@ -53,21 +55,6 @@ var hitstun_time = 0.5  # duration of hitstun in seconds
 var hitstun_timer = 0.0
 
 func update_animations(delta):
-	
-	if is_hitstunned:
-		hitstun_timer -= delta
-		at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
-		
-		at["parameters/AnimationNodeStateMachine/conditions/idle"] = false
-		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = false
-		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
-		at["parameters/AnimationNodeStateMachine/conditions/falling"] = false
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
-		
-		if hitstun_timer <= 0:
-			is_hitstunned = false
-			at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
-			return
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
@@ -87,6 +74,23 @@ func update_animations(delta):
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
 
 func take_damage(amount):
+	reset_all_conditions()
 	health -= amount
-	is_hitstunned= true
-	hitstun_timer = hitstun_time
+	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
+	await get_tree().create_timer(0.6).timeout
+	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
+
+
+var condition_keys = [
+	"idle",
+	"is_moving",
+	"attacking",
+	"jump",
+	"falling",
+	"hurting",
+	# Add all your conditions here
+]
+func reset_all_conditions():
+	var base_path = "parameters/AnimationNodeStateMachine/conditions/"
+	for key in condition_keys:
+		at[base_path + key] = false
