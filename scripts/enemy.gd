@@ -6,7 +6,7 @@ extends Node2D
 func _ready():
 	at.active = true
 
-
+ 
 var health: int = 100:
 	set(value):
 		health = value

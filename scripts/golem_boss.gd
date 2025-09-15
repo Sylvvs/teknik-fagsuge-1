@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var direction : Vector2
 
+
 func _ready():
 	set_physics_process(false)	
 	
