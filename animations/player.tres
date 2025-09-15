@@ -54,11 +54,12 @@ advance_mode = 2
 advance_condition = &"attacking"
 
 [resource]
+states/Start/position = Vector2(199.5, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_dqkch")
 states/attack/position = Vector2(485.511, -15.0657)
 states/idle/node = SubResource("AnimationNodeAnimation_qlg0r")
-states/idle/position = Vector2(386, 100.25)
+states/idle/position = Vector2(386, 100.062)
 states/walk/node = SubResource("AnimationNodeAnimation_tuyoq")
-states/walk/position = Vector2(594.011, 100.125)
+states/walk/position = Vector2(592.011, 99.5625)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_smehm"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_y4r1p"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_d2wvv"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_3v2ag"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_jej6c")]
-graph_offset = Vector2(99.5112, -68.0657)
+graph_offset = Vector2(96.301, -54.4499)
