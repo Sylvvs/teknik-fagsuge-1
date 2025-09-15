@@ -3,6 +3,7 @@ extends CharacterBody2D
 var SPEED = 200;
 const JUMP = 400;
 const GRAV = 800;
+var health = 100;
 
 var SPRITE;
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -15,7 +16,7 @@ func _ready():
 	at.active = true
 
 func _process(delta: float) -> void:
-	update_animations()
+	update_animations(delta)
 
 
 func _physics_process(delta):
@@ -47,8 +48,26 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	
 
 var is_jumping = false
+var is_hitstunned = false
+var hitstun_time = 0.5  # duration of hitstun in seconds
+var hitstun_timer = 0.0
 
-func update_animations():
+func update_animations(delta):
+	
+	if is_hitstunned:
+		hitstun_timer -= delta
+		at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
+		
+		at["parameters/AnimationNodeStateMachine/conditions/idle"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/falling"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
+		
+		if hitstun_timer <= 0:
+			is_hitstunned = false
+			at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
+			return
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
@@ -66,3 +85,8 @@ func update_animations():
 		is_jumping = false
 	# Falling
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
+
+func take_damage(amount):
+	health -= amount
+	is_hitstunned= true
+	hitstun_timer = hitstun_time
