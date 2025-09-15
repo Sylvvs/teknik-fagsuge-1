@@ -7,6 +7,7 @@ class_name State
 @onready var animation_player = owner.find_child("AnimationPlayer")
 
 func _ready():
+	await get_tree().process_frame
 	call_deferred("_find_player")
 	set_physics_process(false)
 
