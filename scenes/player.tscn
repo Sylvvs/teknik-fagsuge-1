@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=17 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -189,11 +189,15 @@ tracks/1/keys = {
 "values": [Rect2(32, 45, 36, 36), Rect2(128, 45, 36, 36), Rect2(224, 45, 36, 36), Rect2(320, 45, 36, 36), Rect2(416, 45, 36, 36), Rect2(512, 45, 36, 36), Rect2(608, 45, 36, 36), Rect2(704, 45, 36, 36), Rect2(800, 45, 36, 36), Rect2(896, 45, 36, 36), Rect2(992, 45, 36, 36), Rect2(1088, 45, 36, 36), Rect2(1184, 45, 36, 36), Rect2(1280, 45, 36, 36), Rect2(1376, 45, 36, 36), Rect2(1472, 45, 36, 36)]
 }
 
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "jump"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
 _data = {
 &"RESET": SubResource("Animation_dqkch"),
 &"attack": SubResource("Animation_fjrip"),
 &"idle": SubResource("Animation_3vyb7"),
+&"jump": SubResource("Animation_qlg0r"),
 &"walk": SubResource("Animation_g2els")
 }
 
