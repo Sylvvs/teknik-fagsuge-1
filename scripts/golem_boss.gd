@@ -21,8 +21,9 @@ func _physics_process(delta):
 		if not player:
 			
 			return
-	direction.x = player.position.x - position.x + 1132
-	direction.y = player.position.y - position.y
+	
+	direction = player.global_position - position
+	
 	if direction.x > 0:
 		sprite.flip_h = false
 	else :
