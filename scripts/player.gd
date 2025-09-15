@@ -95,7 +95,7 @@ func take_damage(amount):
 	knockback_timer = knockback_duration
 	knockback_velocity = Vector2.ZERO
 	
-	if velocity.x > 0:
+	if velocity.x > 0 or velocity.x == 0:
 		knockback_velocity.x = -SPEED * 0.5
 		knockback_velocity.y = -50
 	elif velocity.x < 0:
