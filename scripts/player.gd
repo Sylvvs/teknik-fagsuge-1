@@ -61,8 +61,8 @@ func _physics_process(delta):
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
-	var enemy: EnemySignal_Enemy = area.owner
-	if enemy:
+	if area.owner.is_in_group('enemies'):
+		var enemy: EnemySignal_Enemy = area.owner
 		enemy.apply_damage(20)
 	
 
