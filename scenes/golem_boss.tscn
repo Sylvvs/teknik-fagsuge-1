@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c6h8k68dees6j" path="res://sprites/weapon PNG/Laser_sheet.png" id="2_s54pl"]
 [ext_resource type="Script" uid="uid://3b3vjd0v14vr" path="res://scripts/state.gd" id="3_cx2hw"]
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
-[ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scenes/idle.gd" id="4_5raa4"]
+[ext_resource type="Script" path="res://scripts/idle.gd" id="4_5raa4"]
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
 [ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3knxq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ercsu"]
 texture = ExtResource("1_xijx7")
 0:45/0 = 0
 0:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -0.0989227, 8, 8, -8, 8)
@@ -479,7 +479,7 @@ texture = ExtResource("1_xijx7")
 57:48/0 = 0
 57:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ercsu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3csf"]
 texture = ExtResource("3_bgcxa")
 0:0/0 = 0
 1:0/0 = 0
@@ -3326,8 +3326,8 @@ texture = ExtResource("3_bgcxa")
 
 [sub_resource type="TileSet" id="TileSet_bgcxa"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_3knxq")
-sources/1 = SubResource("TileSetAtlasSource_ercsu")
+sources/0 = SubResource("TileSetAtlasSource_ercsu")
+sources/1 = SubResource("TileSetAtlasSource_j3csf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3csf"]
 
@@ -3385,6 +3385,14 @@ tile_map_data = PackedByteArray("AAAAABYAAAAAAC0AAAAAABcAAAAAAC4AAAAAABgAAAAAAC8
 tile_set = SubResource("TileSet_bgcxa")
 
 [node name="Logic" type="Node2D" parent="."]
+
+[node name="boss_room" type="Area2D" parent="Logic"]
+position = Vector2(-170, 642)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/boss_room"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_j3csf")
 
 [node name="Spawn" type="Marker2D" parent="Logic"]
 position = Vector2(160, 706)
