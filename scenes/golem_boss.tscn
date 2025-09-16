@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://burpf3gnefk1x" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
 [ext_resource type="PackedScene" uid="uid://1ucfm3l35uv6" path="res://scenes/bullet.tscn" id="9_dxa6x"]
 [ext_resource type="Script" uid="uid://03vxux64ra2q" path="res://scripts/dash.gd" id="10_egbyw"]
-[ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scenes/LaserBeam.gd" id="11_4y8e0"]
-[ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scenes/ArmorBuff.gd" id="12_33i4v"]
+[ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scripts/LaserBeam.gd" id="11_4y8e0"]
+[ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scripts/ArmorBuff.gd" id="12_33i4v"]
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"
