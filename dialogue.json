@@ -35,5 +35,15 @@
 		]
 	  }
 	}
+  },"boss": {
+	"states": {
+	  "default": {
+		"dialogues": [
+		  {
+			"lines": ["holy fuck [color=red][wavy]KILL YOURSELF[/wavy][/color]"]
+		  }
+		]
+	  }
+	}
   }
 }

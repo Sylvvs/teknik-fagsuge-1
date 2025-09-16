@@ -12,8 +12,10 @@ var map_top: float
 var map_right: float
 var map_bottom: float
 
+signal player_entered()
 
 func _ready() -> void:
+	add_to_group("room_handler")
 	load_room("control")
 	FadeLayer.fade_out(0.5)
 
@@ -117,6 +119,8 @@ func _on_fade_out_complete(id: String) -> void:
 	load_room(id)
 	FadeLayer.fade_out(0.3).connect("finished", Callable(func():
 		forcing_movement = false
+		emit_signal("player_entered")
+		forced_direction = Vector2.ZERO
 	))
 
 	
