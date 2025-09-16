@@ -39,9 +39,9 @@ func _process(delta: float) -> void:
 		if combo_continue_timer >= combo_continue_window:
 			print('too late')
 			reset_combo()
+			
 	attack_failsafe -= delta
 	if attack_failsafe <= 0:
-		print('reset')
 		reset_combo()
 		attack_failsafe = 5.0
 
