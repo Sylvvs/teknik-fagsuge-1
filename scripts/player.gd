@@ -18,7 +18,7 @@ var waiting_for_combo_input = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
-var knockback_duration = 0.6
+var knockback_duration = 0.15
 var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
 
@@ -120,7 +120,7 @@ func _physics_process(delta: float) -> void:
 	update_animations(delta)
 
 # === Animations ===
-func update_animations(delta: float) -> void:
+func update_animations(_delta: float) -> void:
 	# Basic movement
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
@@ -215,18 +215,16 @@ func _on_dash_animation_end():
 
 # === Damage & Knockback ===
 func take_damage(amount: int) -> void:
-	print(amount)
 	reset_all_conditions()
 	health -= amount
 	is_knockback = true
 	knockback_timer = knockback_duration
 	knockback_velocity = Vector2(
-		-SPEED * 0.5 if velocity.x >= 0 else SPEED * 0.5,
-		-50
+		sign(velocity.x) if velocity.x != 0
+			else (1 if sprite.flip_h else -1) * SPEED , -50
 	)
-
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.15).timeout
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
 
 # === Reset Anim Conditions ===
