@@ -207,3 +207,11 @@ func update_combo_conditions():
 	at["parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2"] = combo_step == 2
 	at["parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3"] = combo_step == 3
 	
+
+
+func _on_sword_hitbox_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+			if body.is_in_group('enemies'):
+				print('hit')
+				body.apply_damage(20)
+	pass # Replace with function body.
