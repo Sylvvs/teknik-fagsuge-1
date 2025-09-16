@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=29 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ccested51w51j" path="res://sprites/player sprites/HURT.png" id="7_smehm"]
 [ext_resource type="Texture2D" uid="uid://bv6ud1yq8dak8" path="res://sprites/player sprites/ATTACK 2.png" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://dhg68xpgpg62m" path="res://sprites/player sprites/ATTACK 3.png" id="9_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://c432gu2ruo5p6" path="res://sprites/player sprites/DASH.png" id="10_d2wvv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0
@@ -338,6 +339,60 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_3v2ag"]
+resource_name = "dash"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_d2wvv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(32, 45, 36, 36), Rect2(110, 45, 85, 36), Rect2(205, 45, 86, 36), Rect2(301, 45, 85, 36), Rect2(392, 45, 85, 36), Rect2(490, 45, 85, 36), Rect2(586, 45, 85, 36), Rect2(682, 45, 85, 36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.36667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_dash_animation_end"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_d2wvv"]
 resource_name = "fall"
 length = 0.001
@@ -547,6 +602,7 @@ _data = {
 &"attack": SubResource("Animation_fjrip"),
 &"attack2": SubResource("Animation_jej6c"),
 &"attack3": SubResource("Animation_f1ej7"),
+&"dash": SubResource("Animation_3v2ag"),
 &"fall": SubResource("Animation_d2wvv"),
 &"hurt": SubResource("Animation_ur7pv"),
 &"idle": SubResource("Animation_3vyb7"),
@@ -557,16 +613,16 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-537.727, 129)
+graph_offset = Vector2(-441, 150)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
 nodes/TimeScale/position = Vector2(30, 150)
-node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
 
 [node name="Player" type="Node2D" groups=["player"]]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["enemies", "player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -581,6 +637,7 @@ region_enabled = true
 region_rect = Rect2(32, 45, 36, 36)
 
 [node name="Sword Hitbox" type="Area2D" parent="CharacterBody2D/Animation Handler/Sprite2D"]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -614,6 +671,7 @@ root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendTree_fjrip")
 anim_player = NodePath("../Animation Handler/AnimationPlayer")
 parameters/AnimationNodeStateMachine/conditions/attacking = false
+parameters/AnimationNodeStateMachine/conditions/dashing = false
 parameters/AnimationNodeStateMachine/conditions/falling = false
 parameters/AnimationNodeStateMachine/conditions/hurting = false
 parameters/AnimationNodeStateMachine/conditions/idle = false

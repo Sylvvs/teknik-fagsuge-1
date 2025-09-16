@@ -31,6 +31,7 @@ func _process(_delta: float) -> void:
 			player_body.velocity.x = forced_direction.x * player_body.SPEED
 			player_body.velocity.y += player_body.GRAV * _delta
 			player_body.move_and_slide()
+			player_body.update_animations(1)
 		
 		var clamped_pos = Vector2(
 			clamp(desired_pos.x, map_left + half_screen.x, map_right - half_screen.x),

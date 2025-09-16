@@ -22,7 +22,17 @@ func load_dialogue(path: String) -> Dictionary:
 	return {}
 
 func start_dialogue(npc_id: String, speaker: String):
-	get_tree().root.get_node("RoomHandler").forcing_movement = true
+	var room_handler = get_tree().root.get_node("RoomHandler")
+	var player = null;
+	room_handler.forcing_movement = true
+	
+	for child in room_handler.get_children():
+		if child.is_in_group("player"):
+			player = child
+			break
+	player.get_node("CharacterBody2D").velocity = Vector2(0,0);
+	player.get_node("CharacterBody2D").update_animations(1)
+	
 	
 	current_npc_id = npc_id
 	var state = npc_states.get(npc_id, "default")
@@ -76,7 +86,7 @@ func _typewriter(label: RichTextLabel, lines: Array) -> void:
 		
 		for i in range(line.length()):
 			label.text += line[i]
-			if Input.is_action_pressed("ui_down") and i > 10:
+			if Input.is_action_pressed("interact") and i > 10:
 				label.text = line
 				break
 			await get_tree().create_timer(0.03).timeout
@@ -84,7 +94,7 @@ func _typewriter(label: RichTextLabel, lines: Array) -> void:
 		var waiting_for_input = true
 		while waiting_for_input:
 			await get_tree().process_frame
-			if Input.is_action_just_pressed("ui_down"):
+			if Input.is_action_just_pressed("interact"):
 				waiting_for_input = false
 
 
@@ -104,7 +114,7 @@ func _process(delta):
 			dialogue_closed_recently = false
 			dialogue_close_cooldown = 0.2
 	elif dialogue_box and dialogue_waiting_close:
-		if Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed("interact"):
 			_close_dialogue()
 			dialogue_waiting_close = false
 
