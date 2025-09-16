@@ -15,10 +15,11 @@ offset_bottom = 250.0
 [node name="Dialogue" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
 offset_left = 20.0
-offset_top = 80.0
+offset_top = 75.0
 offset_right = 1032.0
-offset_bottom = 180.0
+offset_bottom = 175.0
 theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
 text = "HOLY yap sesh bro holy fuck we yapping *intense intro music*"
 
 [node name="DialogueOptions" type="VBoxContainer" parent="Panel"]
@@ -35,6 +36,7 @@ offset_top = 20.0
 offset_right = 620.0
 offset_bottom = 80.0
 theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
 text = "Vro"
 context_menu_enabled = true
 vertical_alignment = 1

@@ -4,7 +4,7 @@
 	  "default": {
 		"dialogues": [
 		  {
-			"lines": ["Hello traveler! What do you want to know?", "this is a quick test for how quick the text scrolls when you yap for four billion hours uhm idk what to write so hows your day been oh imagine this just goes out of the dialogue box eventually lol uhm uh m uhm im running out of stuff to write this should be good"],
+			"lines": ["* human... i remember you're [color=red]genocides[/color]","i just realized we're [wavy]NEVER[/wavy] gonna use these effects. [shake]AAAAAA[/shake]", "this is a quick test for how quick the text scrolls when you yap for four billion hours uhm idk what to write so hows your day been oh imagine this just goes out of the dialogue box eventually lol uhm uh m uhm im running out of stuff to write this should be good"],
 			"choices": [
 			  {
 				"text": "Tell me about the woods",

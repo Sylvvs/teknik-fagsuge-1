@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="12_dabdc"]
 [ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/test_npc.gd" id="13_cf55d"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ercsu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dabdc"]
 texture = ExtResource("1_xijx7")
 0:45/0 = 0
 0:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -0.0989227, 8, 8, -8, 8)
@@ -481,7 +481,7 @@ texture = ExtResource("1_xijx7")
 57:48/0 = 0
 57:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3csf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cf55d"]
 texture = ExtResource("3_bgcxa")
 0:0/0 = 0
 1:0/0 = 0
@@ -3328,8 +3328,8 @@ texture = ExtResource("3_bgcxa")
 
 [sub_resource type="TileSet" id="TileSet_bgcxa"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ercsu")
-sources/1 = SubResource("TileSetAtlasSource_j3csf")
+sources/0 = SubResource("TileSetAtlasSource_dabdc")
+sources/1 = SubResource("TileSetAtlasSource_cf55d")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3csf"]
 

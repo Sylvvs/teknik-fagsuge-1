@@ -82,13 +82,15 @@ func _run_choice(choice: Dictionary):
 
 func _typewriter(label: RichTextLabel, lines: Array) -> void:
 	for line in lines:
-		label.text = ""
-		
-		for i in range(line.length()):
-			label.text += line[i]
-			if Input.is_action_pressed("interact") and i > 10:
-				label.text = line
+		label.clear()
+		label.append_text(line) # indlæs hele linen fordi bbcode
+		label.visible_characters = 0
+
+		while label.visible_characters < label.get_total_character_count():
+			if Input.is_action_pressed("interact") and label.visible_characters > 10:
+				label.visible_characters = label.get_total_character_count()
 				break
+			label.visible_characters += 1
 			await get_tree().create_timer(0.03).timeout
 
 		var waiting_for_input = true
@@ -96,6 +98,7 @@ func _typewriter(label: RichTextLabel, lines: Array) -> void:
 			await get_tree().process_frame
 			if Input.is_action_just_pressed("interact"):
 				waiting_for_input = false
+
 
 
 
