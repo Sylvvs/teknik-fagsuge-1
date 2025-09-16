@@ -3395,3 +3395,11 @@ position = Vector2(935, 641)
 position = Vector2(-911, -102)
 scale = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_8607o")
+
+[node name="Cave1" type="Area2D" parent="Logic"]
+position = Vector2(935, 641)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/Cave1"]
+position = Vector2(-25, -110)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_8607o")
