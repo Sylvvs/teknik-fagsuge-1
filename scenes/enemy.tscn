@@ -1,8 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgm2dymvpo7pj"]
+[gd_scene load_steps=21 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://deg6gbck48fd" path="res://animations/enemy.tres" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
+[ext_resource type="Script" uid="uid://ca6r1pgbmotjw" path="res://EnemyState.gd" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
+[ext_resource type="Script" uid="uid://balprkepttbor" path="res://scripts/EnemyIdle.gd" id="6_nenq2"]
+[ext_resource type="Script" uid="uid://6dbajf3hcxmr" path="res://scripts/EnemyAttack.gd" id="7_w8i8w"]
 
 [sub_resource type="Animation" id="Animation_md0e3"]
 resource_name = "Attack"
@@ -186,7 +191,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5uy6h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c4w8v"]
-graph_offset = Vector2(-356, 81)
+graph_offset = Vector2(-411.401, 58.990784)
 nodes/AnimationNodeStateMachine/node = ExtResource("3_4ra3w")
 nodes/AnimationNodeStateMachine/position = Vector2(-200, 160)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5uy6h")
@@ -195,6 +200,9 @@ node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNode
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xwavj"]
+radius = 96.04687
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 7.0
@@ -228,10 +236,46 @@ parameters/TimeScale/scale = 1.0
 position = Vector2(3, 9)
 shape = SubResource("CapsuleShape2D_md0e3")
 
+[node name="debug" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -21.0
+offset_right = 29.0
+offset_bottom = 2.0
+theme_override_font_sizes/font_size = 8
+text = "debug"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="PlayerDetection" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(3, 7)
+shape = SubResource("CircleShape2D_xwavj")
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 9)
 shape = SubResource("CapsuleShape2D_4ra3w")
 
+[node name="EnemyFiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("4_md484")
+
+[node name="EnemyIdle" type="Node2D" parent="EnemyFiniteStateMachine"]
+script = ExtResource("6_nenq2")
+
+[node name="EnemyRun" type="Node2D" parent="EnemyFiniteStateMachine"]
+script = ExtResource("6_8qclf")
+
+[node name="EnemyAttack" type="Node2D" parent="EnemyFiniteStateMachine"]
+script = ExtResource("7_w8i8w")
+
+[node name="EnemyDeath" type="Node2D" parent="EnemyFiniteStateMachine"]
+script = ExtResource("5_c4w8v")
+
+[node name="EnemyHurt" type="Node2D" parent="EnemyFiniteStateMachine"]
+script = ExtResource("5_c4w8v")
+
+[connection signal="body_entered" from="PlayerDetection" to="EnemyFiniteStateMachine/EnemyIdle" method="player_detection_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="EnemyFiniteStateMachine/EnemyIdle" method="_on_area_2d_body_entered"]
