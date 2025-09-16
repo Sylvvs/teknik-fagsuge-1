@@ -9,7 +9,8 @@ const COMBO_CONTINUE_WINDOW = 2.0
 const ATTACK_FAILSAFE_TIME = 5.0
 
 # === State Variables ===
-var health = 100
+var health = 10
+var max_health = 10
 var is_jumping = false
 var is_attacking = false
 var is_knockback = false
@@ -30,6 +31,12 @@ var can_combo = false
 var attack_timer = 0.0
 var combo_continue_timer = 0.0
 var attack_failsafe = ATTACK_FAILSAFE_TIME
+
+# === Calm System ===
+var calm_energy = 0
+var max_calm_energy = 10
+var calm_energy_heal_requirement = 7
+
 
 # === Animation Nodes ===
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -120,6 +127,8 @@ func _physics_process(delta: float) -> void:
 			else (-1 if sprite.flip_h else 1)
 		) * SPEED * 3
 		is_dashing = true
+	if Input.is_action_just_pressed('heal'):
+		heal_player()
 
 	# Apply gravity
 	velocity.y += GRAV * delta
@@ -161,7 +170,6 @@ func update_animations(_delta: float) -> void:
 			elif waiting_for_combo_input:
 				continue_combo()
 
-	
 
 	# Dashing animation
 	at["parameters/AnimationNodeStateMachine/conditions/dashing"] = Input.is_action_just_pressed("dash")
@@ -213,7 +221,6 @@ func _on_attack_animation_finished():
 		is_attacking = false
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
 		at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
-
 	else:
 		reset_combo()
 
@@ -262,13 +269,12 @@ func reset_all_conditions():
 		at[base_path + key] = false
 
 # === Sword Hit Detection ===
-func _on_sword_hitbox_area_entered(area: Area2D) -> void:
-	if area.owner and area.owner.is_in_group("enemies"):
-		area.owner.apply_damage(20)
-
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
-		body.apply_damage(20)
+		if calm_energy < max_calm_energy:
+			calm_energy += 1
+			print(calm_energy)
+		body.apply_damage(1)
 		
 func _on_air_attack_animation_finished():
 	is_air_attacking = false
@@ -276,3 +282,13 @@ func _on_air_attack_animation_finished():
 	at["parameters/AnimationNodeStateMachine/Attack/conditions/air_attack"] = false
 	at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
 	reset_combo()
+
+func heal_player():
+	if calm_energy > calm_energy_heal_requirement:
+		calm_energy -= calm_energy_heal_requirement
+		
+		health += 5
+		if health > max_health:
+			health = max_health
+	else:
+		return
