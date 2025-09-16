@@ -38,7 +38,6 @@ func _physics_process(delta):
 	
 
 func apply_damage(damage):
-	print("hej")
 	health -= damage - DEF 
 
 
