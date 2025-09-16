@@ -10,6 +10,9 @@ var knockback_velocity = Vector2.ZERO  # Store knockback velocity
 var knockback_duration = 0.6  # Duration of knockback effect
 var knockback_timer = 0.0
 
+var dashing_velocity = Vector2.ZERO
+var is_dashing = false
+
 var handler;
 
 
@@ -52,6 +55,9 @@ func _physics_process(delta):
 	if  is_knockback:
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
+	elif is_dashing:
+		velocity.x = dashing_velocity
+		velocity.y += GRAV * delta
 	elif Input.is_action_pressed("left"):
 		if not is_attacking:
 			sprite.flip_h = true
@@ -67,6 +73,13 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP;
+	if Input.is_action_just_pressed("dash"):
+		if velocity.x != 0:
+			dashing_velocity = sign(velocity.x) * SPEED * 3
+		else:
+			dashing_velocity = (-1 if sprite.flip_h else 1) * SPEED * 3
+		is_dashing = true
+		
 		
 	velocity.y = velocity.y + GRAV * delta;
 	move_and_slide()
@@ -97,11 +110,6 @@ func update_animations(delta):
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
-	# Attack
-	#if Input.is_action_just_pressed("attack"):
-	#	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
-	#else:
-	#	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
 	
 	# Jump input
 	if Input.is_action_just_pressed("jump"):
@@ -141,8 +149,15 @@ func update_animations(delta):
 			combo_continue_timer = 0.0
 			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
 			at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = false
-		
+	#Dashing
+	if Input.is_action_just_pressed("dash"):
+		at["parameters/AnimationNodeStateMachine/conditions/dashing"] = true
+	else:
+			at["parameters/AnimationNodeStateMachine/conditions/dashing"] = false
 	
+func _on_dash_animation_end():
+	print('hey')
+	is_dashing = false
 
 func take_damage(amount):
 	print(amount)
