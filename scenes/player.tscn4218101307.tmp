@@ -506,7 +506,7 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
-tracks/3/interp = 0
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
@@ -557,7 +557,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-537.727, 129)
+graph_offset = Vector2(-542, 168)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
@@ -621,7 +621,6 @@ parameters/AnimationNodeStateMachine/conditions/jump = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3 = false
-parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking = false
 parameters/TimeScale/scale = 1.0
 
 [connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_area_entered"]

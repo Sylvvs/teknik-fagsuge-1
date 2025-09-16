@@ -10,10 +10,6 @@ var knockback_velocity = Vector2.ZERO  # Store knockback velocity
 var knockback_duration = 0.6  # Duration of knockback effect
 var knockback_timer = 0.0
 
-var attack_cooldown = false
-var attack_timer = 0.0
-var attack_cooldown_duration = 0.25
-
 var handler;
 
 
@@ -26,6 +22,8 @@ var SPRITE;
 
 func _ready():
 	at.active = true
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	reset_combo()
 
 func _process(delta: float) -> void:
 	update_animations(delta)
@@ -34,10 +32,13 @@ func _process(delta: float) -> void:
 		knockback_timer -= delta
 		if knockback_timer <= 0:
 				is_knockback = false
-	if attack_cooldown:
-		attack_timer -= delta
-		if attack_timer <= 0:
-			attack_cooldown = false
+				
+	# Handle extended combo window
+	if waiting_for_combo_input:
+		combo_continue_timer += delta
+		if combo_continue_timer >= combo_continue_window:
+			print('too late')
+			reset_combo()
 
 
 func _physics_process(delta):
@@ -75,19 +76,26 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	
 
 var is_jumping = false
+
 var is_attacking = false
+var combo_step = 0
+var combo_input_buffered = false
+var can_combo = false
+var attack_timer = 0.0
+const COMBO_TIMEOUT = 200
+var combo_continue_timer = 0.0
+var combo_continue_window = 2  # 0.5 seconds after attack finishes
+var waiting_for_combo_input = false
+
 func update_animations(delta):
 	# Movement conditions
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
 	# Attack
-	if Input.is_action_just_pressed("attack") and attack_cooldown == false:
-		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
-		attack_cooldown = true
-		is_attacking = true
-		attack_timer = attack_cooldown_duration
-	else:
-		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	#if Input.is_action_just_pressed("attack"):
+	#	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+	#else:
+	#	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
 	
 	# Jump input
 	if Input.is_action_just_pressed("jump"):
@@ -101,6 +109,32 @@ func update_animations(delta):
 		is_jumping = false
 	# Falling
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
+	
+	#Combo Attack Input
+	if Input.is_action_just_pressed("attack"):
+		if combo_step == 0 and not is_attacking:
+			#Start combo
+			combo_step = 1
+			is_attacking = true
+			update_combo_conditions()
+			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+			at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = false
+		elif can_combo:
+			combo_input_buffered = true
+		elif waiting_for_combo_input:
+			combo_step += 1
+			update_combo_conditions()
+			is_attacking = true
+			#can_combo = false
+			waiting_for_combo_input = false
+			combo_continue_timer = 0.0
+			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+			at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = false
+		
+	if is_attacking:
+		attack_timer += delta
+		if attack_timer > COMBO_TIMEOUT:
+			reset_combo()
 
 func take_damage(amount):
 	print(amount)
@@ -136,4 +170,39 @@ func reset_all_conditions():
 		at[base_path + key] = false
 
 func _on_attack_animation_finished():
+	if combo_input_buffered:
+		combo_step += 1
+		update_combo_conditions()
+		can_combo = false
+		combo_input_buffered = false
+		attack_timer = 0.0
+	elif combo_step < 3:
+		waiting_for_combo_input = true
+		combo_continue_timer = 0.0
+		can_combo = false
+		is_attacking = false
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+		at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
+
+	else:
+		reset_combo()
+	
+func on_combo_window_open():
+	can_combo = true
+	
+func reset_combo():
+	combo_step = 0
+	can_combo = false
+	combo_input_buffered = false
 	is_attacking = false
+	waiting_for_combo_input = false  # <-- THIS LINE
+	combo_continue_timer = 0.0 
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
+	reset_all_conditions()
+	
+func update_combo_conditions():
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1"] = combo_step == 1
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2"] = combo_step == 2
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3"] = combo_step == 3
+	
