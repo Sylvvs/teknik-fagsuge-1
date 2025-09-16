@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 		var desired_pos = player.get_node("CharacterBody2D").global_position
 
 		if current_room.name == "BossRoom":
-			if current_room.get_node("GolemBoss"):
+			if current_room.has_node("GolemBoss"):
 				desired_pos = (desired_pos + current_room.get_node("GolemBoss").position) / 2
 
 		if forcing_movement:
