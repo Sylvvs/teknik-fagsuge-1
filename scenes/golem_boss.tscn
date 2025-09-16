@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=29 format=3 uid="uid://11k4gkw30r7i"]
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
@@ -490,6 +490,10 @@ height = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2hw"]
 radius = 100.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33i4v"]
+radius = 27.0
+height = 66.0
+
 [node name="GolemBoss" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 6
 collision_mask = 0
@@ -578,6 +582,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_cx2hw")
 
+[node name="Hurtbox" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CapsuleShape2D_33i4v")
+
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_mwilj")
 
@@ -606,4 +613,5 @@ script = ExtResource("12_6wojb")
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("13_33i4v")
 
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

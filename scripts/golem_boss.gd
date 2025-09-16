@@ -40,3 +40,10 @@ func _physics_process(delta):
 func apply_damage(damage):
 	print("hej")
 	health -= damage - DEF 
+
+
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.take_damage(5) 
+		print(body.take_damage)
