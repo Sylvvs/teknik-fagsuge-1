@@ -18,4 +18,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		body.take_damage(5, global_position) 
+		print(body.take_damage)
 	queue_free()

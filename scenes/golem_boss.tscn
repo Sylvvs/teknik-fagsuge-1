@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=30 format=3 uid="uid://11k4gkw30r7i"]
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scripts/LaserBeam.gd" id="11_33i4v"]
 [ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scripts/ArmorBuff.gd" id="12_6wojb"]
 [ext_resource type="Script" uid="uid://cko5afgaeli8j" path="res://scripts/Death.gd" id="13_33i4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33i4v"]
+size = Vector2(258, 20)
 
 [sub_resource type="Animation" id="Animation_0garv"]
 resource_name = "Armour buff"
@@ -136,6 +139,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/Hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_t6gaq"]
 resource_name = "Glowing"
@@ -176,6 +191,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Beam_hitbox/Beam_hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cx2hw"]
 resource_name = "Laser"
@@ -215,6 +242,18 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Beam_hitbox/Beam_hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1290834),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -307,6 +346,30 @@ tracks/3/path = NodePath("CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Beam_hitbox/Beam_hitbox:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/Hitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -426,6 +489,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Beam_hitbox/Beam_hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_p6t1k"]
 resource_name = "laser cast"
@@ -484,14 +559,14 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s54pl"]
-radius = 21.0
-height = 64.0
+radius = 28.0
+height = 66.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cx2hw"]
 radius = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33i4v"]
-radius = 27.0
+radius = 18.0
 height = 66.0
 
 [node name="GolemBoss" type="CharacterBody2D" groups=["enemies"]]
@@ -511,6 +586,12 @@ position = Vector2(2, -17)
 position = Vector2(98, 17)
 texture = ExtResource("2_s54pl")
 vframes = 15
+
+[node name="Beam_hitbox" type="Area2D" parent="Pivot"]
+
+[node name="Beam_hitbox" type="CollisionShape2D" parent="Pivot/Beam_hitbox"]
+position = Vector2(119, 0)
+shape = SubResource("RectangleShape2D_33i4v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -582,8 +663,11 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_cx2hw")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_33i4v")
+disabled = true
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_mwilj")
@@ -613,5 +697,7 @@ script = ExtResource("12_6wojb")
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("13_33i4v")
 
+[connection signal="body_entered" from="Pivot/Beam_hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
