@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var progress_bar = $UI/ProgressBar 
 var direction : Vector2
 var DEF = 0
-var health = 1000:
+var health = 250:
 	
 	set(value):
 		health = value
@@ -15,7 +15,7 @@ var health = 1000:
 			progress_bar.visible = false
 			find_child("FiniteStateMachine").change_state("Death")
 		elif value <= progress_bar.max_value / 2 and DEF == 0:
-			DEF = 5
+			DEF = 2.5
 			find_child("FiniteStateMachine").change_state("ArmorBuff")
 func _ready():
 	set_physics_process(false)
@@ -38,7 +38,6 @@ func _physics_process(delta):
 	
 
 func apply_damage(damage):
-	print("hej")
 	health -= damage - DEF 
 
 

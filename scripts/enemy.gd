@@ -12,7 +12,7 @@ const SPEED := 160
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
 
-var health: int = 100:
+var health: int = 10:
 	set(value):
 		health = value
 		if health <= 0:
@@ -67,4 +67,4 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
-		body.take_damage(10, global_position)
+		body.take_damage(1, global_position)
