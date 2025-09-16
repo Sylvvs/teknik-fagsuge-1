@@ -1,7 +1,7 @@
 extends Control
 
-@onready var start_button = $VBoxContainer/VBoxContainer/StartContainer/Start
-@onready var fade_rect = $CanvasLayer/Fade
+@onready var input_settings_scene = preload("res://scenes/InputSettings.tscn")
+var input_settings
 
 func _ready() -> void:
 	var buttons = [
@@ -28,9 +28,14 @@ func _on_start_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	print("slow it down bro im not that far yet")
+	input_settings = input_settings_scene.instantiate()
+	add_child(input_settings)
 
-
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if input_settings and input_settings.get_parent():
+			input_settings.queue_free()
+			input_settings = null
 
 func _on_quit_pressed() -> void:
-	print("hold your horses")
+	get_tree().quit()
