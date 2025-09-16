@@ -11,6 +11,7 @@ const ATTACK_FAILSAFE_TIME = 5.0
 # === State Variables ===
 var health = 10
 var max_health = 10
+var is_healing = false
 var is_jumping = false
 var is_attacking = false
 var is_knockback = false
@@ -82,7 +83,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if handler and handler.forcing_movement:
 		return
-
+	if is_healing:
+		return
 
 	set_up_direction(Vector2.UP)
 
@@ -249,6 +251,10 @@ func _on_dash_animation_end():
 
 # === Damage & Knockback ===
 func take_damage(amount: int, from_position: Vector2) -> void:
+	if is_healing:
+		at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
+		is_healing = false
+		
 	reset_all_conditions()
 	health -= amount
 	is_knockback = true
@@ -273,7 +279,6 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
-			print(calm_energy)
 		body.apply_damage(1)
 		
 func _on_air_attack_animation_finished():
@@ -284,11 +289,17 @@ func _on_air_attack_animation_finished():
 	reset_combo()
 
 func heal_player():
-	if calm_energy > calm_energy_heal_requirement:
+	if calm_energy >= calm_energy_heal_requirement:
 		calm_energy -= calm_energy_heal_requirement
+		is_healing = true
+		at["parameters/AnimationNodeStateMachine/conditions/healing"] = true
 		
-		health += 5
-		if health > max_health:
-			health = max_health
 	else:
 		return
+func _on_heal_done():
+	print('cool')
+	is_healing = false
+	at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
+	health += 5
+	if health > max_health:
+		health = max_health
