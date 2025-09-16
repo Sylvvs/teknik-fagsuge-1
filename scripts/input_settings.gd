@@ -9,7 +9,12 @@ var remapping_button = null
 
 var input_actions = {
 	"attack": "Attack",
-	"jump": "Jump"
+	"jump": "Jump",
+	"dash": "Dash",
+	"left": "Left",
+	"right": "Right",
+	"interact": "Interact",
+	"heal": "Heal"
 }
 
 

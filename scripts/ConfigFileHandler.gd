@@ -8,10 +8,20 @@ func _ready():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("keybinding", "jump", "Up")
 		config.set_value("keybinding", "attack", "Z")
+		config.set_value("keybinding", "left", "Left")
+		config.set_value("keybinding", "right", "Right")
+		config.set_value("keybinding", "dash", "X")
+		config.set_value("keybinding", "heal", "F")
+		config.set_value("keybinding", "interact", "Down")
 		
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
+
+	var keybindings = load_keybindings()
+	for action in keybindings.keys():
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, keybindings[action])
 
 
 func save_keybinding(action: StringName, event: InputEvent):
