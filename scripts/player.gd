@@ -52,12 +52,12 @@ func _physics_process(delta):
 	if  is_knockback:
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("left"):
 		if not is_attacking:
 			sprite.flip_h = true
 			sword.scale.x = -1
 		velocity.x = -SPEED;
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("right"):
 		if not is_attacking:
 			sprite.flip_h = false
 			sword.scale.x = 1
