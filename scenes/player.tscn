@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=31 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bv6ud1yq8dak8" path="res://sprites/player sprites/ATTACK 2.png" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://dhg68xpgpg62m" path="res://sprites/player sprites/ATTACK 3.png" id="9_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://c432gu2ruo5p6" path="res://sprites/player sprites/DASH.png" id="10_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://ccsum14vt4v5n" path="res://sprites/player sprites/AIR ATTACK.png" id="11_3v2ag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0
@@ -596,9 +597,87 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_oprun"]
+resource_name = "air attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_3v2ag")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(30, 28, 36, 60), Rect2(126, 28, 36, 60), Rect2(202, 28, 80, 60), Rect2(298, 28, 80, 60), Rect2(394, 28, 80, 60), Rect2(490, 28, 80, 60)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox/CollisionShape2D3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterBody2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_air_attack_animation_finished"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
 _data = {
 &"RESET": SubResource("Animation_dqkch"),
+&"air attack": SubResource("Animation_oprun"),
 &"attack": SubResource("Animation_fjrip"),
 &"attack2": SubResource("Animation_jej6c"),
 &"attack3": SubResource("Animation_f1ej7"),
@@ -613,7 +692,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-954, 226)
+graph_offset = Vector2(-776.8262, 214.07463)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
@@ -677,6 +756,7 @@ parameters/AnimationNodeStateMachine/conditions/hurting = false
 parameters/AnimationNodeStateMachine/conditions/idle = false
 parameters/AnimationNodeStateMachine/conditions/is_moving = false
 parameters/AnimationNodeStateMachine/conditions/jump = false
+parameters/AnimationNodeStateMachine/Attack/conditions/air_attack = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3 = false

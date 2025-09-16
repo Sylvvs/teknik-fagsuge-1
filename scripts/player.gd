@@ -15,6 +15,7 @@ var is_attacking = false
 var is_knockback = false
 var is_dashing = false
 var waiting_for_combo_input = false
+var is_air_attacking = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
@@ -147,16 +148,35 @@ func update_animations(_delta: float) -> void:
 
 	# Attacking
 	if Input.is_action_just_pressed("attack"):
-		if combo_step == 0 and not is_attacking:
-			start_combo()
-		elif can_combo:
-			combo_input_buffered = true
-		elif waiting_for_combo_input:
-			continue_combo()
+		if not is_on_floor():
+			if not is_air_attacking:
+				start_air_attack()
+	  				  # Only air attack if not currently attacking in ai
+		else:
+			   # Only run ground combo logic if on floor
+			if combo_step == 0 and not is_attacking:
+				start_combo()
+			elif can_combo:
+				combo_input_buffered = true
+			elif waiting_for_combo_input:
+				continue_combo()
+
+	
 
 	# Dashing animation
 	at["parameters/AnimationNodeStateMachine/conditions/dashing"] = Input.is_action_just_pressed("dash")
 
+func start_air_attack():
+	if is_on_floor():
+		return  # only air attack when NOT on floor
+	
+	is_air_attacking = true
+	is_attacking = true  # so that other attacks can't start
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/air_attack"] = true
+	
+
+	
 func start_combo():
 	combo_step = 1
 	is_attacking = true
@@ -249,3 +269,10 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
 		body.apply_damage(20)
+		
+func _on_air_attack_animation_finished():
+	is_air_attacking = false
+	is_attacking = false
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/air_attack"] = false
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
+	reset_combo()
