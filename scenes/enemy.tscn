@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgm2dymvpo7pj"]
+[gd_scene load_steps=18 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://deg6gbck48fd" path="res://animations/enemy.tres" id="3_4ra3w"]
 [ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
 [ext_resource type="Script" uid="uid://ca6r1pgbmotjw" path="res://EnemyState.gd" id="5_c4w8v"]
 [ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
@@ -188,16 +187,6 @@ _data = {
 &"idle": SubResource("Animation_4ra3w")
 }
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5uy6h"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_c4w8v"]
-graph_offset = Vector2(-411.401, 58.990784)
-nodes/AnimationNodeStateMachine/node = ExtResource("3_4ra3w")
-nodes/AnimationNodeStateMachine/position = Vector2(-200, 160)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_5uy6h")
-nodes/TimeScale/position = Vector2(106, 167)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 13.0
 
@@ -224,13 +213,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_c4w8v")
 }
 autoplay = "idle"
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../Animation Handler Enemy")
-tree_root = SubResource("AnimationNodeBlendTree_c4w8v")
-anim_player = NodePath("../Animation Handler Enemy/AnimationPlayer")
-parameters/AnimationNodeStateMachine/conditions/hurting = false
-parameters/TimeScale/scale = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 9)
