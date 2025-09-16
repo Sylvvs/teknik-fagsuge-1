@@ -13,9 +13,8 @@ func play_animation(anim_name):
 	animation_player.play(anim_name)
 	await animation_player.animation_finished
 
-func set_target():  
-	pivot.rotation = (owner.direction - pivot.position).angle()
-	print(pivot.rotation)
+func set_target(): 
+	pivot.rotation = (owner.direction - pivot.position).normalized().angle()
 func transition(): 
 	if can_transition:
 		can_transition = false
