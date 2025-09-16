@@ -1,28 +1,31 @@
 extends CharacterBody2D
 
 @onready var sprite : Sprite2D = $"Animation Handler Enemy/Sprite2D"
+@onready var animation_player : AnimationPlayer = $"Animation Handler Enemy/AnimationPlayer"
 @onready var logic_pos = get_parent().find_child("Logic")
 @onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 
 var direction : Vector2
 var flee_mode: bool = true  
 var switch_timer := 0.0
-
-const SPEED := 160
+const SPEED := 80
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
 
-var health: int = 10:
+var health: float = 50:
 	set(value):
 		health = value
+		print(health)
 		if health <= 0:
 			queue_free()
 
 func _ready():
 	set_physics_process(false)
 
-func apply_damage(amount : int):
+func apply_damage(amount : float):
 	health -= amount
+	animation_player.play("Hurt")
+	await animation_player.animation_finished
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):

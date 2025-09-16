@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
-[ext_resource type="Script" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
-[ext_resource type="Script" path="res://EnemyState.gd" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
+[ext_resource type="Script" uid="uid://ca6r1pgbmotjw" path="res://EnemyState.gd" id="5_c4w8v"]
 [ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
-[ext_resource type="Script" path="res://scripts/EnemyIdle.gd" id="6_nenq2"]
+[ext_resource type="Script" uid="uid://balprkepttbor" path="res://scripts/EnemyIdle.gd" id="6_nenq2"]
 [ext_resource type="Script" uid="uid://6dbajf3hcxmr" path="res://scripts/EnemyAttack.gd" id="7_w8i8w"]
 
 [sub_resource type="Animation" id="Animation_md0e3"]
@@ -229,12 +229,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="PlayerDetection" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(3, 7)
 shape = SubResource("CircleShape2D_xwavj")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 9)
@@ -253,9 +255,6 @@ script = ExtResource("6_8qclf")
 script = ExtResource("7_w8i8w")
 
 [node name="EnemyDeath" type="Node2D" parent="EnemyFiniteStateMachine"]
-script = ExtResource("5_c4w8v")
-
-[node name="EnemyHurt" type="Node2D" parent="EnemyFiniteStateMachine"]
 script = ExtResource("5_c4w8v")
 
 [connection signal="body_entered" from="PlayerDetection" to="EnemyFiniteStateMachine/EnemyIdle" method="player_detection_body_entered"]
