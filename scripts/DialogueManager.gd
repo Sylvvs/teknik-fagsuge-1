@@ -26,6 +26,7 @@ func start_dialogue(npc_id: String, speaker: String):
 	var player = null;
 	room_handler.forcing_movement = true
 	
+	
 	for child in room_handler.get_children():
 		if child.is_in_group("player"):
 			player = child
