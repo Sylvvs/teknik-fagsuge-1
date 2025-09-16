@@ -81,6 +81,8 @@ func _physics_process(delta: float) -> void:
 	if is_knockback:
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
+		move_and_slide()
+		return
 
 	# Dash logic
 	elif is_dashing:
@@ -214,15 +216,16 @@ func _on_dash_animation_end():
 	is_dashing = false
 
 # === Damage & Knockback ===
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, from_position: Vector2) -> void:
 	reset_all_conditions()
 	health -= amount
 	is_knockback = true
 	knockback_timer = knockback_duration
-	knockback_velocity = Vector2(
-		sign(velocity.x) if velocity.x != 0
-			else (1 if sprite.flip_h else -1) * SPEED , -50
-	)
+	
+	var knockback_dir = (global_position - from_position).normalized()
+	knockback_velocity = knockback_dir * SPEED * 5
+	knockback_velocity.y = -100
+
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = true
 	await get_tree().create_timer(0.15).timeout
 	at["parameters/AnimationNodeStateMachine/conditions/hurting"] = false
