@@ -75,8 +75,13 @@ func _physics_process(delta: float) -> void:
 	if handler and handler.forcing_movement:
 		return
 
+
 	set_up_direction(Vector2.UP)
 
+
+	#Die
+	if health <= 0:
+		get_tree().quit()
 	# Knockback logic
 	if is_knockback:
 		velocity = knockback_velocity
