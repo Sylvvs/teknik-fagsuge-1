@@ -26,7 +26,7 @@ func _ready():
 	reset_combo()
 
 func _process(delta: float) -> void:
-	update_animations(delta)
+	
 	
 	if is_knockback:
 		knockback_timer -= delta
@@ -66,6 +66,7 @@ func _physics_process(delta):
 		
 	velocity.y = velocity.y + GRAV * delta;
 	move_and_slide()
+	update_animations(delta)
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
@@ -108,7 +109,10 @@ func update_animations(delta):
 		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
 		is_jumping = false
 	# Falling
-	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 0 and not is_on_floor()
+	const falling_threshold = 10.0
+	at["parameters/AnimationNodeStateMachine/conditions/falling"] = (
+		velocity.y > falling_threshold and not is_on_floor()
+		)
 	
 	#Combo Attack Input
 	if Input.is_action_just_pressed("attack"):
