@@ -1,6 +1,7 @@
 extends State
 
 @onready var pivot = $"../../Pivot"
+
 var can_transition: bool = false
 
 func enter():
