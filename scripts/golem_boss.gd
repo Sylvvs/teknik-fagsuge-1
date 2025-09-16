@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var progress_bar = $UI/ProgressBar 
 var direction : Vector2
 var DEF = 0
-var health = 100:
+var health = 1000:
 	
 	set(value):
 		health = value
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 	else :
 		sprite.flip_h = true
-	velocity = direction.normalized() * 40
+	velocity = direction.normalized() * 80
 	move_and_collide(velocity * delta)
 	
 
