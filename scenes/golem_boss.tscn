@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scripts/LaserBeam.gd" id="11_33i4v"]
 [ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scripts/ArmorBuff.gd" id="12_6wojb"]
 [ext_resource type="Script" uid="uid://cko5afgaeli8j" path="res://scripts/Death.gd" id="13_33i4v"]
-[ext_resource type="Script" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
+[ext_resource type="Script" uid="uid://tgcxmww2dkn1" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33i4v"]
 size = Vector2(258, 20)

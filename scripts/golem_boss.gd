@@ -44,11 +44,8 @@ func apply_damage(damage):
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-
-		body.take_damage(0.5, global_position) 
-		print(body.take_damage)
-		
-
+		body.take_damage(1, global_position) 
+		print(body.health)
 
 
 
