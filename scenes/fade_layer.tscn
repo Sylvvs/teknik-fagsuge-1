@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5amouyl8ycgb"]
+
+[ext_resource type="Script" uid="uid://7jyhtbvtyp2k" path="res://scripts/fadelayer.gd" id="1_el0oo"]
+[ext_resource type="PackedScene" uid="uid://dsoj6xwixi71r" path="res://scenes/fade.tscn" id="2_upal7"]
+
+[node name="FadeLayer" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_el0oo")
+
+[node name="Fade" parent="." instance=ExtResource("2_upal7")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

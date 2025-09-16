@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Teknik fagsuge 1"
-run/main_scene="uid://bk5df8tx8iskw"
+run/main_scene="uid://cxo30m6t76ali"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://scripts/DialogueManager.gd/"
+FadeLayer="*res://scenes/fade_layer.tscn/"
 
 [global_group]
 

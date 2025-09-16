@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var player_scene: PackedScene = load("res://scenes/player.tscn")
-@onready var fade_rect: ColorRect = get_node("CanvasLayer/Fade")
 
 var current_room: Node2D
 var player: Node2D
@@ -15,8 +14,8 @@ var map_bottom: float
 
 
 func _ready() -> void:
-	fade_rect.size = get_viewport().size
 	load_room("forest")
+	FadeLayer.fade_out(0.5)
 
 func _process(_delta: float) -> void:
 	if camera and player:
@@ -98,27 +97,16 @@ func handle_logic() -> void:
 func load_room_with_fade(id: String) -> void:
 	forced_direction = calculate_leaving_direction()
 	forcing_movement = true
-	fade_to_black().connect("finished", Callable(self, "_on_fade_out_complete").bind(id))
+	FadeLayer.fade_in(0.3).connect("finished", Callable(self, "_on_fade_out_complete").bind(id))
 
 
 func _on_fade_out_complete(id: String) -> void:
 	load_room(id)
-	fade_from_black().connect("finished", Callable(func():
+	FadeLayer.fade_out(0.3).connect("finished", Callable(func():
 		forcing_movement = false
 	))
 
 	
-func fade_to_black(duration: float = 0.3) -> Tween:
-	var tween = create_tween()
-	tween.tween_property(fade_rect, "color:a", 1.0, duration)
-	return tween
-
-
-func fade_from_black(duration: float = 0.3) -> Tween:
-	var tween = create_tween()
-	tween.tween_property(fade_rect, "color:a", 0.0, duration)
-	return tween
-
 func calculate_leaving_direction() -> Vector2:
 	if not player:
 		return Vector2.ZERO

@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxo30m6t76ali"]
+
+[ext_resource type="Texture2D" uid="uid://k8ih2rio23jq" path="res://sprites/titlescreen/button.png" id="1_3jj3l"]
+[ext_resource type="Texture2D" uid="uid://bh1ccmxnplpru" path="res://sprites/titlescreen/bgBamboo.png" id="1_6d6rd"]
+[ext_resource type="FontFile" uid="uid://ciihdol8d11fc" path="res://fonts/SaintCarell.otf" id="1_t7v6v"]
+[ext_resource type="Script" uid="uid://cntpqpyhwpaos" path="res://scripts/titlescreen.gd" id="1_vhbaf"]
+[ext_resource type="FontFile" uid="uid://dxfsjf3nteiwn" path="res://fonts/Locanita.otf" id="3_vhbaf"]
+
+[node name="Titlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vhbaf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.811765, 0.0431373, 0.0431373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.454902)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/normal_font = ExtResource("1_t7v6v")
+theme_override_font_sizes/normal_font_size = 130
+bbcode_enabled = true
+text = "Ashbound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StartContainer" type="CenterContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start" type="TextureButton" parent="VBoxContainer/VBoxContainer/StartContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_3jj3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/StartContainer/Start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.494118)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_vhbaf")
+theme_override_font_sizes/normal_font_size = 40
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsContainer" type="CenterContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="TextureButton" parent="VBoxContainer/VBoxContainer/SettingsContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_3jj3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/SettingsContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.494118)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_vhbaf")
+theme_override_font_sizes/normal_font_size = 40
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitContainer" type="CenterContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer/VBoxContainer/QuitContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_3jj3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/QuitContainer/Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.494118)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_vhbaf")
+theme_override_font_sizes/normal_font_size = 40
+text = "QUIT GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_left = -145.0
+offset_right = 1272.0
+offset_bottom = 653.0
+mouse_filter = 2
+texture = ExtResource("1_6d6rd")
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/SettingsContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]
