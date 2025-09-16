@@ -131,10 +131,7 @@ func update_animations(delta):
 			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
 			at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = false
 		
-	if is_attacking:
-		attack_timer += delta
-		if attack_timer > COMBO_TIMEOUT:
-			reset_combo()
+	
 
 func take_damage(amount):
 	print(amount)
