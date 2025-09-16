@@ -50,6 +50,7 @@ func _process(delta):
 		switch_timer = randf_range(1.0, 1.5)
 
 func _physics_process(delta):
+	return
 	velocity.y += GRAVITY * delta
 
 	var move_dir : Vector2
