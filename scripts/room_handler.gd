@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var player_scene: PackedScene = load("res://scenes/player.tscn")
 
-var current_room: Node2D
+var current_room
 var player: Node2D
 var camera: Camera2D
 var tilemap: TileMapLayer
@@ -14,7 +14,7 @@ var map_bottom: float
 
 
 func _ready() -> void:
-	load_room("forest")
+	load_room("control")
 	FadeLayer.fade_out(0.5)
 
 func _process(_delta: float) -> void:
@@ -57,6 +57,18 @@ func load_room(id: String) -> void:
 
 	camera = player.get_node("CharacterBody2D/Camera2D")
 	
+	var anim_player = current_room.get_node_or_null("AnimationPlayer")
+	if anim_player:
+		anim_player.animation_finished.connect(_on_room_animation_finished)
+		anim_player.play("rah")
+	
+
+func _on_room_animation_finished(anim_name: String) -> void:
+	if anim_name == "rah":
+		FadeLayer.fade_in(0.3).connect("finished", Callable(func():
+			load_room("forest")
+			FadeLayer.fade_out(0.3)
+		))
 
 func _update_map_bounds() -> void:
 	var used_rect = tilemap.get_used_rect()
