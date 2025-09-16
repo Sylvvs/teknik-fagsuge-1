@@ -618,7 +618,7 @@ nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
 nodes/TimeScale/position = Vector2(30, 150)
-node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
 
 [node name="Player" type="Node2D" groups=["player"]]
 

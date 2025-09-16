@@ -22,7 +22,17 @@ func load_dialogue(path: String) -> Dictionary:
 	return {}
 
 func start_dialogue(npc_id: String, speaker: String):
-	get_tree().root.get_node("RoomHandler").forcing_movement = true
+	var room_handler = get_tree().root.get_node("RoomHandler")
+	var player = null;
+	room_handler.forcing_movement = true
+	
+	for child in room_handler.get_children():
+		if child.is_in_group("player"):
+			player = child
+			break
+	player.get_node("CharacterBody2D").velocity = Vector2(0,0);
+	player.get_node("CharacterBody2D").update_animations(1)
+	
 	
 	current_npc_id = npc_id
 	var state = npc_states.get(npc_id, "default")
