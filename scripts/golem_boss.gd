@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var progress_bar = $UI/ProgressBar 
 var direction : Vector2
 var DEF = 0
-var health = 2000:
+var health = 100:
 	
 	set(value):
 		health = value
