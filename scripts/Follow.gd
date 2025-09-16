@@ -1,5 +1,5 @@
 extends State
-
+var time = 0
 func enter():
 	super.enter()
 	owner.set_physics_process(true)
@@ -21,3 +21,18 @@ func transition():
 				get_parent().change_state("HomingMissile")
 			1:
 				get_parent().change_state("LaserBeam")
+	if time >= 5:
+		get_parent().change_state("BlockAndAway")
+
+
+func _process(delta: float) -> void:
+	var distance = owner.direction.length()
+	if distance >= 0 and distance <= 130: 
+		time += delta
+	else:
+		time = 0
+		
+		
+
+		
+	
