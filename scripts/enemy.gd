@@ -12,7 +12,7 @@ const SPEED := 160
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
 
-var health: int = 100:
+var health: int = 10:
 	set(value):
 		health = value
 		if health <= 0:

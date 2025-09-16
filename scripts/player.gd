@@ -7,10 +7,11 @@ const GRAV = 800
 const COMBO_TIMEOUT = 200
 const COMBO_CONTINUE_WINDOW = 2.0
 const ATTACK_FAILSAFE_TIME = 5.0
+const damage = 5
 
 # === State Variables ===
-var health = 10
 var max_health = 10
+var health = max_health
 var is_healing = false
 var is_jumping = false
 var is_attacking = false
@@ -279,7 +280,7 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
-		body.apply_damage(1)
+		body.apply_damage(damage)
 		
 func _on_air_attack_animation_finished():
 	is_air_attacking = false
@@ -297,7 +298,6 @@ func heal_player():
 	else:
 		return
 func _on_heal_done():
-	print('cool')
 	is_healing = false
 	at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 	health += 5
