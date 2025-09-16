@@ -39,7 +39,11 @@ func _process(delta: float) -> void:
 		if combo_continue_timer >= combo_continue_window:
 			print('too late')
 			reset_combo()
-
+	attack_failsafe -= delta
+	if attack_failsafe <= 0:
+		print('reset')
+		reset_combo()
+		attack_failsafe = 5.0
 
 func _physics_process(delta):
 	if handler and handler.forcing_movement:
@@ -87,6 +91,7 @@ const COMBO_TIMEOUT = 200
 var combo_continue_timer = 0.0
 var combo_continue_window = 2  # 0.5 seconds after attack finishes
 var waiting_for_combo_input = false
+var attack_failsafe =  5
 
 func update_animations(delta):
 	# Movement conditions
@@ -119,6 +124,7 @@ func update_animations(delta):
 		if combo_step == 0 and not is_attacking:
 			#Start combo
 			combo_step = 1
+			attack_failsafe =  5
 			is_attacking = true
 			update_combo_conditions()
 			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
@@ -131,6 +137,7 @@ func update_animations(delta):
 			is_attacking = true
 			#can_combo = false
 			waiting_for_combo_input = false
+			attack_failsafe =  5
 			combo_continue_timer = 0.0
 			at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
 			at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = false
@@ -177,9 +184,11 @@ func _on_attack_animation_finished():
 		can_combo = false
 		combo_input_buffered = false
 		attack_timer = 0.0
+		attack_failsafe =  5
 	elif combo_step < 3:
 		waiting_for_combo_input = true
 		combo_continue_timer = 0.0
+		attack_failsafe =  5
 		can_combo = false
 		is_attacking = false
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
