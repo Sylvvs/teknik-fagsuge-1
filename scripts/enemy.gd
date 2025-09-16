@@ -32,7 +32,6 @@ func _process(float):
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('testing')
 	if body.is_in_group('player'):
 			body.take_damage(10)
 	pass # Replace with function body.
