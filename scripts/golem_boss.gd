@@ -6,8 +6,8 @@ extends CharacterBody2D
 @onready var progress_bar = $UI/ProgressBar 
 var direction : Vector2
 var DEF = 0
-
-var health = 100:
+var health = 2000:
+	
 	set(value):
 		health = value
 		progress_bar.value = value
@@ -37,5 +37,6 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
 	
 
-func take_damage():
-	health -= 10 - DEF 
+func apply_damage(damage):
+	print("hej")
+	health -= damage - DEF 
