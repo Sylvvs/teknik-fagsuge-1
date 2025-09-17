@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=45 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bupuhjvwy4oko" path="res://sprites/player sprites/SPECIAL ATTACK.png" id="13_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://dldgn7pias6m8" path="res://sprites/player sprites/DEFEND.png" id="14_oprun"]
 [ext_resource type="Texture2D" uid="uid://cxp8on2s7aymc" path="res://sprites/player sprites/WALL SLIDE.png" id="15_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://c6aa4mf87hrbp" path="res://sprites/player sprites/WALL JUMP.png" id="16_qfm1y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0
@@ -1001,7 +1002,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Rect2(32, 24, 36, 48), Rect2(128, 24, 36, 48), Rect2(224, 24, 36, 48)]
+"values": [Rect2(37, 24, 36, 48), Rect2(133, 24, 36, 48), Rect2(229, 24, 36, 48)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1014,6 +1015,49 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_slide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_i4ail"]
+resource_name = "wall jump"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_qfm1y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(32, 36, 36, 48), Rect2(128, 36, 36, 48), Rect2(224, 36, 36, 48)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
@@ -1033,13 +1077,14 @@ _data = {
 &"parry start": SubResource("Animation_qfm1y"),
 &"special attack": SubResource("Animation_fulsm"),
 &"walk": SubResource("Animation_g2els"),
+&"wall jump": SubResource("Animation_i4ail"),
 &"wall slide": SubResource("Animation_60mlk")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-519.793, 339.30548)
+graph_offset = Vector2(-695, 205)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
@@ -1124,7 +1169,6 @@ parameters/AnimationNodeStateMachine/conditions/hurting = false
 parameters/AnimationNodeStateMachine/conditions/idle = false
 parameters/AnimationNodeStateMachine/conditions/is_moving = false
 parameters/AnimationNodeStateMachine/conditions/jump = false
-parameters/AnimationNodeStateMachine/conditions/parry = false
 parameters/AnimationNodeStateMachine/conditions/sliding = false
 parameters/AnimationNodeStateMachine/Attack/conditions/air_attack = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1 = false
@@ -1132,8 +1176,8 @@ parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking = false
 parameters/AnimationNodeStateMachine/Attack/conditions/special_attack = false
-parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit = false
-parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout = false
+parameters/AnimationNodeStateMachine/Walls/conditions/not_sliding = false
+parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping = false
 parameters/TimeScale/scale = 1.0
 
 [connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_area_entered"]
