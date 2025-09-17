@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://chx5pu1srr8xc"]
+
+[ext_resource type="Script" uid="uid://cugf83kmq6gno" path="res://scripts/UI/hud.gd" id="1_0wsoe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6wm8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thnqs"]
+bg_color = Color(0.17499995, 0.5, 0, 1)
+
+[node name="Ui" type="CanvasLayer"]
+layer = 3
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wsoe")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HealthMargin" type="MarginContainer" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 740
+theme_override_constants/margin_bottom = 40
+
+[node name="Health" type="ProgressBar" parent="HUD/VBoxContainer/HealthMargin"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_n6wm8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_thnqs")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="EnergyMargin" type="MarginContainer" parent="HUD/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Energy" type="TextureProgressBar" parent="HUD/VBoxContainer/EnergyMargin"]
+layout_mode = 2

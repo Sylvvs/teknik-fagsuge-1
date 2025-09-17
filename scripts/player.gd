@@ -7,11 +7,14 @@ const GRAV = 800
 const COMBO_TIMEOUT = 200
 const COMBO_CONTINUE_WINDOW = 2.0
 const ATTACK_FAILSAFE_TIME = 5.0
-const damage = 5
+const STATE_FAILSAFE = 0.1
+
 
 # === State Variables ===
-var max_health = 10
+var damage = 5
+var max_health = 1000
 var health = max_health
+var is_special_attacking = false
 var is_healing = false
 var is_jumping = false
 var is_attacking = false
@@ -25,6 +28,7 @@ var knockback_velocity = Vector2.ZERO
 var knockback_duration = 0.15
 var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
+var state_timer = 0.0
 
 # === Combo System ===
 var combo_step = 0
@@ -38,7 +42,9 @@ var attack_failsafe = ATTACK_FAILSAFE_TIME
 var calm_energy = 0
 var max_calm_energy = 10
 var calm_energy_heal_requirement = 7
+var calm_energy_special_requirement = 5
 
+signal health_changed(current: int)
 
 # === Animation Nodes ===
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -54,7 +60,9 @@ var condition_keys = [
 	"attacking",
 	"jump",
 	"falling",
-	"hurting"
+	"hurting",
+	"dashing",
+	"healing",
 ]
 
 # === Ready ===
@@ -79,14 +87,23 @@ func _process(delta: float) -> void:
 	if attack_failsafe <= 0:
 		reset_combo()
 		attack_failsafe = ATTACK_FAILSAFE_TIME
+	if check_conditions() == false:
+		state_timer += delta
+	elif check_conditions() == true:
+		state_timer = 0.0
+	if state_timer >= STATE_FAILSAFE:
+		at["parameters/AnimationNodeStateMachine/conditions/idle"] = true
+		is_healing = false
+		is_special_attacking = false
+		state_timer = 0.0
 
 # === Physics Process ===
 func _physics_process(delta: float) -> void:
 	if handler and handler.forcing_movement:
 		return
-	if is_healing:
+	if is_healing or is_special_attacking:
 		return
-
+	
 	set_up_direction(Vector2.UP)
 
 
@@ -132,7 +149,8 @@ func _physics_process(delta: float) -> void:
 		is_dashing = true
 	if Input.is_action_just_pressed('heal'):
 		heal_player()
-
+	if Input.is_action_just_pressed('special attack'):
+		special_attack()
 	# Apply gravity
 	velocity.y += GRAV * delta
 	move_and_slide()
@@ -255,9 +273,10 @@ func take_damage(amount: int, from_position: Vector2) -> void:
 	if is_healing:
 		at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 		is_healing = false
-		
+	_on_special_attack_done()
 	reset_all_conditions()
 	health -= amount
+	emit_signal("health_changed", health)
 	is_knockback = true
 	knockback_timer = knockback_duration
 	
@@ -303,3 +322,25 @@ func _on_heal_done():
 	health += 5
 	if health > max_health:
 		health = max_health
+func _set_damage(move_damage):
+	damage = move_damage
+func special_attack():
+	reset_combo()
+	is_attacking = true
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/special_attack"] = true
+	is_special_attacking = true
+	
+func _on_special_attack_done():
+	is_special_attacking = false
+	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/special_attack"] = false
+	at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
+func check_conditions():
+	var base_path = "parameters/AnimationNodeStateMachine/conditions/"
+	for key in condition_keys:
+		if at[base_path + key] == false:
+			pass
+		else:
+			return true
+	return false
