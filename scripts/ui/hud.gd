@@ -1,6 +1,6 @@
 extends Control
 
-@onready var health_bar: ProgressBar = $UIMargin/VBoxContainer/HBoxContainer/HealthMargin/Health
+@onready var health_bar = $UIMargin/VBoxContainer/HBoxContainer/HealthMargin/Health
 @onready var calm_ring: Node2D = $UIMargin/VBoxContainer/HBoxContainer/IconMargin/CalmRing
 
 var tween: Tween
@@ -22,9 +22,10 @@ func set_health(new_value: int) -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	#830525
-	var health_bar_stylebox = health_bar.get_theme_stylebox("fill")
+	var health_bar_gradiant = health_bar.texture_progress.gradient
 	var hue_value = float(new_value)/10.0*(100.0/360.0)
-	health_bar_stylebox.bg_color = Color.from_hsv(hue_value, 1.0, 0.5)
+	health_bar_gradiant.set_color(0.0, Color.from_hsv(hue_value, 1.0, 0.5))
+	health_bar_gradiant.set_color(1.0, Color.from_hsv(hue_value, 1.0, 1.0))
 	
 	tween = create_tween()
 	tween.tween_property(health_bar, "value", new_value, 0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

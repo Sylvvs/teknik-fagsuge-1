@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chx5pu1srr8xc"]
+[gd_scene load_steps=10 format=3 uid="uid://chx5pu1srr8xc"]
 
 [ext_resource type="Script" uid="uid://cugf83kmq6gno" path="res://scripts/UI/hud.gd" id="1_0wsoe"]
 [ext_resource type="Texture2D" uid="uid://ti5155grdf05" path="res://sprites/Calm Energy/pixel_art.png" id="2_n6wm8"]
@@ -9,6 +9,23 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thnqs"]
 bg_color = Color(0.17499995, 0.5, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_thnqs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gl4co"]
+gradient = SubResource("Gradient_thnqs")
+width = 300
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_lj5up"]
+colors = PackedColorArray(0.1764706, 0.5019608, 0, 1, 0.3499999, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgnrc"]
+gradient = SubResource("Gradient_lj5up")
+width = 300
+height = 20
 
 [node name="Ui" type="CanvasLayer"]
 layer = 3
@@ -58,7 +75,8 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 540
 theme_override_constants/margin_bottom = 40
 
-[node name="Health" type="ProgressBar" parent="HUD/UIMargin/VBoxContainer/HBoxContainer/HealthMargin"]
+[node name="HealthDead" type="ProgressBar" parent="HUD/UIMargin/VBoxContainer/HBoxContainer/HealthMargin"]
+visible = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 1
@@ -68,3 +86,13 @@ max_value = 10.0
 step = 0.1
 value = 10.0
 show_percentage = false
+
+[node name="Health" type="TextureProgressBar" parent="HUD/UIMargin/VBoxContainer/HBoxContainer/HealthMargin"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 10.0
+step = 0.1
+value = 10.0
+texture_under = SubResource("GradientTexture2D_gl4co")
+texture_progress = SubResource("GradientTexture2D_wgnrc")

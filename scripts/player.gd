@@ -6,7 +6,7 @@ const JUMP = 400
 const GRAV = 800
 const COMBO_TIMEOUT = 200
 const COMBO_CONTINUE_WINDOW = 2.0
-const ATTACK_FAILSAFE_TIME = 5.0
+const ATTACK_FAILSAFE_TIME = 2.1
 const STATE_FAILSAFE = 0.1
 
 
@@ -153,8 +153,8 @@ func _physics_process(delta: float) -> void:
 		heal_player()
 	if Input.is_action_just_pressed('special attack'):
 		special_attack()
-	if Input.is_action_just_pressed('parry'):
-		parry()
+	#if Input.is_action_just_pressed('parry'):
+	#	parry()
 	# Apply gravity
 	velocity.y += GRAV * delta
 	move_and_slide()
@@ -277,6 +277,8 @@ func take_damage(amount: int, from_position: Vector2) -> void:
 	if is_healing:
 		at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 		is_healing = false
+	if is_parrying:
+		return
 	_on_special_attack_done()
 	reset_all_conditions()
 	health -= amount
@@ -372,3 +374,9 @@ func _on_parry_timeout():
 	velocity.y = 0
 	at["parameters/AnimationNodeStateMachine/conditions/parry"] = false
 	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout"] = true
+func _on_parry_end():
+	is_parrying = false
+	at["parameters/AnimationNodeStateMachine/conditions/parry"] = false
+	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = false
+	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout"] = true
+	at["parameters/AnimationNodeStateMachine/conditions/idle"] = true

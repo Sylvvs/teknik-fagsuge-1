@@ -30,7 +30,7 @@ size = Vector2(37, 10)
 size = Vector2(8, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oprun"]
-size = Vector2(28, 62)
+size = Vector2(28, 96)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8ls1"]
 radius = 6.0
@@ -1022,6 +1022,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_parry_end"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
 _data = {
@@ -1045,7 +1059,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-519.793, 223.46191)
+graph_offset = Vector2(-546.793, 297.11896)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
@@ -1070,7 +1084,6 @@ region_enabled = true
 region_rect = Rect2(32, 45, 36, 36)
 
 [node name="Sword Hitbox" type="Area2D" parent="CharacterBody2D/Animation Handler/Sprite2D"]
-visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -1093,7 +1106,7 @@ shape = SubResource("RectangleShape2D_3v2ag")
 disabled = true
 
 [node name="Specialattack" type="CollisionShape2D" parent="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox"]
-position = Vector2(22, -45)
+position = Vector2(22, -28)
 shape = SubResource("RectangleShape2D_oprun")
 disabled = true
 

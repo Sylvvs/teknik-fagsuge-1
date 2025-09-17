@@ -15,6 +15,8 @@ const JUMP_FORCE := -300.0
 var health = 50
 
 
+
+
 func _ready():
 	set_physics_process(false)
 
@@ -44,6 +46,7 @@ func _process(delta):
 		switch_timer = randf_range(1.0, 1.5)
 
 func _physics_process(delta):
+	
 	# Gravity
 	velocity.y += GRAVITY * delta
 
@@ -71,10 +74,8 @@ func _physics_process(delta):
 
 	# Use built-in sliding physics
 	move_and_slide()
-func apply_knockback():
-	
+func apply_knockback(from_position):
 	pass
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
