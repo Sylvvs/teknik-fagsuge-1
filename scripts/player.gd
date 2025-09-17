@@ -336,6 +336,7 @@ func _set_damage(move_damage):
 func special_attack():
 	if calm_energy >= calm_energy_special_requirement and is_on_floor():
 		calm_energy -= calm_energy_special_requirement
+		emit_signal("calm_changed", calm_energy)
 		reset_combo()
 		is_attacking = true
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
