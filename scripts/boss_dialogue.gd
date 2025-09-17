@@ -9,6 +9,5 @@ func _ready() -> void:
 		room_handler.connect("player_entered", Callable(self, "_start_dialogue"))
 
 func _start_dialogue() -> void:
-	print("hi3")
 	if not DialogueManager.dialogue_box and not DialogueManager.dialogue_closed_recently:
 		DialogueManager.start_dialogue(npc_id, self.name)

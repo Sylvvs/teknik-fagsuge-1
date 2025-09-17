@@ -56,6 +56,9 @@ func _run_dialogue(dialogue: Dictionary):
 	var label: RichTextLabel = dialogue_box.label
 	await _typewriter(label, dialogue["lines"])
 
+	if dialogue.has("set_state"):
+		npc_states[current_npc_id] = dialogue["set_state"]
+
 	if dialogue.has("choices") and dialogue["choices"].size() > 0:
 		var vbox: VBoxContainer = dialogue_box.vbox
 		for choice in dialogue["choices"]:

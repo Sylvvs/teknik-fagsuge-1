@@ -40,10 +40,18 @@
 	  "default": {
 		"dialogues": [
 		  {
-			"lines": ["holy fuck [color=red][wavy]KILL YOURSELF[/wavy][/color]"]
+			"lines": ["holy fuck [color=red][wavy]KILL YOURSELF[/wavy][/color]"],
+			"set_state": "entered"
 		  }
 		]
-	  }
+	  },
+		"entered": {
+			"dialogues": [
+				{
+					"lines": ["bro."]
+				}
+			]
+		}
 	}
   }
 }
