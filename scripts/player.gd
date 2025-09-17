@@ -8,6 +8,7 @@ const COMBO_TIMEOUT = 200
 const COMBO_CONTINUE_WINDOW = 1
 const ATTACK_FAILSAFE_TIME = 1.1
 const STATE_FAILSAFE = 0.1
+const IMMUNITY_TIME = 0.5
 
 
 # === State Variables ===
@@ -30,6 +31,7 @@ var knockback_duration = 0.15
 var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
 var state_timer = 0.0
+var immunity_timer = 0.0
 
 # === Combo System ===
 var combo_step = 0
@@ -98,6 +100,8 @@ func _process(delta: float) -> void:
 		reset_combo()
 		is_special_attacking = false
 		state_timer = 0.0
+	
+	immunity_timer += delta
 
 # === Physics Process ===
 func _physics_process(delta: float) -> void:
@@ -282,6 +286,11 @@ func _on_dash_animation_end():
 
 # === Damage & Knockback ===
 func take_damage(amount: int, from_position: Vector2) -> void:
+	if immunity_timer < IMMUNITY_TIME:
+		return
+	else:
+		immunity_timer = 0.0
+		
 	if is_healing:
 		at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 		is_healing = false
