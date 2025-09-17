@@ -108,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	
 	set_up_direction(Vector2.UP)
 
-
+	
 	#Die
 	if health <= 0:
 		get_tree().quit()
@@ -159,6 +159,10 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAV * delta
 	move_and_slide()
 
+	if is_on_floor():
+		is_air_attacking = false
+		at["parameters/AnimationNodeStateMachine/Attack/conditions/air_attack"] = false
+		
 	update_animations(delta)
 
 # === Animations ===
