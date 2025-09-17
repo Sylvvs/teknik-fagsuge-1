@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://badnrj6kmwbc0"]
+[gd_scene load_steps=32 format=3 uid="uid://badnrj6kmwbc0"]
 
+[ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="1_gfgbr"]
 [ext_resource type="Texture2D" uid="uid://cbig04awuhwb6" path="res://sprites/Lucifer/Sprite/9. Death.png" id="2_26037"]
 [ext_resource type="Texture2D" uid="uid://b3cnftgqjst2o" path="res://sprites/Lucifer/Sprite/3. attack 1 - 1.png" id="3_u7n25"]
@@ -12,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dt1wf8aqhhw13" path="res://scripts/LuciferState.gd" id="10_26037"]
 [ext_resource type="Script" uid="uid://divyuelmy4jvq" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
 [ext_resource type="Script" uid="uid://xt4plptbs514" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
+[ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
+[ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
 
 [sub_resource type="Animation" id="Animation_rebt7"]
 resource_name = "Death"
@@ -19,7 +22,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -46,7 +49,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +61,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +73,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -82,7 +85,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/3/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -155,10 +158,11 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_ud3xp"]
 resource_name = "attack 1"
 length = 1.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -170,7 +174,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -182,7 +186,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -194,7 +198,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/3/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -247,7 +251,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -259,7 +263,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -271,7 +275,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -295,7 +299,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -336,7 +340,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -348,7 +352,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -360,7 +364,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -384,7 +388,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -430,7 +434,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -442,7 +446,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -454,7 +458,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -478,7 +482,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -518,7 +522,7 @@ length = 3.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -530,7 +534,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -542,7 +546,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -566,7 +570,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -630,7 +634,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -642,7 +646,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -654,7 +658,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -678,7 +682,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -719,7 +723,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:region_rect")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -731,7 +735,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Lucifer:texture")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -743,7 +747,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -767,7 +771,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/4/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -797,7 +801,7 @@ step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Lucifer:position")
+tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -809,7 +813,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attack1 and attack 2/attack1 and attack 2:disabled")
+tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -858,12 +862,12 @@ _data = {
 &"shootEffect": SubResource("Animation_gtxct")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfgbr"]
+size = Vector2(121, 27)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfgbr"]
 radius = 9.0
 height = 44.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfgbr"]
-size = Vector2(121, 27)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7n25"]
 radius = 6.0827627
@@ -874,21 +878,31 @@ radius = 227.22015
 [node name="Lucifer" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_axd3d")
 
 [node name="Lucifer Animation Handler" type="Node2D" parent="."]
 
-[node name="Lucifer" type="Sprite2D" parent="Lucifer Animation Handler"]
-position = Vector2(0, -6)
-texture = ExtResource("1_gfgbr")
-region_enabled = true
-region_rect = Rect2(0, 0, 32, 53)
+[node name="Animation virk pls" type="Marker2D" parent="Lucifer Animation Handler"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Lucifer Animation Handler"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lucifer Animation Handler/Animation virk pls"]
+root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_gtxct")
 }
 autoplay = "idle"
+
+[node name="Attack1 and attack 2" type="Area2D" parent="Lucifer Animation Handler/Animation virk pls"]
+
+[node name="attack1 and attack 2" type="CollisionShape2D" parent="Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2"]
+position = Vector2(50.5, 6.5)
+shape = SubResource("RectangleShape2D_gfgbr")
+disabled = true
+
+[node name="Lucifer" type="Sprite2D" parent="Lucifer Animation Handler/Animation virk pls"]
+position = Vector2(0, -6)
+texture = ExtResource("1_gfgbr")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 53)
 
 [node name="debug" type="Label" parent="."]
 offset_left = -16.0
@@ -911,13 +925,6 @@ hframes = 20
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gfgbr")
 
-[node name="Attack1 and attack 2" type="Area2D" parent="."]
-
-[node name="attack1 and attack 2" type="CollisionShape2D" parent="Attack1 and attack 2"]
-position = Vector2(50.5, 6.5)
-shape = SubResource("RectangleShape2D_gfgbr")
-disabled = true
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="idleShield" type="CollisionShape2D" parent="Area2D"]
@@ -938,10 +945,10 @@ script = ExtResource("10_u7n25")
 script = ExtResource("11_x86qi")
 
 [node name="LuciferFollow" type="Node2D" parent="LuciferFiniteStateMachine"]
-script = ExtResource("10_26037")
+script = ExtResource("13_x5ceb")
 
 [node name="LuciferAttack1" type="Node2D" parent="LuciferFiniteStateMachine"]
-script = ExtResource("10_26037")
+script = ExtResource("14_x5ceb")
 
 [node name="LuciferAttack2" type="Node2D" parent="LuciferFiniteStateMachine"]
 script = ExtResource("10_26037")
