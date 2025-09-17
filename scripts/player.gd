@@ -12,7 +12,7 @@ const STATE_FAILSAFE = 0.1
 
 # === State Variables ===
 var damage = 5
-var max_health = 1000
+var max_health = 10
 var health = max_health
 var is_special_attacking = false
 var is_healing = false
@@ -320,16 +320,19 @@ func _on_heal_done():
 	is_healing = false
 	at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 	health += 5
+	emit_signal("health_changed", health)
 	if health > max_health:
 		health = max_health
 func _set_damage(move_damage):
 	damage = move_damage
 func special_attack():
-	reset_combo()
-	is_attacking = true
-	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
-	at["parameters/AnimationNodeStateMachine/Attack/conditions/special_attack"] = true
-	is_special_attacking = true
+	if calm_energy >= calm_energy_special_requirement and is_on_floor():
+		calm_energy -= calm_energy_special_requirement
+		reset_combo()
+		is_attacking = true
+		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
+		at["parameters/AnimationNodeStateMachine/Attack/conditions/special_attack"] = true
+		is_special_attacking = true
 	
 func _on_special_attack_done():
 	is_special_attacking = false

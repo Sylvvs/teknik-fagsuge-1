@@ -21,6 +21,10 @@ DialogueManager="*res://scripts/DialogueManager.gd/"
 FadeLayer="*res://scenes/fade_layer.tscn/"
 ConfigFileHandler="*res://scripts/ConfigFileHandler.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""
