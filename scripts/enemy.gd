@@ -71,6 +71,10 @@ func _physics_process(delta):
 
 	# Use built-in sliding physics
 	move_and_slide()
+func apply_knockback():
+	
+	pass
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):

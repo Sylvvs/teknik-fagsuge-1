@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
 [ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
 [ext_resource type="Script" uid="uid://balprkepttbor" path="res://scripts/EnemyIdle.gd" id="6_nenq2"]
-[ext_resource type="Script" uid="uid://ca70wkdrgylit" path="res://scripts/EnemyDeath.gd" id="7_nenq2"]
+[ext_resource type="Script" path="res://scripts/EnemyDeath.gd" id="7_nenq2"]
 [ext_resource type="Script" uid="uid://6dbajf3hcxmr" path="res://scripts/EnemyAttack.gd" id="7_w8i8w"]
-[ext_resource type="Script" uid="uid://c0mtsc7tmsn5j" path="res://scenes/EnemeHurt.gd" id="8_md484"]
+[ext_resource type="Script" path="res://scenes/EnemeHurt.gd" id="8_md484"]
 
 [sub_resource type="Animation" id="Animation_md0e3"]
 resource_name = "Attack"

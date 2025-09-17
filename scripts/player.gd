@@ -355,6 +355,7 @@ func check_conditions():
 func _on_parry_hitbox_area_entered(area: Area2D) -> void:
 	if area.owner.is_in_group('enemies'):
 		at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = true
+		
 		area.owner.apply_damage(0)
 		
 	pass # Replace with function body.
