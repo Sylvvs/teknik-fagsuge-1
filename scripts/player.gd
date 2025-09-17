@@ -5,8 +5,8 @@ const SPEED = 200
 const JUMP = 400
 const GRAV = 800
 const COMBO_TIMEOUT = 200
-const COMBO_CONTINUE_WINDOW = 2.0
-const ATTACK_FAILSAFE_TIME = 2.1
+const COMBO_CONTINUE_WINDOW = 1
+const ATTACK_FAILSAFE_TIME = 1.1
 const STATE_FAILSAFE = 0.1
 
 
@@ -176,7 +176,10 @@ func update_animations(_delta: float) -> void:
 	else:
 		is_jumping = false
 		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
-
+	
+	#Sliding
+	#at[""]
+	
 	# Falling
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 10.0 and not is_on_floor()
 
@@ -261,6 +264,7 @@ func reset_combo():
 	combo_continue_timer = 0.0
 	at["parameters/AnimationNodeStateMachine/conditions/attacking"] = false
 	at["parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking"] = true
+	update_combo_conditions()
 	reset_all_conditions()
 
 func update_combo_conditions():
@@ -336,6 +340,7 @@ func _set_damage(move_damage):
 func special_attack():
 	if calm_energy >= calm_energy_special_requirement and is_on_floor():
 		calm_energy -= calm_energy_special_requirement
+		emit_signal("calm_changed", calm_energy)
 		reset_combo()
 		is_attacking = true
 		at["parameters/AnimationNodeStateMachine/conditions/attacking"] = true
@@ -358,8 +363,11 @@ func check_conditions():
 
 
 func _on_parry_hitbox_area_entered(area: Area2D) -> void:
-	if area.owner.is_in_group('enemies'):
-		at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = true
+	if area.owner:
+		if area.owner.is_in_group('enemies'):
+			at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = true
+			area.owner.apply_damage(0)
+		
 	pass # Replace with function body.
 func parry():
 	reset_all_conditions()
