@@ -11,8 +11,10 @@ func _ready():
 		config.set_value("keybinding", "left", "Left")
 		config.set_value("keybinding", "right", "Right")
 		config.set_value("keybinding", "dash", "X")
-		config.set_value("keybinding", "heal", "F")
+		config.set_value("keybinding", "heal", "A")
 		config.set_value("keybinding", "interact", "Down")
+		config.set_value("keybinding", "special attack", "F")
+		# config.set_value("keybinding", "parry", "s")
 		
 		config.save(SETTINGS_FILE_PATH)
 	else:
