@@ -1022,6 +1022,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_parry_end"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
 _data = {
@@ -1045,7 +1059,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-519.793, 223.46191)
+graph_offset = Vector2(-546.793, 297.11896)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
