@@ -12,12 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
 [ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
 [ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="12_dabdc"]
-<<<<<<< Updated upstream
-[ext_resource type="Script" path="res://scripts/test_npc.gd" id="13_cf55d"]
-=======
 [ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/test_npc.gd" id="13_cf55d"]
 [ext_resource type="AudioStream" uid="uid://wdktp62fr5jc" path="res://Audio/forest-tales-background-orchestral-mystical-music-for-halloween-video-252003.mp3" id="14_cf55d"]
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dabdc"]
 texture = ExtResource("1_xijx7")
