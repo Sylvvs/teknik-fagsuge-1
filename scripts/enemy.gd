@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation_player : AnimationPlayer = $"Animation Handler Enemy/AnimationPlayer"
 @onready var logic_pos = get_parent().find_child("Logic")
 @onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var enemysword : Area2D = $Attack
 
 var direction : Vector2
 var flee_mode: bool = true  
@@ -11,21 +12,22 @@ var switch_timer := 0.0
 const SPEED := 80
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
+var health = 50
 
-var health: float = 50:
-	set(value):
-		health = value
-		print(health)
-		if health <= 0:
-			queue_free()
 
 func _ready():
 	set_physics_process(false)
 
 func apply_damage(amount : float):
+	var take_damage : bool = false
 	health -= amount
-	animation_player.play("Hurt")
-	await animation_player.animation_finished
+	take_damage = true
+	if take_damage:
+			find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
+	if health <= 0:
+		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
+	
+	print(health)
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -35,7 +37,7 @@ func _process(delta):
 			return
 
 	direction = player.global_position - position
-
+	
 	switch_timer -= delta
 	if switch_timer <= 0:
 		flee_mode = randf() < 0.65
@@ -59,8 +61,10 @@ func _physics_process(delta):
 	# Flip sprite
 	if direction.x > 0:
 		sprite.flip_h = false
+		enemysword.scale.x = 1
 	else:
 		sprite.flip_h = true
+		enemysword.scale.x = -1
 
 	# Apply horizontal movement
 	velocity.x = move_dir.x * SPEED
