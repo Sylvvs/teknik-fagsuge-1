@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://fpchv7r8fwp0"]
+[gd_scene load_steps=22 format=4 uid="uid://d3vjqt5ekboew"]
 
-[ext_resource type="PackedScene" uid="uid://11k4gkw30r7i" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
+[ext_resource type="PackedScene" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_g2a2m"]
 [ext_resource type="Texture2D" uid="uid://bf2k82iinf1n0" path="res://sprites/Cave background/Parallax Cave/1.png" id="1_qvmem"]
 [ext_resource type="Texture2D" uid="uid://xfle3fgvyng3" path="res://sprites/Cave background/Parallax Cave/2.png" id="2_010di"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dj1vsy281rqi8" path="res://sprites/Cave background/Parallax Cave/8fx.png" id="8_v502q"]
 [ext_resource type="Texture2D" uid="uid://bcu4ysxfwqh6l" path="res://sprites/Cave background/Parallax Cave/9.png" id="9_d53cq"]
 [ext_resource type="Texture2D" uid="uid://car83f7yvb337" path="res://sprites/Cave background/Cave Tileset Pack/PNG files/CaveG.png" id="13_7l8xw"]
-[ext_resource type="Script" uid="uid://be7bn7g0p4hsy" path="res://scripts/boss_dialogue.gd" id="14_c7j7s"]
+[ext_resource type="Script" path="res://scripts/boss_dialogue.gd" id="14_c7j7s"]
 [ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="15_4e86d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bggbs"]
@@ -4274,6 +4274,8 @@ sources/0 = SubResource("TileSetAtlasSource_bggbs")
 sources/1 = SubResource("TileSetAtlasSource_3ertg")
 sources/2 = SubResource("TileSetAtlasSource_votf5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7j7s"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmdvo"]
 radius = 29.14
 
@@ -4361,6 +4363,15 @@ tile_set = SubResource("TileSet_pmh52")
 
 [node name="Spawn" type="Marker2D" parent="Logic"]
 position = Vector2(1095, 566)
+
+[node name="forest" type="Area2D" parent="Logic"]
+position = Vector2(1059, 569.00006)
+scale = Vector2(1.1234056, 0.22735101)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_c7j7s")
 
 [node name="Npcs" type="Node2D" parent="."]
 
