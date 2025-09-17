@@ -1195,6 +1195,7 @@ parameters/AnimationNodeStateMachine/conditions/idle = false
 parameters/AnimationNodeStateMachine/conditions/is_moving = false
 parameters/AnimationNodeStateMachine/conditions/jump = false
 parameters/AnimationNodeStateMachine/conditions/parry = false
+parameters/AnimationNodeStateMachine/conditions/sliding = false
 parameters/AnimationNodeStateMachine/Attack/conditions/air_attack = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2 = false
