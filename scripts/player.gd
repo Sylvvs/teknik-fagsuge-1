@@ -46,6 +46,7 @@ var calm_energy_heal_requirement = 7
 var calm_energy_special_requirement = 5
 
 signal health_changed(current: int)
+signal calm_changed(current: int)
 
 # === Animation Nodes ===
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -302,6 +303,7 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
+			emit_signal("calm_changed", calm_energy)
 		body.apply_damage(damage)
 		
 func _on_air_attack_animation_finished():
@@ -314,6 +316,7 @@ func _on_air_attack_animation_finished():
 func heal_player():
 	if calm_energy >= calm_energy_heal_requirement:
 		calm_energy -= calm_energy_heal_requirement
+		emit_signal("calm_changed", calm_energy)
 		is_healing = true
 		at["parameters/AnimationNodeStateMachine/conditions/healing"] = true
 		

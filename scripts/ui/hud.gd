@@ -1,21 +1,22 @@
 extends Control
 
-@onready var health_bar: ProgressBar = $VBoxContainer/HealthMargin/Health
+@onready var health_bar: ProgressBar = $UIMargin/VBoxContainer/HBoxContainer/HealthMargin/Health
+@onready var calm_ring: Node2D = $UIMargin/VBoxContainer/HBoxContainer/IconMargin/CalmRing
+
 var tween: Tween
 
 func _ready() -> void:
 	tween = create_tween()
 
-
 func connect_to_player(player: Node) -> void:
 	player.get_node("CharacterBody2D").health_changed.connect(_on_player_health_changed)
-	# player.get_node("CharacterBody2D").calm_changed.connect(_on_player_calm_changed)
+	player.get_node("CharacterBody2D").calm_changed.connect(_on_player_calm_changed)
 
 func _on_player_health_changed(current: int) -> void:
 	set_health(current)
 
 func _on_player_calm_changed(current: int) -> void:
-	pass
+	calm_ring.set_calm(current)
 
 func set_health(new_value: int) -> void:
 	if tween and tween.is_running():
