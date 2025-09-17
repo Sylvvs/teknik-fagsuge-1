@@ -6,7 +6,7 @@ const JUMP = 400
 const GRAV = 800
 const COMBO_TIMEOUT = 200
 const COMBO_CONTINUE_WINDOW = 2.0
-const ATTACK_FAILSAFE_TIME = 5.0
+const ATTACK_FAILSAFE_TIME = 2.1
 const STATE_FAILSAFE = 0.1
 
 
@@ -360,8 +360,6 @@ func check_conditions():
 func _on_parry_hitbox_area_entered(area: Area2D) -> void:
 	if area.owner.is_in_group('enemies'):
 		at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = true
-		
-		
 	pass # Replace with function body.
 func parry():
 	reset_all_conditions()
