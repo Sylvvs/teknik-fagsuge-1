@@ -27,7 +27,7 @@ var is_air_attacking = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
-var knockback_duration = 0.15
+var knockback_duration = 0.05
 var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
 var state_timer = 0.0
