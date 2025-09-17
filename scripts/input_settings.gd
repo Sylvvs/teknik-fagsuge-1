@@ -14,7 +14,9 @@ var input_actions = {
 	"left": "Left",
 	"right": "Right",
 	"interact": "Interact",
-	"heal": "Heal"
+	"heal": "Heal",
+	"special attack": "Special Attack"
+	# "parry": "Parry"
 }
 
 

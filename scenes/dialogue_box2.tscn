@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dffr4a21qtxuo"]
 
-[ext_resource type="Script" uid="uid://bmkjf70147dr1" path="res://scripts/DialogueLayer.gd" id="1_flov7"]
+[ext_resource type="Script" path="res://scripts/DialogueLayer.gd" id="1_flov7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 7
 script = ExtResource("1_flov7")
 
 [node name="Panel" type="Panel" parent="."]
