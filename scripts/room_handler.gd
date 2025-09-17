@@ -46,6 +46,8 @@ func _process(_delta: float) -> void:
 		camera.global_position = clamped_pos
 		#camera.global_position = player.get_node("CharacterBody2D").global_position
 
+var previous_hp = 10;
+var previous_calm = 0;
 
 func load_room(id: String) -> void:
 	var next_room = load("res://scenes/%s.tscn" % id).instantiate()
@@ -54,6 +56,8 @@ func load_room(id: String) -> void:
 	if current_room:
 		if player:
 			player.queue_free()
+			previous_hp = player.get_node("CharacterBody2D").health
+			previous_calm = player.get_node("CharacterBody2D").calm_energy
 		current_room.queue_free()
 
 	current_room = next_room
@@ -96,9 +100,10 @@ func handle_logic() -> void:
 				add_child(player)
 				player.name = "Player"
 				player.get_node("CharacterBody2D").handler = self;
+				player.get_node("CharacterBody2D").health = previous_hp
+				player.get_node("CharacterBody2D").calm_energy = previous_calm
 				
 				player.position = child.position
-				var screen_size = get_viewport().size
 				
 				if forced_direction.x < 0:
 					player.position.x = map_right - 20
