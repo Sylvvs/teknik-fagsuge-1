@@ -1,11 +1,13 @@
 extends Node2D
 
 @onready var player_scene: PackedScene = load("res://scenes/player.tscn")
+@onready var ui_scene: PackedScene = load("res://scenes/UI/UI.tscn")
 
 var current_room
 var player: Node2D
 var camera: Camera2D
 var tilemap: TileMapLayer
+var ui
 
 var map_left: float
 var map_top: float
@@ -16,6 +18,8 @@ signal player_entered()
 
 func _ready() -> void:
 	add_to_group("room_handler")
+	ui = ui_scene.instantiate()
+	get_parent().add_child(ui)
 	load_room("control")
 	FadeLayer.fade_out(0.5)
 
@@ -58,6 +62,7 @@ func load_room(id: String) -> void:
 	handle_logic()
 
 	camera = player.get_node("CharacterBody2D/Camera2D")
+	ui.get_node("HUD").connect_to_player(player)
 	
 	var anim_player = current_room.get_node_or_null("AnimationPlayer")
 	if anim_player:

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://cty4f7orledub"]
 
-[ext_resource type="Script" uid="uid://b11dnlmvutub1" path="res://scripts/control.gd" id="1_5p55f"]
-[ext_resource type="Script" uid="uid://dvrnn61hudn78" path="res://scripts/animation_player.gd" id="2_brbbq"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_5p55f"]
+[ext_resource type="Script" path="res://scripts/animation_player.gd" id="2_brbbq"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="3_8n18e"]
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="4_tjwpk"]
-[ext_resource type="Script" uid="uid://dm4prefb5g5hp" path="res://scripts/skip_label.gd" id="5_tjwpk"]
+[ext_resource type="Script" path="res://scripts/skip_label.gd" id="5_tjwpk"]
 
 [sub_resource type="Animation" id="Animation_lpubu"]
 length = 0.001
@@ -3506,6 +3506,7 @@ tile_map_data = PackedByteArray("AAAAABYAAAAAAC0AAAAAABcAAAAAAC4AAAAAABgAAAAAAC8
 tile_set = SubResource("TileSet_1p5nq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

@@ -39,6 +39,7 @@ var calm_energy = 0
 var max_calm_energy = 10
 var calm_energy_heal_requirement = 7
 
+signal health_changed(current: int)
 
 # === Animation Nodes ===
 @onready var ap = $"Animation Handler/AnimationPlayer"
@@ -258,6 +259,7 @@ func take_damage(amount: int, from_position: Vector2) -> void:
 		
 	reset_all_conditions()
 	health -= amount
+	emit_signal("health_changed", health)
 	is_knockback = true
 	knockback_timer = knockback_duration
 	
