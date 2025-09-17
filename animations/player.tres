@@ -191,7 +191,7 @@ loop_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xg1qe"]
 animation = &"heal"
 use_custom_timeline = true
-timeline_length = 1.5999999999999999
+timeline_length = 1.2
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0

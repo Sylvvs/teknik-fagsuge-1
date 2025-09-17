@@ -931,7 +931,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 2.3333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, false]
 }
 
 [sub_resource type="Animation" id="Animation_g2els"]
