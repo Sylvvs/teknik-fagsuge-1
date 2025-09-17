@@ -24,6 +24,7 @@ var is_knockback = false
 var is_dashing = false
 var waiting_for_combo_input = false
 var is_air_attacking = false
+var touched_the_floor = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
@@ -32,6 +33,7 @@ var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
 var state_timer = 0.0
 var immunity_timer = 0.0
+var direction = -1
 
 # === Combo System ===
 var combo_step = 0
@@ -46,6 +48,9 @@ var calm_energy = 10
 var max_calm_energy = 10
 var calm_energy_heal_requirement = 7
 var calm_energy_special_requirement = 5
+
+var wall_jump_timer = 0.0
+const WALL_JUMP_LOCK = 0.2
 
 signal health_changed(current: int)
 signal calm_changed(current: int)
@@ -116,6 +121,29 @@ func _physics_process(delta: float) -> void:
 	#Die
 	if health <= 0:
 		get_tree().quit()
+		
+	
+			# Jumping
+	if Input.is_action_just_pressed("jump"):
+		is_jumping = true
+		at["parameters/AnimationNodeStateMachine/Walls/conditions/not_sliding"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
+		if is_on_wall() and ["parameters/AnimationNodeStateMachine/conditions/sliding"]:
+			at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = true
+			velocity.y = -JUMP
+			velocity.x = -direction * SPEED * 2
+			wall_jump_timer = WALL_JUMP_LOCK
+			touched_the_floor = true
+			
+	elif velocity.y < 0 and is_jumping:
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
+	else:
+		is_jumping = false
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
+		
+		
+		
+		
 	# Knockback logic
 	if is_knockback:
 		velocity = knockback_velocity
@@ -127,21 +155,18 @@ func _physics_process(delta: float) -> void:
 	elif is_dashing:
 		velocity.x = dashing_velocity
 		velocity.y += GRAV * delta
-
+	elif wall_jump_timer > 0:
+		wall_jump_timer -= delta
 	# Movement input
 	elif Input.is_action_pressed("left"):
-		sprite.flip_h = true
-		sword.scale.x = -1
 		velocity.x = -SPEED
 
 	elif Input.is_action_pressed("right"):
-		sprite.flip_h = false
-		sword.scale.x = 1
 		velocity.x = SPEED
-
 	else:
 		velocity.x = 0
 
+	
 	# Jumping
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -JUMP
@@ -159,17 +184,7 @@ func _physics_process(delta: float) -> void:
 		special_attack()
 	
 	
-		# Jumping
-	if Input.is_action_just_pressed("jump"):
-		is_jumping = true
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
-	elif velocity.y < 0 and is_jumping:
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
-	else:
-		is_jumping = false
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
-		
-		
+	
 	if Input.is_action_just_pressed("attack"):
 		if not is_on_floor():
 			if not is_air_attacking:
@@ -190,10 +205,25 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity
 	velocity.y += GRAV * delta
 	move_and_slide()
+	
+	if velocity.x < 0:
+		sprite.flip_h = true
+		sword.scale.x = -1
+		direction = -1
+	elif velocity.x > 0:
+		sprite.flip_h = false
+		sword.scale.x = 1
+		direction = 1
 
 	if is_on_floor():
+		touched_the_floor = true
 		is_air_attacking = false
+		at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = false
 		at["parameters/AnimationNodeStateMachine/Attack/conditions/air_attack"] = false
+		at["parameters/AnimationNodeStateMachine/conditions/sliding"] = false
+		at["parameters/AnimationNodeStateMachine/Walls/conditions/not_sliding"] = true
+	if is_on_wall():
+		at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = false
 		
 	update_animations(delta)
 
@@ -206,11 +236,10 @@ func update_animations(_delta: float) -> void:
 	
 	
 	#Sliding
-	#at[""]
+	at["parameters/AnimationNodeStateMachine/conditions/sliding"] = not is_on_floor() and is_on_wall() and velocity.y >0
 	
 	# Falling
-	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 10.0 and not is_on_floor()
-
+	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 10.0 and not is_on_floor() and not is_on_wall()
 	# Attacking
 	
 
@@ -409,3 +438,8 @@ func _on_parry_end():
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group('bullets'):
 		area.queue_free()
+
+func _on_slide():
+	if touched_the_floor:
+		sprite.flip_h = !sprite.flip_h
+	touched_the_floor = false
