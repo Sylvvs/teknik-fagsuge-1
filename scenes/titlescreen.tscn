@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://0q6sn5fyiken"]
+[gd_scene load_steps=7 format=3 uid="uid://0q6sn5fyiken"]
 
 [ext_resource type="Texture2D" uid="uid://k8ih2rio23jq" path="res://sprites/titlescreen/button.png" id="1_3jj3l"]
 [ext_resource type="Texture2D" uid="uid://bh1ccmxnplpru" path="res://sprites/titlescreen/bgBamboo.png" id="1_6d6rd"]
 [ext_resource type="FontFile" uid="uid://ciihdol8d11fc" path="res://fonts/SaintCarell.otf" id="1_t7v6v"]
 [ext_resource type="Script" uid="uid://cntpqpyhwpaos" path="res://scripts/titlescreen.gd" id="1_vhbaf"]
 [ext_resource type="FontFile" uid="uid://dxfsjf3nteiwn" path="res://fonts/Locanita.otf" id="3_vhbaf"]
+[ext_resource type="AudioStream" uid="uid://bn4me3gkbcxrw" path="res://Audio/titlescreen.mp3" id="6_v6ms7"]
 
 [node name="Titlescreen" type="Control"]
 layout_mode = 3
@@ -123,6 +124,11 @@ offset_right = 1272.0
 offset_bottom = 653.0
 mouse_filter = 2
 texture = ExtResource("1_6d6rd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_v6ms7")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SettingsContainer/Settings" to="." method="_on_settings_pressed"]

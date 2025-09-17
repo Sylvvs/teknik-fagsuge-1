@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cedl7rdtvjy4s"]
+[gd_scene load_steps=15 format=4 uid="uid://cedl7rdtvjy4s"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_8607o"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_qkl76"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="7_ikcll"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_28yjh"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_ek15b"]
+[ext_resource type="AudioStream" uid="uid://b6gr6riupaboo" path="res://Audio/how to dissapear completely radiohead.mp3" id="10_qkl76"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p753g"]
 texture = ExtResource("9_ek15b")
@@ -3403,3 +3404,8 @@ position = Vector2(935, 641)
 position = Vector2(-25, -110)
 scale = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_8607o")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qkl76")
+volume_db = -20.0
+autoplay = true
