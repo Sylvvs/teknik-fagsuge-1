@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=22 format=4 uid="uid://d3vjqt5ekboew"]
-=======
 [gd_scene load_steps=22 format=4 uid="uid://fpchv7r8fwp0"]
->>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_g2a2m"]
