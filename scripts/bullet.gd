@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	velocity += acceleration * delta
 	rotation = velocity.angle()
 	
-	velocity = velocity.limit_length(150)
+	velocity = velocity.limit_length(300)
 	position += velocity * delta
 	if life_span <= 0: queue_free()
 
