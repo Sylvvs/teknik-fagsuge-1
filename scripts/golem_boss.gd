@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 @onready var sprite = $Golem
 @onready var progress_bar = $UI/ProgressBar 
+@onready var melee = $MeleeAttack
 var direction : Vector2
 var DEF = 0
 var health = 250:
@@ -31,8 +32,10 @@ func _process(_delta):
 func _physics_process(delta):
 	if direction.x > 0:
 		sprite.flip_h = false
+		melee.scale.x = 1
 	else :
 		sprite.flip_h = true
+		melee.scale.x = -1
 	velocity = direction.normalized() * 80
 	move_and_collide(velocity * delta)
 	
