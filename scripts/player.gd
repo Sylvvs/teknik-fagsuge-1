@@ -40,7 +40,7 @@ var combo_continue_timer = 0.0
 var attack_failsafe = ATTACK_FAILSAFE_TIME
 
 # === Calm System ===
-var calm_energy = 0
+var calm_energy = 10
 var max_calm_energy = 10
 var calm_energy_heal_requirement = 7
 var calm_energy_special_requirement = 5
@@ -95,7 +95,7 @@ func _process(delta: float) -> void:
 		state_timer = 0.0
 	if state_timer >= STATE_FAILSAFE:
 		at["parameters/AnimationNodeStateMachine/conditions/idle"] = true
-		is_healing = false
+		reset_combo()
 		is_special_attacking = false
 		state_timer = 0.0
 
@@ -311,7 +311,6 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 			calm_energy += 1
 			emit_signal("calm_changed", calm_energy)
 		body.apply_damage(damage)
-		
 func _on_air_attack_animation_finished():
 	is_air_attacking = false
 	is_attacking = false
@@ -385,3 +384,9 @@ func _on_parry_end():
 	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = false
 	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout"] = true
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = true
+
+
+func _on_sword_hitbox_area_entered(area: Area2D) -> void:
+	print('cool')
+	if area.is_in_group('bullets'):
+		area.queue_free()

@@ -23,3 +23,11 @@ func _on_body_entered(body: Node2D) -> void:
 		body.take_damage(0.5, global_position) 
 		print(body.take_damage)
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print('area ', area)
+	if area.owner:
+		if area.owner.is_in_group('player'):
+			queue_free()
+	pass # Replace with function body.
