@@ -407,6 +407,5 @@ func _on_parry_end():
 
 
 func _on_sword_hitbox_area_entered(area: Area2D) -> void:
-	print('cool')
 	if area.is_in_group('bullets'):
 		area.queue_free()
