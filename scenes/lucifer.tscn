@@ -243,6 +243,7 @@ tracks/6/keys = {
 [sub_resource type="Animation" id="Animation_k7k3s"]
 resource_name = "attack 2"
 length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -286,10 +287,10 @@ tracks/3/path = NodePath("CollisionShape2D:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8000338),
+"times": PackedFloat32Array(0, 0.8046851),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 0), Vector2(68, 2)]
+"values": [Vector2(1, 0), Vector2(68, 3)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
