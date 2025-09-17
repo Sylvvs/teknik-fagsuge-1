@@ -30,7 +30,7 @@ size = Vector2(37, 10)
 size = Vector2(8, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oprun"]
-size = Vector2(28, 62)
+size = Vector2(28, 96)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8ls1"]
 radius = 6.0
@@ -1084,7 +1084,6 @@ region_enabled = true
 region_rect = Rect2(32, 45, 36, 36)
 
 [node name="Sword Hitbox" type="Area2D" parent="CharacterBody2D/Animation Handler/Sprite2D"]
-visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -1107,7 +1106,7 @@ shape = SubResource("RectangleShape2D_3v2ag")
 disabled = true
 
 [node name="Specialattack" type="CollisionShape2D" parent="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox"]
-position = Vector2(22, -45)
+position = Vector2(22, -28)
 shape = SubResource("RectangleShape2D_oprun")
 disabled = true
 
