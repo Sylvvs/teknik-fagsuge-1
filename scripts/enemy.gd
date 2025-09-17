@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation_player : AnimationPlayer = $"Animation Handler Enemy/AnimationPlayer"
 @onready var logic_pos = get_parent().find_child("Logic")
 @onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var enemysword : Area2D = $Attack
 
 var direction : Vector2
 var flee_mode: bool = true  
@@ -27,8 +28,6 @@ func apply_damage(amount : float):
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	
 	print(health)
-	#animation_player.play("Hurt")
-	#await animation_player.animation_finished
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -62,8 +61,10 @@ func _physics_process(delta):
 	# Flip sprite
 	if direction.x > 0:
 		sprite.flip_h = false
+		enemysword.scale.x = 1
 	else:
 		sprite.flip_h = true
+		enemysword.scale.x = -1
 
 	# Apply horizontal movement
 	velocity.x = move_dir.x * SPEED

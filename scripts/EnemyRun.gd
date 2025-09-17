@@ -12,6 +12,5 @@ func exit():
 	
 func transition():
 	var distance = owner.direction.length()
-	print(distance)
 	if distance <= 45:
 		get_parent().change_state("EnemyAttack")
