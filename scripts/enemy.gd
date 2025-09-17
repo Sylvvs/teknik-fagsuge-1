@@ -11,21 +11,24 @@ var switch_timer := 0.0
 const SPEED := 80
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
+var health = 50
 
-var health: float = 50:
-	set(value):
-		health = value
-		print(health)
-		if health <= 0:
-			queue_free()
 
 func _ready():
 	set_physics_process(false)
 
 func apply_damage(amount : float):
+	var take_damage : bool = false
 	health -= amount
-	animation_player.play("Hurt")
-	await animation_player.animation_finished
+	take_damage = true
+	if take_damage:
+			find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
+	if health <= 0:
+		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
+	
+	print(health)
+	#animation_player.play("Hurt")
+	#await animation_player.animation_finished
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -35,7 +38,7 @@ func _process(delta):
 			return
 
 	direction = player.global_position - position
-
+	
 	switch_timer -= delta
 	if switch_timer <= 0:
 		flee_mode = randf() < 0.65

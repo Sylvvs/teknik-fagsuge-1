@@ -1,17 +1,18 @@
 extends EnemyState
 
+var can_transition: bool = false
 
 func enter():
 	super.enter()
-	owner.set_physics_process(true)
-	animation_player.play("Run")
+	animation_player.play("Hurt")
+	await animation_player.animation_finished
+	can_transition = true
 
 func exit():
 	super.exit()
 	owner.set_physics_process(false)
 	
 func transition():
-	var distance = owner.direction.length()
-	print(distance)
-	if distance <= 45:
+	if can_transition:
+		can_transition = false
 		get_parent().change_state("EnemyAttack")
