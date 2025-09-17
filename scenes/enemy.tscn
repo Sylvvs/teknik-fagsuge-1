@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgm2dymvpo7pj"]
+[gd_scene load_steps=21 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
@@ -60,6 +60,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.41600728, 1.615405),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.615405, 2.0638285),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_nenq2"]
 resource_name = "Death"
@@ -107,6 +131,30 @@ tracks/3/path = NodePath("../CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -164,6 +212,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5uy6h"]
 length = 0.001
@@ -216,6 +288,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_c4w8v"]
 resource_name = "Run"
@@ -267,6 +363,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_4ra3w"]
@@ -321,6 +441,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Attack/StartAttack:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Attack/EndAttack:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4w8v"]
 _data = {
@@ -341,6 +485,12 @@ radius = 96.04687
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
 radius = 7.0
 height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md484"]
+radius = 5.803073
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipns3"]
+size = Vector2(39, 57)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -375,7 +525,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="PlayerDetection" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(3, 7)
@@ -387,6 +536,18 @@ shape = SubResource("CircleShape2D_xwavj")
 position = Vector2(3, 9)
 shape = SubResource("CapsuleShape2D_4ra3w")
 disabled = true
+
+[node name="Attack" type="Area2D" parent="."]
+visible = false
+
+[node name="StartAttack" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-4.9999995, -15)
+rotation = -0.8323689
+shape = SubResource("CapsuleShape2D_md484")
+
+[node name="EndAttack" type="CollisionShape2D" parent="Attack"]
+position = Vector2(17.5, -0.5)
+shape = SubResource("RectangleShape2D_ipns3")
 
 [node name="EnemyFiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("4_md484")
@@ -409,3 +570,4 @@ script = ExtResource("8_md484")
 [connection signal="body_entered" from="PlayerDetection" to="EnemyFiniteStateMachine/EnemyIdle" method="player_detection_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="EnemyFiniteStateMachine/EnemyIdle" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Attack" to="." method="_on_area_2d_body_entered"]

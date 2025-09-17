@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="9_pyn53"]
 [ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="11_ercsu"]
 [ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="12_dabdc"]
-[ext_resource type="Script" path="res://scripts/test_npc.gd" id="13_cf55d"]
+[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/test_npc.gd" id="13_cf55d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dabdc"]
 texture = ExtResource("1_xijx7")
@@ -129,8 +129,9 @@ texture = ExtResource("1_xijx7")
 55:45/0 = 0
 55:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -0.0989227, 8, 8, -8, 8)
 56:45/0 = 0
-56:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -0.0989227, 8, 8, -8, 8)
+56:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.121853, -1.693222, 8, -0.9093323, 8, 8, -8, 8)
 57:45/0 = 0
+57:45/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.9093323, 8, -0.9093323, 8, 8, -8, 8)
 0:46/0 = 0
 0:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:46/0 = 0
@@ -246,6 +247,7 @@ texture = ExtResource("1_xijx7")
 56:46/0 = 0
 56:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 57:46/0 = 0
+57:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:47/0 = 0
 0:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:47/0 = 0
@@ -361,6 +363,7 @@ texture = ExtResource("1_xijx7")
 56:47/0 = 0
 56:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 57:47/0 = 0
+57:47/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:48/0 = 0
 0:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:48/0 = 0
@@ -476,6 +479,7 @@ texture = ExtResource("1_xijx7")
 56:48/0 = 0
 56:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 57:48/0 = 0
+57:48/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cf55d"]
 texture = ExtResource("3_bgcxa")
