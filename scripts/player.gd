@@ -27,7 +27,7 @@ var is_air_attacking = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
-var knockback_duration = 0.15
+var knockback_duration = 0.05
 var knockback_timer = 0.0
 var dashing_velocity = Vector2.ZERO
 var state_timer = 0.0
@@ -157,6 +157,34 @@ func _physics_process(delta: float) -> void:
 		heal_player()
 	if Input.is_action_just_pressed('special attack'):
 		special_attack()
+	
+	
+		# Jumping
+	if Input.is_action_just_pressed("jump"):
+		is_jumping = true
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
+	elif velocity.y < 0 and is_jumping:
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
+	else:
+		is_jumping = false
+		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
+		
+		
+	if Input.is_action_just_pressed("attack"):
+		if not is_on_floor():
+			if not is_air_attacking:
+				start_air_attack()
+	  				  # Only air attack if not currently attacking in ai
+		else:
+			   # Only run ground combo logic if on floor
+			if combo_step == 0 and not is_attacking:
+				start_combo()
+			elif can_combo:
+				combo_input_buffered = true
+			elif waiting_for_combo_input:
+				continue_combo()
+				
+	at["parameters/AnimationNodeStateMachine/conditions/dashing"] = Input.is_action_just_pressed("dash")
 	#if Input.is_action_just_pressed('parry'):
 	#	parry()
 	# Apply gravity
@@ -175,15 +203,7 @@ func update_animations(_delta: float) -> void:
 	at["parameters/AnimationNodeStateMachine/conditions/idle"] = velocity == Vector2.ZERO and is_on_floor()
 	at["parameters/AnimationNodeStateMachine/conditions/is_moving"] = velocity.x != 0 and is_on_floor()
 
-	# Jumping
-	if Input.is_action_just_pressed("jump"):
-		is_jumping = true
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
-	elif velocity.y < 0 and is_jumping:
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
-	else:
-		is_jumping = false
-		at["parameters/AnimationNodeStateMachine/conditions/jump"] = false
+	
 	
 	#Sliding
 	#at[""]
@@ -192,23 +212,11 @@ func update_animations(_delta: float) -> void:
 	at["parameters/AnimationNodeStateMachine/conditions/falling"] = velocity.y > 10.0 and not is_on_floor()
 
 	# Attacking
-	if Input.is_action_just_pressed("attack"):
-		if not is_on_floor():
-			if not is_air_attacking:
-				start_air_attack()
-	  				  # Only air attack if not currently attacking in ai
-		else:
-			   # Only run ground combo logic if on floor
-			if combo_step == 0 and not is_attacking:
-				start_combo()
-			elif can_combo:
-				combo_input_buffered = true
-			elif waiting_for_combo_input:
-				continue_combo()
+	
 
 
 	# Dashing animation
-	at["parameters/AnimationNodeStateMachine/conditions/dashing"] = Input.is_action_just_pressed("dash")
+	
 
 func start_air_attack():
 	if is_on_floor():
