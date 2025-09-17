@@ -290,7 +290,6 @@ func take_damage(amount: int, from_position: Vector2) -> void:
 		return
 	else:
 		immunity_timer = 0.0
-		
 	if is_healing:
 		at["parameters/AnimationNodeStateMachine/conditions/healing"] = false
 		is_healing = false
