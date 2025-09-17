@@ -17,6 +17,7 @@ var health = max_health
 var is_special_attacking = false
 var is_healing = false
 var is_jumping = false
+var is_parrying = false
 var is_attacking = false
 var is_knockback = false
 var is_dashing = false
@@ -102,7 +103,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if handler and handler.forcing_movement:
 		return
-	if is_healing or is_special_attacking:
+	if is_healing or is_special_attacking or is_parrying:
 		return
 	
 	set_up_direction(Vector2.UP)
@@ -152,6 +153,8 @@ func _physics_process(delta: float) -> void:
 		heal_player()
 	if Input.is_action_just_pressed('special attack'):
 		special_attack()
+	if Input.is_action_just_pressed('parry'):
+		parry()
 	# Apply gravity
 	velocity.y += GRAV * delta
 	move_and_slide()
@@ -350,3 +353,21 @@ func check_conditions():
 		else:
 			return true
 	return false
+
+
+func _on_parry_hitbox_area_entered(area: Area2D) -> void:
+	if area.owner.is_in_group('enemies'):
+		at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit"] = true
+		area.owner.apply_damage(0)
+		
+	pass # Replace with function body.
+func parry():
+	reset_all_conditions()
+	is_parrying = true
+	at["parameters/AnimationNodeStateMachine/conditions/parry"] = true
+	
+func _on_parry_timeout():
+	is_parrying = false
+	velocity.y = 0
+	at["parameters/AnimationNodeStateMachine/conditions/parry"] = false
+	at["parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout"] = true

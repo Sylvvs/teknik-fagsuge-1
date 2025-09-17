@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dyrgeqd7upgui"]
+[gd_scene load_steps=42 format=3 uid="uid://dyrgeqd7upgui"]
 
 [ext_resource type="Script" uid="uid://1nf7lmjpy803" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bux03maxcmlpd" path="res://sprites/player sprites/IDLE.png" id="2_g2els"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsum14vt4v5n" path="res://sprites/player sprites/AIR ATTACK.png" id="11_3v2ag"]
 [ext_resource type="Texture2D" uid="uid://b2fivt6fcsemr" path="res://sprites/player sprites/HEALING.png" id="12_jej6c"]
 [ext_resource type="Texture2D" uid="uid://bupuhjvwy4oko" path="res://sprites/player sprites/SPECIAL ATTACK.png" id="13_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dldgn7pias6m8" path="res://sprites/player sprites/DEFEND.png" id="14_oprun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0
@@ -35,6 +36,9 @@ size = Vector2(28, 62)
 radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfm1y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8ls1"]
+radius = 25.019993
 
 [sub_resource type="Animation" id="Animation_dqkch"]
 length = 0.001
@@ -153,6 +157,18 @@ tracks/9/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbo
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Parry Hitbox/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -888,6 +904,125 @@ tracks/7/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_qfm1y"]
+resource_name = "parry start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_oprun")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Parry Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(32, 45, 36, 36), Rect2(32, 45, 36, 36)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterBody2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_parry_timeout"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4r5pv"]
+resource_name = "parry"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("14_oprun")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(128, 45, 36, 36), Rect2(224, 45, 36, 36), Rect2(320, 45, 36, 36), Rect2(416, 45, 36, 36), Rect2(512, 45, 36, 36)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterBody2D/Animation Handler/Sprite2D/Parry Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g2els"]
 _data = {
 &"RESET": SubResource("Animation_dqkch"),
@@ -901,6 +1036,8 @@ _data = {
 &"hurt": SubResource("Animation_ur7pv"),
 &"idle": SubResource("Animation_3vyb7"),
 &"jump": SubResource("Animation_qlg0r"),
+&"parry": SubResource("Animation_4r5pv"),
+&"parry start": SubResource("Animation_qfm1y"),
 &"special attack": SubResource("Animation_fulsm"),
 &"walk": SubResource("Animation_g2els")
 }
@@ -908,7 +1045,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-519.793, 250.25467)
+graph_offset = Vector2(-519.793, 223.46191)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
 nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
@@ -933,6 +1070,7 @@ region_enabled = true
 region_rect = Rect2(32, 45, 36, 36)
 
 [node name="Sword Hitbox" type="Area2D" parent="CharacterBody2D/Animation Handler/Sprite2D"]
+visible = false
 collision_layer = 2
 collision_mask = 4
 
@@ -971,6 +1109,13 @@ rotation = 0.7560637
 shape = SubResource("CapsuleShape2D_qfm1y")
 disabled = true
 
+[node name="Parry Hitbox" type="Area2D" parent="CharacterBody2D/Animation Handler/Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Animation Handler/Sprite2D/Parry Hitbox"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_a8ls1")
+disabled = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/Animation Handler"]
 root_node = NodePath("../../..")
 libraries = {
@@ -993,13 +1138,17 @@ parameters/AnimationNodeStateMachine/conditions/hurting = false
 parameters/AnimationNodeStateMachine/conditions/idle = false
 parameters/AnimationNodeStateMachine/conditions/is_moving = false
 parameters/AnimationNodeStateMachine/conditions/jump = false
+parameters/AnimationNodeStateMachine/conditions/parry = false
 parameters/AnimationNodeStateMachine/Attack/conditions/air_attack = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack1 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack2 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/is_attack3 = false
 parameters/AnimationNodeStateMachine/Attack/conditions/not_attacking = false
 parameters/AnimationNodeStateMachine/Attack/conditions/special_attack = false
+parameters/AnimationNodeStateMachine/Parry/conditions/parry_hit = false
+parameters/AnimationNodeStateMachine/Parry/conditions/parry_timeout = false
 parameters/TimeScale/scale = 1.0
 
 [connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_area_entered"]
 [connection signal="body_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Sword Hitbox" to="CharacterBody2D" method="_on_sword_hitbox_body_entered"]
+[connection signal="area_entered" from="CharacterBody2D/Animation Handler/Sprite2D/Parry Hitbox" to="CharacterBody2D" method="_on_parry_hitbox_area_entered"]
