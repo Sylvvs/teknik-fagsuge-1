@@ -10,4 +10,5 @@ func _ready() -> void:
 
 func _start_dialogue() -> void:
 	if not DialogueManager.dialogue_box and not DialogueManager.dialogue_closed_recently:
-		DialogueManager.start_dialogue(npc_id, self.name)
+		if "Golem" in GameState.bosses_defeated and !GameState.bosses_defeated["Golem"]:
+			DialogueManager.start_dialogue(npc_id, self.name)
