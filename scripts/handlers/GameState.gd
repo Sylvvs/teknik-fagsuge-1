@@ -5,6 +5,11 @@ var intro_watched = false;
 
 const SAVE_GAME_PATH := "user://file1.save"
 
+signal boss_defeated
+
+func boss_defeated_trigger():
+	emit_signal("boss_defeated")
+
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
-[ext_resource type="Shader" uid="uid://gbh4b5hmejx3" path="res://scripts/golem_boss.gdshader" id="2_8f0rq"]
+[ext_resource type="Shader" path="res://scripts/golem_boss.gdshader" id="2_8f0rq"]
 [ext_resource type="Texture2D" uid="uid://c6h8k68dees6j" path="res://sprites/weapon PNG/Laser_sheet.png" id="2_s54pl"]
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scripts/LaserBeam.gd" id="11_33i4v"]
 [ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scripts/ArmorBuff.gd" id="12_6wojb"]
 [ext_resource type="Script" uid="uid://cko5afgaeli8j" path="res://scripts/Death.gd" id="13_33i4v"]
-[ext_resource type="Script" uid="uid://tgcxmww2dkn1" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
+[ext_resource type="Script" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
 [ext_resource type="AudioStream" uid="uid://dvhlkk0vjqh50" path="res://Audio/Sound Effects/Crumbling - Sound effect.mp3" id="14_mkelx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bpqo0"]
@@ -756,6 +756,35 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_oyfov"]
+resource_name = "hurt"
+length = 0.1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nmspf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Golem:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
 [sub_resource type="Animation" id="Animation_s54pl"]
 resource_name = "idle"
 length = 0.500013
@@ -933,35 +962,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_o8j3a")]
-}
-
-[sub_resource type="Animation" id="Animation_oyfov"]
-resource_name = "hurt"
-length = 0.1
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Golem:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_nmspf")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Golem:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6gaq"]
