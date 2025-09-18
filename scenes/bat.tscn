@@ -1,0 +1,314 @@
+[gd_scene load_steps=19 format=3 uid="uid://d4kmhqa2q5wvn"]
+
+[ext_resource type="Texture2D" uid="uid://cgwj7xtvmy6x" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_8qtcx"]
+[ext_resource type="Texture2D" uid="uid://c4pnnrhitbnax" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Die.png" id="2_x4bhu"]
+[ext_resource type="Texture2D" uid="uid://6cvexoe5jfpy" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Hurt.png" id="3_k0o7o"]
+[ext_resource type="Texture2D" uid="uid://djexahrcgi8ms" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-IdleFly.png" id="4_67y1s"]
+[ext_resource type="Texture2D" uid="uid://cas5qwqfso8qg" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Run.png" id="5_p5otw"]
+[ext_resource type="Texture2D" uid="uid://b34y2wu56qxm3" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Sleep.png" id="6_vjjhm"]
+[ext_resource type="Texture2D" uid="uid://cqchlq4q0fvom" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-WakeUp.png" id="7_n8eff"]
+
+[sub_resource type="Animation" id="Animation_b0da4"]
+resource_name = "Attack 1"
+length = 1.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8qtcx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_pxrle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8qtcx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture:load_path")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
+}
+
+[sub_resource type="Animation" id="Animation_4wjs6"]
+resource_name = "Attack 2"
+length = 2.2500124
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:load_path")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_etce6"]
+resource_name = "Die"
+length = 2.2500124
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_x4bhu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64), Rect2(704, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_m5ihs"]
+resource_name = "Hurt"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_k0o7o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_pojf5"]
+resource_name = "IdleFly"
+length = 1.6250125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_67y1s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_rxidk"]
+resource_name = "Run"
+length = 1.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_p5otw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_l2f6u"]
+resource_name = "Sleep"
+length = 0.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_vjjhm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_eicwc"]
+resource_name = "WakeUp"
+length = 3.1250124
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_n8eff")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6000001, 2.8000002, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64), Rect2(704, 0, 64, 64), Rect2(768, 0, 64, 64), Rect2(832, 0, 64, 64), Rect2(896, 0, 64, 64), Rect2(960, 0, 64, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kf7"]
+_data = {
+&"Attack 1": SubResource("Animation_b0da4"),
+&"Attack 2": SubResource("Animation_4wjs6"),
+&"Die": SubResource("Animation_etce6"),
+&"Hurt": SubResource("Animation_m5ihs"),
+&"IdleFly": SubResource("Animation_pojf5"),
+&"RESET": SubResource("Animation_pxrle"),
+&"Run": SubResource("Animation_rxidk"),
+&"Sleep": SubResource("Animation_l2f6u"),
+&"WakeUp": SubResource("Animation_eicwc")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
+radius = 17.0
+height = 38.0
+
+[node name="Bat" type="CharacterBody2D"]
+
+[node name="Animation handler Bat" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Animation handler Bat"]
+texture = ExtResource("1_8qtcx")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation handler Bat"]
+libraries = {
+&"": SubResource("AnimationLibrary_j7kf7")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_rrah6")
