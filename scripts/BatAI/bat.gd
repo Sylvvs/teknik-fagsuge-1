@@ -15,6 +15,9 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	if player:
 		player = player.get_node("CharacterBody2D")
+		
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 
 func _process(delta: float) -> void:

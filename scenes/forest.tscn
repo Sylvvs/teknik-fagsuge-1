@@ -3423,7 +3423,10 @@ shape = SubResource("RectangleShape2D_j3csf")
 [node name="Enemies" type="Node2D" parent="Logic"]
 
 [node name="Enemy" parent="Logic/Enemies" instance=ExtResource("11_ercsu")]
-position = Vector2(560, 699)
+position = Vector2(601, 706)
+
+[node name="Enemy2" parent="Logic/Enemies" instance=ExtResource("11_ercsu")]
+position = Vector2(446, 704)
 
 [node name="debug" type="Area2D" parent="Logic"]
 position = Vector2(714, 827)
@@ -3433,8 +3436,6 @@ scale = Vector2(1.1234056, 0.22735101)
 position = Vector2(88, -100)
 scale = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_j3csf")
-
-[node name="Enemies" type="Node2D" parent="."]
 
 [node name="Npcs" type="Node2D" parent="."]
 
