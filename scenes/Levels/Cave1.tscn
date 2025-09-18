@@ -917,10 +917,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_cjp3x")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3irm3"]
-size = Vector2(15.5, 64)
+size = Vector2(16.75, 92)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fghph"]
-size = Vector2(15, 313)
+size = Vector2(20, 94.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -1004,13 +1004,13 @@ position = Vector2(24, 189)
 [node name="forest2" type="Area2D" parent="Logic"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest2"]
-position = Vector2(-14, 190)
+position = Vector2(-15.625, 186)
 shape = SubResource("RectangleShape2D_3irm3")
 
 [node name="boss_room" type="Area2D" parent="Logic"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/boss_room"]
-position = Vector2(781.5, 60)
+position = Vector2(779, 169.25)
 shape = SubResource("RectangleShape2D_fghph")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
