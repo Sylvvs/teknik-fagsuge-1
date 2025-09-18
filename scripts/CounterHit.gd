@@ -1,12 +1,17 @@
 extends LuciferState
+@onready var sprite = $"../../Lucifer Animation Handler/Animation virk pls/Lucifer"
+
+
 
 func enter():
 	super.enter()
+	sprite.material.set_shader_parameter("flash_strength", 1.0)
 	# await animation_player.play(insert mikkel flash ting)
 	
 
 func exit():
 	super.exit()
+	sprite.material.set_shader_parameter("flash_strength", 0.0)
 	set_physics_process(false)
 
 func play_animation(anim_name: String, speed: float = 1.0):
