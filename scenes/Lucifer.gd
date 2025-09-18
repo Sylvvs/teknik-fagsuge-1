@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var player = null
 @onready var logic_pos = get_parent().find_child("Logic")
 @onready var sprite : Sprite2D = $"Lucifer Animation Handler/Lucifer"
 @onready var idk : Node2D = $"Lucifer Animation Handler"
@@ -10,6 +10,7 @@ extends CharacterBody2D
 var direction : Vector2
 var SPEED : float = 80
 var GRAVITY : float = 500.0
+
 
 func _ready():
 	set_physics_process(false)
@@ -27,12 +28,7 @@ func _process(delta: float) -> void:
 	#print(player.global_position, position, direction)
 	# Flip sprite depending on x-direction
 
-	if direction.x > 0:
-		aniplayrot.scale.x = 1
-		collision_shape.position.x = abs(collision_shape.position.x)
-	elif direction.x < 0:
-		aniplayrot.scale.x = -1
-		collision_shape.position.x -= collision_shape.position.x
+
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity
@@ -44,7 +40,10 @@ func _physics_process(delta: float) -> void:
 	# Move only horizontally towards player
 	var move_dir = direction.normalized()
 
-	
+	if direction.x > 0:
+		aniplayrot.scale.x = 1
+	elif direction.x < 0:
+		aniplayrot.scale.x = -1
 	velocity.x = move_dir.x * SPEED
 
 	
