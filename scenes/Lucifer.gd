@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	elif direction.x < 0:
 		aniplayrot.scale.x = -1
 	velocity.x = move_dir.x * SPEED
-	
 	# Apply movement with collisions
 	move_and_slide()
 
