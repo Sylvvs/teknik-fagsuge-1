@@ -23,6 +23,9 @@ func _ready():
 	if player:
 		player = player.get_node("CharacterBody2D")
 	set_physics_process(false)
+	
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 func apply_damage(amount : float):
 	var take_damage : bool = false
@@ -76,7 +79,6 @@ func _physics_process(delta):
 			velocity.y = JUMP_FORCE
 	else:
 		move_dir = direction.normalized()
-	print(direction, player.global_position, position)
 	# Flip sprite
 	
 

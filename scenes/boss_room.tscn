@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://fpchv7r8fwp0"]
+[gd_scene load_steps=25 format=4 uid="uid://chdw2w540pe24"]
 
 [ext_resource type="PackedScene" uid="uid://11k4gkw30r7i" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_g2a2m"]
