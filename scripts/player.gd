@@ -60,6 +60,7 @@ signal calm_changed(current: int)
 @onready var sprite = $"Animation Handler/Sprite2D"
 @onready var sword = $"Animation Handler/Sprite2D/Sword Hitbox"
 @onready var at : AnimationTree = $"AnimationTree"
+@onready var audio = $AudioStreamPlayer
 
 # === Other ===
 var handler
@@ -356,6 +357,7 @@ func reset_all_conditions():
 # === Sword Hit Detection ===
 func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and body.is_in_group("enemies"):
+		audio.play()
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
 			emit_signal("calm_changed", calm_energy)

@@ -5,6 +5,12 @@ extends CharacterBody2D
 @onready var sprite = $Golem
 @onready var progress_bar = $UI/ProgressBar 
 @onready var melee = $MeleeAttack
+@onready var statemachine = $FiniteStateMachine
+@onready var animation_player = $AnimationPlayer
+
+var original_color : Color
+var flash_time = 0.1
+var flash_timer = 0.0
 var direction : Vector2
 var DEF = 0
 var health = 250:
@@ -19,7 +25,10 @@ var health = 250:
 			DEF = 2.5
 			find_child("FiniteStateMachine").change_state("ArmorBuff")
 func _ready():
+	if "Golem" in GameState.bosses_defeated and GameState.bosses_defeated["Golem"]:
+		queue_free()
 	set_physics_process(false)
+	original_color = sprite.modulate
 	
 #
 func _process(_delta):
@@ -28,6 +37,13 @@ func _process(_delta):
 		if not player:
 			return
 	direction = player.global_position - position
+	
+	if flash_timer > 0:
+		flash_timer -= _delta
+		sprite.material.set_shader_parameter("flash_strength", 1.0)
+
+	else:
+		sprite.material.set_shader_parameter("flash_strength", 0.0)
 
 func _physics_process(delta):
 	if direction.x > 0:
@@ -41,6 +57,7 @@ func _physics_process(delta):
 	
 
 func apply_damage(damage):
+	flash_timer = flash_time
 	health -= damage - DEF 
 
 

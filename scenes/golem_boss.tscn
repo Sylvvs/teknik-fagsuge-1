@@ -1,10 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://11k4gkw30r7i"]
+[gd_scene load_steps=38 format=3 uid="uid://11k4gkw30r7i"]
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
+[ext_resource type="Shader" path="res://scripts/golem_boss.gdshader" id="2_8f0rq"]
 [ext_resource type="Texture2D" uid="uid://c6h8k68dees6j" path="res://sprites/weapon PNG/Laser_sheet.png" id="2_s54pl"]
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
+[ext_resource type="Texture2D" uid="uid://brkh1m733vjas" path="res://sprites/PNG sheet/pixil-frame-0.png" id="4_nmspf"]
 [ext_resource type="Script" uid="uid://rtb050ofy5oa" path="res://scripts/Follow.gd" id="5_jidqh"]
 [ext_resource type="Script" uid="uid://b6t3rg18ehfj7" path="res://scripts/MeleeAttack.gd" id="7_5l412"]
 [ext_resource type="Script" uid="uid://burpf3gnefk1x" path="res://scripts/HomingMissile.gd" id="8_isqk6"]
@@ -13,7 +15,12 @@
 [ext_resource type="Script" uid="uid://dqguwampiy2p4" path="res://scripts/LaserBeam.gd" id="11_33i4v"]
 [ext_resource type="Script" uid="uid://c1vhablxgntho" path="res://scripts/ArmorBuff.gd" id="12_6wojb"]
 [ext_resource type="Script" uid="uid://cko5afgaeli8j" path="res://scripts/Death.gd" id="13_33i4v"]
-[ext_resource type="Script" uid="uid://tgcxmww2dkn1" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
+[ext_resource type="Script" path="res://scripts/BlockAndAway.gd" id="14_6wojb"]
+[ext_resource type="AudioStream" uid="uid://dvhlkk0vjqh50" path="res://Audio/Sound Effects/Crumbling - Sound effect.mp3" id="14_mkelx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpqo0"]
+shader = ExtResource("2_8f0rq")
+shader_parameter/flash_strength = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33i4v"]
 size = Vector2(258, 20)
@@ -82,6 +89,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Golem:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_e7bep"]
 resource_name = "Block"
@@ -146,6 +165,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Golem:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
 }
 
 [sub_resource type="Animation" id="Animation_8s186"]
@@ -224,6 +255,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Golem:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_t6gaq"]
 resource_name = "Glowing"
@@ -299,6 +342,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Golem:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
 }
 
 [sub_resource type="Animation" id="Animation_cx2hw"]
@@ -445,6 +500,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Golem:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_mwilj"]
 length = 0.001
@@ -544,6 +611,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Golem:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_iq77x"]
 resource_name = "Ranged attack"
@@ -609,6 +688,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Golem:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_iit6d"]
 resource_name = "boss_slain"
@@ -663,6 +754,35 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oyfov"]
+resource_name = "hurt"
+length = 0.1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nmspf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Golem:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_s54pl"]
@@ -754,6 +874,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Golem:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="Animation" id="Animation_p6t1k"]
 resource_name = "laser cast"
@@ -819,6 +951,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Golem:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_o8j3a")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t6gaq"]
 _data = {
@@ -831,6 +975,7 @@ _data = {
 &"RESET": SubResource("Animation_mwilj"),
 &"Ranged attack": SubResource("Animation_iq77x"),
 &"boss_slain": SubResource("Animation_iit6d"),
+&"hurt": SubResource("Animation_oyfov"),
 &"idle": SubResource("Animation_s54pl"),
 &"laser cast": SubResource("Animation_p6t1k")
 }
@@ -859,6 +1004,7 @@ collision_mask = 0
 script = ExtResource("1_jiwok")
 
 [node name="Golem" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bpqo0")
 texture = ExtResource("1_o8j3a")
 hframes = 10
 vframes = 10
@@ -997,6 +1143,9 @@ script = ExtResource("12_6wojb")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("13_33i4v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FiniteStateMachine/Death"]
+stream = ExtResource("14_mkelx")
 
 [node name="BlockAndAway" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("14_6wojb")

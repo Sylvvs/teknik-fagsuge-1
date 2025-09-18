@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var sprite : Sprite2D = $"Animation Handler Enemy/Sprite2D"
 @onready var animation_player : AnimationPlayer = $"Animation Handler Enemy/AnimationPlayer"
 @onready var logic_pos = get_parent().find_child("Logic")
-@onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var player : Node2D = null
 @onready var enemysword : Area2D = $Attack
 
 var direction : Vector2
@@ -18,6 +18,9 @@ var health = 50
 
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+	if player:
+		player = player.get_node("CharacterBody2D")
 	set_physics_process(false)
 
 func apply_damage(amount : float):
@@ -29,7 +32,6 @@ func apply_damage(amount : float):
 	if health <= 0:
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	
-	print(health)
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -74,8 +76,7 @@ func _physics_process(delta):
 
 	# Use built-in sliding physics
 	move_and_slide()
-func apply_knockback(from_position):
-	pass
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):

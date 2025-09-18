@@ -4,6 +4,7 @@ extends Control
 var input_settings
 
 func _ready() -> void:
+	GameState.load_game()
 	var ui := get_tree().root.get_node_or_null("Ui")
 	if ui:
 		ui.queue_free()
@@ -27,18 +28,31 @@ func _on_button_exited(button) -> void:
 
 
 func _on_start_pressed() -> void:
-	FadeLayer.fade_in(0.3).connect("finished", Callable(get_tree(), "change_scene_to_file").bind("res://scenes/room_handler.tscn"))
+	if !start_pressed:
+		FadeLayer.fade_in(0.3).connect("finished", Callable(get_tree(), "change_scene_to_file").bind("res://scenes/room_handler.tscn"))
+		start_pressed = true;
 
 
 func _on_settings_pressed() -> void:
 	input_settings = input_settings_scene.instantiate()
 	add_child(input_settings)
 
+var start_pressed = false;
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if input_settings and input_settings.get_parent():
 			input_settings.queue_free()
 			input_settings = null
-
+	if event.is_action_pressed("interact"):
+		if !start_pressed:
+			FadeLayer.fade_in(0.3).connect("finished", Callable(get_tree(), "change_scene_to_file").bind("res://scenes/room_handler.tscn"))
+			start_pressed = true;
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	GameState.reset_data()
+	GameState.load_game()
+	$Button.text = "okay its done"
