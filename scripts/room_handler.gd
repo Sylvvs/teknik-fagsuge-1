@@ -17,6 +17,7 @@ var map_bottom: float
 signal player_entered()
 
 func _ready() -> void:
+	GameState.connect("boss_defeated", Callable(self, "handle_arena_gates"))
 	add_to_group("room_handler")
 	ui = ui_scene.instantiate()
 	get_parent().add_child(ui)
@@ -121,7 +122,17 @@ func handle_logic() -> void:
 				if body.get_parent() == player and forcing_movement == false:
 					load_room_with_fade(child.name)
 			)
+	handle_arena_gates()
 
+func handle_arena_gates():
+	for cell in tilemap.get_used_cells():
+		var data = tilemap.get_cell_tile_data(cell)
+		var gateData
+		if data.has_custom_data("arenaGate"):
+			gateData = data.get_custom_data("arenaGate")
+		if gateData == "Golem":
+			if "Golem" in GameState.bosses_defeated and GameState.bosses_defeated["Golem"]:
+				tilemap.set_cell(cell, -1)
 
 func load_room_with_fade(id: String) -> void:
 	forced_direction = calculate_leaving_direction()

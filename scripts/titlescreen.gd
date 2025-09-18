@@ -40,6 +40,8 @@ func _input(event):
 		if input_settings and input_settings.get_parent():
 			input_settings.queue_free()
 			input_settings = null
+	if event.is_action_pressed("interact"):
+		FadeLayer.fade_in(0.3).connect("finished", Callable(get_tree(), "change_scene_to_file").bind("res://scenes/room_handler.tscn"))
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

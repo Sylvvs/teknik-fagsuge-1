@@ -1,7 +1,7 @@
 extends Control
 
 @onready var input_button_scene = preload("res://scenes/input_button.tscn")
-@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ActionList
+@onready var action_list = $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/ScrollContainer/ActionList
 
 var is_remapping = false
 var action_to_remap = null
@@ -87,3 +87,7 @@ func _on_reset_button_pressed() -> void:
 		if events.size() > 0:
 			ConfigFileHandler.save_keybinding(action, events[0])
 	_create_action_list()
+
+
+func _on_close_pressed() -> void:
+	queue_free()
