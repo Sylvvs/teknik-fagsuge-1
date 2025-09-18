@@ -5,9 +5,11 @@ var dash_time = dash_time_max
 
 func enter():
 	super.enter()
-	set_physics_process(true)
+	owner.set_physics_process(false)
 	await play_animation("attack 1", 1)
-	
+
+
+
 func attack():
 	dash_time = 0
 
@@ -20,6 +22,7 @@ func _process(delta: float) -> void:
 func play_animation(anim_name: String, speed: float = 1.0,):
 	animation_player.play(anim_name, -1.0, speed)
 	await animation_player.animation_finished
+	transition()
 	if owner.direction.length() < 45:
 		play_animation(anim_name, speed)
 
