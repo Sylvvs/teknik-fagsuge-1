@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://b28x5p136tgsb"]
+[gd_scene load_steps=20 format=4 uid="uid://b28x5p136tgsb"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_7vhfy"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_yai6n"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_elvxc"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_frlmr"]
 [ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
+[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/Lucifer_npc.gd" id="10_xvi8d"]
+[ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="11_b15gw"]
 [ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvi8d"]
@@ -3403,11 +3405,20 @@ position = Vector2(174, 710)
 [node name="NPCS" type="Node2D" parent="Logic"]
 
 [node name="Lucifer" type="Area2D" parent="Logic/NPCS"]
-position = Vector2(435, 706)
+position = Vector2(367, 701)
+script = ExtResource("10_xvi8d")
+npc_id = "lucifer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/NPCS/Lucifer"]
 position = Vector2(-17, -5)
 shape = SubResource("CircleShape2D_fdfeb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Logic/NPCS/Lucifer"]
+position = Vector2(-17, 8)
+texture = ExtResource("11_b15gw")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(5.4856873, 10.7727585, 19.1268, 44.784706)
 
 [node name="forest" type="Area2D" parent="Logic"]
 
