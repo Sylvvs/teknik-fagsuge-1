@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cedl7rdtvjy4s"]
+[gd_scene load_steps=17 format=4 uid="uid://cedl7rdtvjy4s"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_8607o"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_qkl76"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_ek15b"]
 [ext_resource type="AudioStream" uid="uid://b6gr6riupaboo" path="res://Audio/how to dissapear completely radiohead.mp3" id="10_qkl76"]
 [ext_resource type="PackedScene" uid="uid://b6qbbmrwc5d87" path="res://scenes/bat.tscn" id="11_uhn04"]
+[ext_resource type="PackedScene" uid="uid://bgm2dymvpo7pj" path="res://scenes/enemy.tscn" id="12_e8ei1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p753g"]
 texture = ExtResource("9_ek15b")
@@ -3414,4 +3415,7 @@ autoplay = true
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Bat" parent="Enemies" instance=ExtResource("11_uhn04")]
-position = Vector2(658, 667)
+position = Vector2(659, 669)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("12_e8ei1")]
+position = Vector2(434, 673)
