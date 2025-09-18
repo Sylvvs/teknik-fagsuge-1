@@ -450,6 +450,7 @@ func _on_sword_hitbox_area_entered(area: Area2D) -> void:
 		area.queue_free()
 
 func _on_slide():
+	velocity.y = 0
 	if touched_the_floor:
 		sprite.flip_h = !sprite.flip_h
 	touched_the_floor = false
