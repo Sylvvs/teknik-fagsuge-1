@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b6qbbmrwc5d87"]
+[gd_scene load_steps=28 format=3 uid="uid://b6qbbmrwc5d87"]
 
 [ext_resource type="Texture2D" uid="uid://cgwj7xtvmy6x" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_8qtcx"]
 [ext_resource type="Script" uid="uid://e5y0h4me2cwc" path="res://scripts/BatAI/bat.gd" id="1_x4bhu"]
@@ -12,10 +12,12 @@
 [ext_resource type="Script" uid="uid://xt8bptj78ygx" path="res://scripts/BatAI/states/chase_state.gd" id="10_67y1s"]
 [ext_resource type="Script" uid="uid://8y3e8ve3qy6c" path="res://scripts/BatAI/states/idle_state.gd" id="11_p5otw"]
 [ext_resource type="Script" uid="uid://w7bln0cf5dhw" path="res://scripts/BatAI/states/attack_state.gd" id="12_vjjhm"]
+[ext_resource type="Script" uid="uid://bf5u1cbql8a81" path="res://scripts/BatAI/states/sleep_state.gd" id="13_n8eff"]
+[ext_resource type="Script" uid="uid://m7vaxny83xd2" path="res://scripts/BatAI/states/wake_up_state.gd" id="14_rrah6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
 radius = 17.0
-height = 38.0
+height = 36.0
 
 [sub_resource type="Animation" id="Animation_4wjs6"]
 resource_name = "Attack 2"
@@ -329,6 +331,7 @@ region_rect = Rect2(0, 0, 64, 64)
 libraries = {
 &"": SubResource("AnimationLibrary_j7kf7")
 }
+speed_scale = 2.028
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 visible = false
@@ -345,7 +348,7 @@ shape = SubResource("CapsuleShape2D_8qtcx")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("9_k0o7o")
-initial_state = NodePath("BatChase")
+initial_state = NodePath("BatSleep")
 
 [node name="BatChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("10_67y1s")
@@ -361,3 +364,13 @@ metadata/_custom_type_script = "uid://8y3e8ve3qy6c"
 script = ExtResource("12_vjjhm")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://w7bln0cf5dhw"
+
+[node name="BatSleep" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("13_n8eff")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://bf5u1cbql8a81"
+
+[node name="BatWakeUp" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("14_rrah6")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://m7vaxny83xd2"

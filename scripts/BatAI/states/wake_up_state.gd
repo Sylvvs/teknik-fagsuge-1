@@ -1,5 +1,5 @@
 extends BatState
-class_name BatAttack1
+class_name BatWakeUp
 
 @export var enemy: CharacterBody2D
 @onready var player : Node2D = null
@@ -10,14 +10,10 @@ func enter():
 	if player:
 		player = player.get_node("CharacterBody2D")
 	enemy.velocity = Vector2.ZERO
-	anim.play('attack')
+	anim.play('WakeUp')
 	
+
 func physics_update(delta: float):
-	if not player or not is_instance_valid(player):
-		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
-		if not player:
-			return
-	var direction = player.global_position - enemy.global_position
-	
-	if direction.length() > 50:
-		Transitioned.emit(self,'BatChase')
+	if anim.is_playing():
+		return
+	Transitioned.emit(self,'BatChase')
