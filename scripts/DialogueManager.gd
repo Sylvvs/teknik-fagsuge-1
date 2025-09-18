@@ -52,6 +52,9 @@ func show_dialogue(state_data: Dictionary, speaker: String):
 	var dialogues = state_data["dialogues"]
 	_run_dialogue(dialogues[0]) 
 
+func _set_state(npc_id, state):
+	npc_states[npc_id] = state
+
 func _run_dialogue(dialogue: Dictionary):
 	var label: RichTextLabel = dialogue_box.label
 	await _typewriter(label, dialogue["lines"])

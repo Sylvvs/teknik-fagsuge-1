@@ -35,7 +35,7 @@
 		]
 	  }
 	}
-  },"boss": {
+  },"boss_old": {
 	"states": {
 	  "default": {
 		"dialogues": [
@@ -53,5 +53,100 @@
 			]
 		}
 	}
-  }
+  },
+	"lucifer": {
+		"states": {
+			"default": {
+				"dialogues": [
+					{
+						"lines": ["Hello, I am Lucifer. Would you like to make a deal with me?"],
+						"choices": [
+							{
+								"text": "Yes",
+								"lines": ["Thou shall be rewarded, if thou bestow upon me the [color=yellow]Core of Ragna[/color]. This relic is the heart of the golem king, and only by felling him may one obtain it."]
+							},
+							{
+								"text": "No",
+								"lines": ["Unfortunate. Perhaps you shall reconsider… when you hold the Core."]
+							}
+						]
+					}
+				]
+			},
+			"awaiting_core": {
+				"dialogues": [
+					{
+						"lines": ["Ah… I sense the [color=yellow]Core of Ragna[/color] upon thee. Dost thou offer it to me?"],
+						"choices": [
+							{
+								"text": "Yes",
+								"lines": [
+									"Excellent. With this, the path to the Gate of Ashes grows weaker… and closer.",
+									"Know this: thou hast traded not just a stone, but the fate of our realm.",
+									"A wise choice? Or a damning one? Time shall judge."
+								],
+								"set_state": "core_given"
+							},
+							{
+								"text": "No",
+								"lines": [
+									"So be it. Guard it well, mortal. That Core is both a blessing and a curse.",
+									"Remember my words when the dawn breaks."
+								]
+							}
+						]
+					}
+				]
+			},
+			"core_given": {
+				"dialogues": [
+					{
+						"lines": ["Lucifer vanishes in a cloud of smoke."]
+					}
+				]
+			}
+		}
+	},
+	"boss": {
+		"states": {
+			"default": {
+				"dialogues": [
+					{
+						"lines": ["[shake]Who dares step in my chamber?[/shake] I am Golem Ragna, king of the underground. The weight of my fingers would crush you."]
+					}
+				]
+			},
+			"half_hp": {
+				"dialogues": [
+					{
+						"lines": ["Impossible! How can a mere mortal withstand the pressure of the earth itself?!"]
+					}
+				]
+			},
+			"defeated": {
+				"dialogues": [
+					{
+						"lines": [
+							"The golem collapses into rubble, the ground shakes, and a glowing stone core remains.",
+							"Player obtains ‘[color=yellow]Core of Ragna[/color]’."
+						]
+					}
+				]
+			}
+		}
+	},
+	"well": {
+		"states": {
+			"default": {
+				"dialogues": [
+					{
+						"lines": [
+							"Inscriptions carved into stone:",
+							"‘Those who cast away their name shall find it here again. Those who open the gate shall never return.’"
+						]
+					}
+				]
+			}
+		}
+	}
 }
