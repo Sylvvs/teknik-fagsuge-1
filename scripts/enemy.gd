@@ -30,7 +30,7 @@ func apply_damage(amount : float):
 	take_damage = true
 	if take_damage:
 		flash_timer = flash_time
-			#find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
+		#find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
 	if health <= 0:
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	

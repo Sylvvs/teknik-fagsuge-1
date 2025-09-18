@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var logic_pos = get_parent().find_child("Logic")
-@onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var player = null
 @onready var sprite = $Golem
 @onready var progress_bar = $UI/ProgressBar 
 @onready var melee = $MeleeAttack
@@ -25,6 +25,9 @@ var health = 250:
 			DEF = 2.5
 			find_child("FiniteStateMachine").change_state("ArmorBuff")
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+	if player:
+		player = player.get_node("CharacterBody2D")
 	if "Golem" in GameState.bosses_defeated and GameState.bosses_defeated["Golem"]:
 		queue_free()
 	set_physics_process(false)

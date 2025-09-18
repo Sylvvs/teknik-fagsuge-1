@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 		is_jumping = true
 		at["parameters/AnimationNodeStateMachine/Walls/conditions/not_sliding"] = false
 		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
-		if is_on_wall() and ["parameters/AnimationNodeStateMachine/conditions/sliding"]:
+		if is_on_wall() and ["parameters/AnimationNodeStateMachine/conditions/sliding"] and not is_on_floor():
 			at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = true
 			velocity.y = -JUMP
 			velocity.x = -direction * SPEED * 2
