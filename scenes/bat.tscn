@@ -1,84 +1,35 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4kmhqa2q5wvn"]
+[gd_scene load_steps=32 format=3 uid="uid://b6qbbmrwc5d87"]
 
 [ext_resource type="Texture2D" uid="uid://cgwj7xtvmy6x" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_8qtcx"]
+[ext_resource type="Script" uid="uid://e5y0h4me2cwc" path="res://scripts/BatAI/bat.gd" id="1_x4bhu"]
+[ext_resource type="Shader" uid="uid://cecs4deoged41" path="res://scripts/BatAI/bat.gdshader" id="1_y1j7x"]
 [ext_resource type="Texture2D" uid="uid://c4pnnrhitbnax" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Die.png" id="2_x4bhu"]
 [ext_resource type="Texture2D" uid="uid://6cvexoe5jfpy" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Hurt.png" id="3_k0o7o"]
 [ext_resource type="Texture2D" uid="uid://djexahrcgi8ms" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-IdleFly.png" id="4_67y1s"]
 [ext_resource type="Texture2D" uid="uid://cas5qwqfso8qg" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Run.png" id="5_p5otw"]
 [ext_resource type="Texture2D" uid="uid://b34y2wu56qxm3" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Sleep.png" id="6_vjjhm"]
+[ext_resource type="Texture2D" uid="uid://bnbks3ife1o0b" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack3.png" id="7_drkvk"]
 [ext_resource type="Texture2D" uid="uid://cqchlq4q0fvom" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-WakeUp.png" id="7_n8eff"]
+[ext_resource type="Script" uid="uid://btsh3sxuouffb" path="res://scripts/BatAI/states/bat_state_machine.gd" id="9_k0o7o"]
+[ext_resource type="Script" uid="uid://xt8bptj78ygx" path="res://scripts/BatAI/states/chase_state.gd" id="10_67y1s"]
+[ext_resource type="Script" uid="uid://8y3e8ve3qy6c" path="res://scripts/BatAI/states/idle_state.gd" id="11_p5otw"]
+[ext_resource type="Script" uid="uid://w7bln0cf5dhw" path="res://scripts/BatAI/states/attack_state.gd" id="12_vjjhm"]
+[ext_resource type="Script" uid="uid://bf5u1cbql8a81" path="res://scripts/BatAI/states/sleep_state.gd" id="13_n8eff"]
+[ext_resource type="Script" uid="uid://m7vaxny83xd2" path="res://scripts/BatAI/states/wake_up_state.gd" id="14_rrah6"]
+[ext_resource type="Script" uid="uid://dpr8y03hukceu" path="res://scripts/BatAI/states/death_state.gd" id="17_dk2sj"]
 
-[sub_resource type="Animation" id="Animation_b0da4"]
-resource_name = "Attack 1"
-length = 1.5000125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8qtcx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(448, 0, 64, 64)]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
+radius = 17.0
+height = 36.0
 
-[sub_resource type="Animation" id="Animation_pxrle"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8qtcx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture:load_path")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1j7x"]
+shader = ExtResource("1_y1j7x")
+shader_parameter/flash_strength = 0.0
+shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
 
 [sub_resource type="Animation" id="Animation_4wjs6"]
 resource_name = "Attack 2"
-length = 2.2500124
+length = 2.0
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -133,6 +84,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64), Rect2(704, 0, 64, 64)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_m5ihs"]
 resource_name = "Hurt"
@@ -161,63 +136,80 @@ tracks/1/keys = {
 "update": 0,
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_pojf5"]
-resource_name = "IdleFly"
-length = 1.6250125
-step = 0.125
+[sub_resource type="Animation" id="Animation_pxrle"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_67y1s")]
+"values": [ExtResource("1_8qtcx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64)]
+"values": [Rect2(0, 0, 64, 64)]
 }
-
-[sub_resource type="Animation" id="Animation_rxidk"]
-resource_name = "Run"
-length = 1.5000125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture:load_path")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_p5otw")]
+"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64)]
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_l2f6u"]
@@ -248,6 +240,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_eicwc"]
 resource_name = "WakeUp"
@@ -277,29 +281,179 @@ tracks/1/keys = {
 "update": 0,
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64), Rect2(704, 0, 64, 64), Rect2(768, 0, 64, 64), Rect2(832, 0, 64, 64), Rect2(896, 0, 64, 64), Rect2(960, 0, 64, 64)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b0da4"]
+resource_name = "attack"
+length = 1.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_drkvk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rxidk"]
+resource_name = "fly"
+length = 1.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_p5otw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pojf5"]
+resource_name = "idle"
+length = 1.6250125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_67y1s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Attack Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kf7"]
 _data = {
-&"Attack 1": SubResource("Animation_b0da4"),
 &"Attack 2": SubResource("Animation_4wjs6"),
 &"Die": SubResource("Animation_etce6"),
 &"Hurt": SubResource("Animation_m5ihs"),
-&"IdleFly": SubResource("Animation_pojf5"),
 &"RESET": SubResource("Animation_pxrle"),
-&"Run": SubResource("Animation_rxidk"),
 &"Sleep": SubResource("Animation_l2f6u"),
-&"WakeUp": SubResource("Animation_eicwc")
+&"WakeUp": SubResource("Animation_eicwc"),
+&"attack": SubResource("Animation_b0da4"),
+&"fly": SubResource("Animation_rxidk"),
+&"idle": SubResource("Animation_pojf5")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
-radius = 17.0
-height = 38.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_drkvk"]
+radius = 12.718441
+height = 39.604603
 
-[node name="Bat" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qtcx"]
+radius = 7.0
+height = 14.0
+
+[node name="Bat" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_x4bhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_rrah6")
 
 [node name="Animation handler Bat" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Animation handler Bat"]
+material = SubResource("ShaderMaterial_y1j7x")
 texture = ExtResource("1_8qtcx")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
@@ -308,7 +462,56 @@ region_rect = Rect2(0, 0, 64, 64)
 libraries = {
 &"": SubResource("AnimationLibrary_j7kf7")
 }
+speed_scale = 2.028
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_rrah6")
+[node name="Attack Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Hitbox"]
+position = Vector2(-15.000002, 12.000002)
+rotation = -0.8240073
+shape = SubResource("CapsuleShape2D_drkvk")
+disabled = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_8qtcx")
+disabled = true
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("9_k0o7o")
+initial_state = NodePath("BatSleep")
+
+[node name="BatChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_67y1s")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://xt8bptj78ygx"
+
+[node name="BatIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("11_p5otw")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://8y3e8ve3qy6c"
+
+[node name="BatAttack1" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_vjjhm")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://w7bln0cf5dhw"
+
+[node name="BatSleep" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("13_n8eff")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://bf5u1cbql8a81"
+
+[node name="BatWakeUp" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("14_rrah6")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://m7vaxny83xd2"
+
+[node name="BatDeath" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("17_dk2sj")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://dpr8y03hukceu"
+
+[connection signal="body_entered" from="Attack Hitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_attack_hitbox_body_entered"]

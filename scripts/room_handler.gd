@@ -17,11 +17,12 @@ var map_bottom: float
 signal player_entered()
 
 func _ready() -> void:
+	GameState.connect("boss_defeated", Callable(self, "handle_arena_gates"))
 	add_to_group("room_handler")
 	ui = ui_scene.instantiate()
 	get_parent().add_child(ui)
 	if GameState.intro_watched:
-		load_room("forest")
+		load_room(GameState.current_room)
 	else:
 		load_room("control")
 	FadeLayer.fade_out(0.5)
@@ -60,10 +61,11 @@ func load_room(id: String) -> void:
 			previous_calm = player.get_node("CharacterBody2D").calm_energy
 		current_room.queue_free()
 
-	var next_room = load("res://scenes/%s.tscn" % id).instantiate()
+	var next_room = load("res://scenes/Levels/%s.tscn" % id).instantiate()
 	add_child(next_room)
 
 	current_room = next_room
+	GameState.current_room = id
 	tilemap = current_room.get_node("TileMapLayer")
 	_update_map_bounds()
 	handle_logic()
@@ -81,7 +83,7 @@ func _on_room_animation_finished(anim_name: String) -> void:
 	if anim_name == "rah":
 		FadeLayer.fade_in(0.3).connect("finished", Callable(func():
 			GameState.intro_watched = true;
-			load_room("forest")
+			load_room("tutorial_place")
 			FadeLayer.fade_out(0.3)
 		))
 
@@ -121,7 +123,17 @@ func handle_logic() -> void:
 				if body.get_parent() == player and forcing_movement == false:
 					load_room_with_fade(child.name)
 			)
+	handle_arena_gates()
 
+func handle_arena_gates():
+	for cell in tilemap.get_used_cells():
+		var data = tilemap.get_cell_tile_data(cell)
+		var gateData
+		if data.has_custom_data("arenaGate"):
+			gateData = data.get_custom_data("arenaGate")
+		if gateData == "Golem":
+			if "Golem" in GameState.bosses_defeated and GameState.bosses_defeated["Golem"]:
+				tilemap.set_cell(cell, -1)
 
 func load_room_with_fade(id: String) -> void:
 	forced_direction = calculate_leaving_direction()

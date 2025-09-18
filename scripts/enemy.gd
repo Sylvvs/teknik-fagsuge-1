@@ -13,7 +13,8 @@ const SPEED := 80
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
 var health = 50
-
+var flash_time = 0.2
+var flash_timer = 0.0
 
 
 
@@ -22,17 +23,20 @@ func _ready():
 	if player:
 		player = player.get_node("CharacterBody2D")
 	set_physics_process(false)
+	
+	if sprite.material:
+		sprite.material = sprite.material.duplicate()
 
 func apply_damage(amount : float):
 	var take_damage : bool = false
 	health -= amount
 	take_damage = true
 	if take_damage:
-			find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
+		flash_timer = flash_time
+		#find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
 	if health <= 0:
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	
-	print(health)
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -47,7 +51,19 @@ func _process(delta):
 	if switch_timer <= 0:
 		flee_mode = randf() < 0.65
 		switch_timer = randf_range(1.0, 1.5)
+	if flash_timer > 0:
+		flash_timer -= delta
+		sprite.material.set_shader_parameter("flash_strength", 1.0)
 
+	else:
+		sprite.material.set_shader_parameter("flash_strength", 0.0)
+		
+	if direction.x > 0:
+		sprite.flip_h = false
+		enemysword.scale.x = 1
+	else:
+		sprite.flip_h = true
+		enemysword.scale.x = -1
 func _physics_process(delta):
 	
 	# Gravity
@@ -63,22 +79,15 @@ func _physics_process(delta):
 			velocity.y = JUMP_FORCE
 	else:
 		move_dir = direction.normalized()
-
 	# Flip sprite
-	if direction.x > 0:
-		sprite.flip_h = false
-		enemysword.scale.x = 1
-	else:
-		sprite.flip_h = true
-		enemysword.scale.x = -1
+	
 
 	# Apply horizontal movement
 	velocity.x = move_dir.x * SPEED
 
 	# Use built-in sliding physics
 	move_and_slide()
-func apply_knockback(from_position):
-	pass
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
