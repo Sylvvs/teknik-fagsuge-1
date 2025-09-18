@@ -9,7 +9,7 @@ class_name BatEnemy
 var direction = Vector2.ZERO
 var health = 20
 var flash_time = 0.2
-var flash_timer = 0.0
+var flash_timer = 0.06
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")

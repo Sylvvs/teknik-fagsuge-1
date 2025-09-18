@@ -4,7 +4,6 @@ extends EnemyState
 
 var player_entered: bool = false:
 	set(value):
-		print(value)
 		player_entered = value
 		enemycollision.set_deferred("disabled", value)
 
