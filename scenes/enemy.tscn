@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
-[ext_resource type="Shader" uid="uid://c3hva5bn4dvdx" path="res://scripts/enemy.gdshader" id="2_ipns3"]
+[ext_resource type="Shader" path="res://scripts/enemy.gdshader" id="2_ipns3"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
 [ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
 [ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
