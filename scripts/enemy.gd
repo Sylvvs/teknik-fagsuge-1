@@ -15,7 +15,6 @@ const JUMP_FORCE := -300.0
 var health = 50
 var flash_time = 0.2
 var flash_timer = 0.0
-var is_dead = false
 
 
 
@@ -26,16 +25,13 @@ func _ready():
 	set_physics_process(false)
 
 func apply_damage(amount : float):
-	if is_dead:
-		return
 	var take_damage : bool = false
 	health -= amount
 	take_damage = true
 	if take_damage:
-		#flash_timer = flash_time
-		find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
+		flash_timer = flash_time
+		#find_child("EnemyFiniteStateMachine").change_state("EnemyHurt")
 	if health <= 0:
-		is_dead = true
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	
 	await get_tree().create_timer(0.2).timeout
