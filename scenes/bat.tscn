@@ -1,84 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4kmhqa2q5wvn"]
+[gd_scene load_steps=26 format=3 uid="uid://b6qbbmrwc5d87"]
 
 [ext_resource type="Texture2D" uid="uid://cgwj7xtvmy6x" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_8qtcx"]
+[ext_resource type="Script" uid="uid://e5y0h4me2cwc" path="res://scripts/BatAI/bat.gd" id="1_x4bhu"]
 [ext_resource type="Texture2D" uid="uid://c4pnnrhitbnax" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Die.png" id="2_x4bhu"]
 [ext_resource type="Texture2D" uid="uid://6cvexoe5jfpy" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Hurt.png" id="3_k0o7o"]
 [ext_resource type="Texture2D" uid="uid://djexahrcgi8ms" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-IdleFly.png" id="4_67y1s"]
 [ext_resource type="Texture2D" uid="uid://cas5qwqfso8qg" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Run.png" id="5_p5otw"]
 [ext_resource type="Texture2D" uid="uid://b34y2wu56qxm3" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Sleep.png" id="6_vjjhm"]
 [ext_resource type="Texture2D" uid="uid://cqchlq4q0fvom" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-WakeUp.png" id="7_n8eff"]
+[ext_resource type="Script" uid="uid://btsh3sxuouffb" path="res://scripts/BatAI/states/bat_state_machine.gd" id="9_k0o7o"]
+[ext_resource type="Script" uid="uid://xt8bptj78ygx" path="res://scripts/BatAI/states/chase_state.gd" id="10_67y1s"]
+[ext_resource type="Script" uid="uid://8y3e8ve3qy6c" path="res://scripts/BatAI/states/idle_state.gd" id="11_p5otw"]
+[ext_resource type="Script" uid="uid://w7bln0cf5dhw" path="res://scripts/BatAI/states/attack_state.gd" id="12_vjjhm"]
 
-[sub_resource type="Animation" id="Animation_b0da4"]
-resource_name = "Attack 1"
-length = 1.5000125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8qtcx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(448, 0, 64, 64)]
-}
-
-[sub_resource type="Animation" id="Animation_pxrle"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8qtcx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture:load_path")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
+radius = 17.0
+height = 38.0
 
 [sub_resource type="Animation" id="Animation_4wjs6"]
 resource_name = "Attack 2"
-length = 2.2500124
+length = 2.0
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -162,62 +103,43 @@ tracks/1/keys = {
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64)]
 }
 
-[sub_resource type="Animation" id="Animation_pojf5"]
-resource_name = "IdleFly"
-length = 1.6250125
-step = 0.125
+[sub_resource type="Animation" id="Animation_pxrle"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_67y1s")]
+"values": [ExtResource("1_8qtcx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64)]
+"values": [Rect2(0, 0, 64, 64)]
 }
-
-[sub_resource type="Animation" id="Animation_rxidk"]
-resource_name = "Run"
-length = 1.5000125
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture:load_path")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_p5otw")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:region_rect")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64)]
+"values": ["res://.godot/imported/Bat-Attack2.png-228517d39561b8fc46c8cd446dc27ba0.ctex"]
 }
 
 [sub_resource type="Animation" id="Animation_l2f6u"]
@@ -278,24 +200,123 @@ tracks/1/keys = {
 "values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64), Rect2(576, 0, 64, 64), Rect2(640, 0, 64, 64), Rect2(704, 0, 64, 64), Rect2(768, 0, 64, 64), Rect2(832, 0, 64, 64), Rect2(896, 0, 64, 64), Rect2(960, 0, 64, 64)]
 }
 
+[sub_resource type="Animation" id="Animation_b0da4"]
+resource_name = "attack"
+length = 1.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8qtcx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_rxidk"]
+resource_name = "fly"
+length = 1.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_p5otw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_pojf5"]
+resource_name = "idle"
+length = 1.6250125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_67y1s")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 64), Rect2(64, 0, 64, 64), Rect2(128, 0, 64, 64), Rect2(192, 0, 64, 64), Rect2(256, 0, 64, 64), Rect2(320, 0, 64, 64), Rect2(384, 0, 64, 64), Rect2(448, 0, 64, 64), Rect2(512, 0, 64, 64)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7kf7"]
 _data = {
-&"Attack 1": SubResource("Animation_b0da4"),
 &"Attack 2": SubResource("Animation_4wjs6"),
 &"Die": SubResource("Animation_etce6"),
 &"Hurt": SubResource("Animation_m5ihs"),
-&"IdleFly": SubResource("Animation_pojf5"),
 &"RESET": SubResource("Animation_pxrle"),
-&"Run": SubResource("Animation_rxidk"),
 &"Sleep": SubResource("Animation_l2f6u"),
-&"WakeUp": SubResource("Animation_eicwc")
+&"WakeUp": SubResource("Animation_eicwc"),
+&"attack": SubResource("Animation_b0da4"),
+&"fly": SubResource("Animation_rxidk"),
+&"idle": SubResource("Animation_pojf5")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrah6"]
-radius = 17.0
-height = 38.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qtcx"]
+radius = 94.08507
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qtcx"]
+radius = 7.0
+height = 14.0
 
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_x4bhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_rrah6")
 
 [node name="Animation handler Bat" type="Node2D" parent="."]
 
@@ -309,6 +330,34 @@ libraries = {
 &"": SubResource("AnimationLibrary_j7kf7")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-shape = SubResource("CapsuleShape2D_rrah6")
+[node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_8qtcx")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_8qtcx")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("9_k0o7o")
+initial_state = NodePath("BatChase")
+
+[node name="BatChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("10_67y1s")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://xt8bptj78ygx"
+
+[node name="BatIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("11_p5otw")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://8y3e8ve3qy6c"
+
+[node name="BatAttack1" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("12_vjjhm")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://w7bln0cf5dhw"

@@ -32,7 +32,6 @@ func apply_damage(amount : float):
 	if health <= 0:
 		find_child("EnemyFiniteStateMachine").change_state("EnemyDeath")
 	
-	print(health)
 	await get_tree().create_timer(0.2).timeout
 
 func _process(delta):
@@ -77,8 +76,7 @@ func _physics_process(delta):
 
 	# Use built-in sliding physics
 	move_and_slide()
-func apply_knockback(from_position):
-	pass
+
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group('player'):
