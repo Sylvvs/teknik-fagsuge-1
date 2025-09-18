@@ -205,8 +205,11 @@ func _physics_process(delta: float) -> void:
 	#	parry()
 	# Apply gravity
 	
-	if Input.is_action_just_released('jump') and velocity.y < 0 and wall_jump_timer > 0:
+	if (Input.is_action_just_released('jump') and velocity.y < 0):
 		velocity.y = 0
+		if wall_jump_timer:
+			velocity.x = 0
+		
 	velocity.y += GRAV * delta
 	
 	move_and_slide()
