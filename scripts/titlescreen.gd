@@ -4,6 +4,7 @@ extends Control
 var input_settings
 
 func _ready() -> void:
+	GameState.load_game()
 	var ui := get_tree().root.get_node_or_null("Ui")
 	if ui:
 		ui.queue_free()
@@ -42,3 +43,9 @@ func _input(event):
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	GameState.reset_data()
+	GameState.load_game()
+	$Button.text = "okay its done"

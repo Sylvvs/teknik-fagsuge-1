@@ -117,6 +117,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 z_index = -2
 layout_mode = 0
 offset_left = -145.0
@@ -125,11 +126,33 @@ offset_bottom = 653.0
 mouse_filter = 2
 texture = ExtResource("1_6d6rd")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -2
+scale = Vector2(1.0399988, 1.0799987)
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(49, 315.00003)
+repeat_size = Vector2(1376, 0)
+autoscroll = Vector2(15, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_6d6rd")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_v6ms7")
 volume_db = -25.0
 autoplay = true
 
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 527.0
+offset_right = 322.0
+offset_bottom = 627.0
+text = "reset my data twin"
+
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SettingsContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

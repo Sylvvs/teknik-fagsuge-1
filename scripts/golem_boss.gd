@@ -19,6 +19,8 @@ var health = 250:
 			DEF = 2.5
 			find_child("FiniteStateMachine").change_state("ArmorBuff")
 func _ready():
+	if "Golem" in GameState.bosses_defeated and GameState.bosses_defeated["Golem"]:
+		queue_free()
 	set_physics_process(false)
 	
 #

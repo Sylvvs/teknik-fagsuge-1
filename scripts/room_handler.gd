@@ -20,7 +20,10 @@ func _ready() -> void:
 	add_to_group("room_handler")
 	ui = ui_scene.instantiate()
 	get_parent().add_child(ui)
-	load_room("control")
+	if GameState.intro_watched:
+		load_room("forest")
+	else:
+		load_room("control")
 	FadeLayer.fade_out(0.5)
 
 func _process(_delta: float) -> void:
@@ -50,15 +53,15 @@ var previous_hp = 10;
 var previous_calm = 0;
 
 func load_room(id: String) -> void:
-	var next_room = load("res://scenes/%s.tscn" % id).instantiate()
-	add_child(next_room)
-	
 	if current_room:
 		if player:
 			player.queue_free()
 			previous_hp = player.get_node("CharacterBody2D").health
 			previous_calm = player.get_node("CharacterBody2D").calm_energy
 		current_room.queue_free()
+
+	var next_room = load("res://scenes/%s.tscn" % id).instantiate()
+	add_child(next_room)
 
 	current_room = next_room
 	tilemap = current_room.get_node("TileMapLayer")
@@ -77,6 +80,7 @@ func load_room(id: String) -> void:
 func _on_room_animation_finished(anim_name: String) -> void:
 	if anim_name == "rah":
 		FadeLayer.fade_in(0.3).connect("finished", Callable(func():
+			GameState.intro_watched = true;
 			load_room("forest")
 			FadeLayer.fade_out(0.3)
 		))
