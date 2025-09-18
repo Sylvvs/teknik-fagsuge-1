@@ -2,8 +2,7 @@ extends Node2D
 
 var bosses_defeated = {}
 var intro_watched = false;
-# var current_room = "tutorial_place"
-var current_room = "forest"
+var current_room = "tutorial_place"
 
 const SAVE_GAME_PATH := "user://file1.save"
 
@@ -24,7 +23,7 @@ func _notification(what: int) -> void:
 func reset_data():
 	bosses_defeated = {}
 	intro_watched = false;
-	current_room = "forest"
+	current_room = "tutorial_place"
 	save_game()
 
 func save_game():

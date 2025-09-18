@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://rutmk4tcg8ob"]
+[gd_scene load_steps=18 format=4 uid="uid://b28x5p136tgsb"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_7vhfy"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_yai6n"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="7_2dn5b"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_elvxc"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_frlmr"]
+[ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
+[ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvi8d"]
 texture = ExtResource("9_frlmr")
@@ -3333,6 +3335,8 @@ radius = 49.09175
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vhfy"]
 size = Vector2(90.5, 636)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_helww"]
+
 [node name="Tutorial Place" type="Node2D"]
 
 [node name="ForestBackground" type="Node2D" parent="."]
@@ -3340,12 +3344,14 @@ position = Vector2(465, 399)
 
 [node name="Back" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/Back"]
 texture = ExtResource("1_7vhfy")
 
 [node name="BackTrees" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/BackTrees"]
 texture = ExtResource("2_yai6n")
@@ -3355,12 +3361,14 @@ texture = ExtResource("3_n4nkd")
 
 [node name="BackTree2" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/BackTree2"]
 texture = ExtResource("4_f5j7v")
 
 [node name="BackTree3" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.45, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/BackTree3"]
 texture = ExtResource("5_helww")
@@ -3370,12 +3378,14 @@ texture = ExtResource("6_todv5")
 
 [node name="BackTree4" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/BackTree4"]
 texture = ExtResource("7_2dn5b")
 
 [node name="TopTrees" type="Parallax2D" parent="ForestBackground"]
 scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(928, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForestBackground/TopTrees"]
 texture = ExtResource("8_elvxc")
@@ -3399,8 +3409,47 @@ position = Vector2(435, 706)
 position = Vector2(-17, -5)
 shape = SubResource("CircleShape2D_fdfeb")
 
-[node name="forest2" type="Area2D" parent="Logic"]
+[node name="forest" type="Area2D" parent="Logic"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest"]
 position = Vector2(1751, 303)
 shape = SubResource("RectangleShape2D_7vhfy")
+
+[node name="TutorialPrompts" type="Node2D" parent="."]
+position = Vector2(92, -66)
+script = ExtResource("10_n4nkd")
+
+[node name="TutorialPrompt" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(495, 680)
+scale = Vector2(1.1234056, 0.22735101)
+script = ExtResource("11_f5j7v")
+text = "Sigh... press %s to dash.."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_helww")
+
+[node name="TutorialPrompt2" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(1098, 776)
+scale = Vector2(1.1234056, 0.22735101)
+script = ExtResource("11_f5j7v")
+text = "Uhm... ..You can wall jump by pressing %s while sliding, too..."
+action = "jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt2"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_helww")
+
+[node name="TutorialPrompt3" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(315, 776.00006)
+scale = Vector2(1.1234056, 0.22735101)
+script = ExtResource("11_f5j7v")
+text = "...You can press %s to jump, I guess..."
+action = "jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt3"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_helww")

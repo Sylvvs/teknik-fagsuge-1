@@ -20,11 +20,6 @@
 [ext_resource type="Script" uid="uid://dftea65yp8t8e" path="res://scripts/Counter1.gd" id="17_g8vay"]
 [ext_resource type="Script" uid="uid://sbyefjj8cx3t" path="res://scenes/Counter2.gd" id="18_3n1r1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6blqp"]
-shader = ExtResource("1_3n1r1")
-shader_parameter/flash_strength = 0.0
-shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
-
 [sub_resource type="Animation" id="Animation_rebt7"]
 resource_name = "Death"
 length = 2.0
@@ -1101,6 +1096,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfgbr"]
 size = Vector2(121, 27)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3n1r1"]
+shader = ExtResource("1_3n1r1")
+shader_parameter/flash_strength = 0.0
+shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfgbr"]
 radius = 9.0
 height = 44.0
@@ -1119,7 +1119,6 @@ height = 38.0
 radius = 25.019993
 
 [node name="Lucifer" type="CharacterBody2D"]
-material = SubResource("ShaderMaterial_6blqp")
 collision_layer = 4
 script = ExtResource("1_axd3d")
 
@@ -1142,6 +1141,7 @@ shape = SubResource("RectangleShape2D_gfgbr")
 disabled = true
 
 [node name="Lucifer" type="Sprite2D" parent="Lucifer Animation Handler/Animation virk pls"]
+material = SubResource("ShaderMaterial_3n1r1")
 position = Vector2(0, -6)
 texture = ExtResource("1_gfgbr")
 region_enabled = true
