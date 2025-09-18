@@ -126,7 +126,6 @@ offset_bottom = 653.0
 mouse_filter = 2
 texture = ExtResource("1_6d6rd")
 
-<<<<<<< Updated upstream
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -2
 scale = Vector2(1.0399988, 1.0799987)
@@ -139,14 +138,11 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 texture = ExtResource("1_6d6rd")
 
-=======
->>>>>>> Stashed changes
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_v6ms7")
 volume_db = -25.0
 autoplay = true
 
-<<<<<<< Updated upstream
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 0
@@ -156,8 +152,6 @@ offset_right = 322.0
 offset_bottom = 627.0
 text = "reset my data twin"
 
-=======
->>>>>>> Stashed changes
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SettingsContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]
