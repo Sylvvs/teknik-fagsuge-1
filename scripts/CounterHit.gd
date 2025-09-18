@@ -12,7 +12,6 @@ func enter():
 func exit():
 	super.exit()
 	sprite.material.set_shader_parameter("flash_strength", 0.0)
-	set_physics_process(false)
 
 func play_animation(anim_name: String, speed: float = 1.0):
 	animation_player.play(anim_name, -1.0, speed)
@@ -23,7 +22,6 @@ func play_animation(anim_name: String, speed: float = 1.0):
 
 
 func transition():
-	get_parent().change_state("")
 	var chance = randi() % 2
 	match chance:
 		0:

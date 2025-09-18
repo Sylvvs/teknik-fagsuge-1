@@ -15,8 +15,7 @@ func transition():
 		get_parent().change_state("LuciferAttack1")
 		print(time)
 	if time >= 10:#replace:
-		#get_parent().change_state("CounterHit")
-		get_parent().change_state("Counter2")
+		get_parent().change_state("CounterHit")
 	
 func _process(delta: float) -> void:
 	var distance = owner.direction.length()
