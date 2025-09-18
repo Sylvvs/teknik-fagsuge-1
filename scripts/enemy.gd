@@ -54,7 +54,13 @@ func _process(delta):
 
 	else:
 		sprite.material.set_shader_parameter("flash_strength", 0.0)
-
+		
+	if direction.x > 0:
+		sprite.flip_h = false
+		enemysword.scale.x = 1
+	else:
+		sprite.flip_h = true
+		enemysword.scale.x = -1
 func _physics_process(delta):
 	
 	# Gravity
@@ -72,12 +78,7 @@ func _physics_process(delta):
 		move_dir = direction.normalized()
 	print(direction, player.global_position, position)
 	# Flip sprite
-	if direction.x > 0:
-		sprite.flip_h = false
-		enemysword.scale.x = 1
-	else:
-		sprite.flip_h = true
-		enemysword.scale.x = -1
+	
 
 	# Apply horizontal movement
 	velocity.x = move_dir.x * SPEED

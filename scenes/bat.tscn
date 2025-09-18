@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b6qbbmrwc5d87"]
+[gd_scene load_steps=32 format=3 uid="uid://b6qbbmrwc5d87"]
 
 [ext_resource type="Texture2D" uid="uid://cgwj7xtvmy6x" path="res://sprites/Enemy Sprites/DarkFantasyEnemies_FREE/Bat/Bat with VFX/Bat-Attack1.png" id="1_8qtcx"]
 [ext_resource type="Script" uid="uid://e5y0h4me2cwc" path="res://scripts/BatAI/bat.gd" id="1_x4bhu"]
@@ -437,9 +437,6 @@ _data = {
 radius = 12.718441
 height = 39.604603
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8qtcx"]
-radius = 94.08507
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qtcx"]
 radius = 7.0
 height = 14.0
@@ -474,12 +471,6 @@ position = Vector2(-15.000002, 12.000002)
 rotation = -0.8240073
 shape = SubResource("CapsuleShape2D_drkvk")
 disabled = true
-
-[node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-shape = SubResource("CircleShape2D_8qtcx")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
