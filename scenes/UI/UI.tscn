@@ -101,7 +101,6 @@ texture_under = SubResource("GradientTexture2D_gl4co")
 texture_progress = SubResource("GradientTexture2D_wgnrc")
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
