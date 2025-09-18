@@ -14,5 +14,8 @@ func play_animation(anim_name: String, speed: float = 1.0):
 
 
 func transition():
+	if animation_player.is_playing():
+		return
+	else:
 		if owner.direction.length() > 45:
 			get_parent().change_state("EnemyRun")
