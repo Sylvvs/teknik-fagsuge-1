@@ -198,6 +198,7 @@ tracks/10/keys = {
 [sub_resource type="Animation" id="Animation_ud3xp"]
 resource_name = "attack 1"
 length = 1.6
+step = 0.016666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -226,13 +227,13 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(53, -1)]
+"values": [Vector2(53, -1), Vector2(-14, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -253,10 +254,10 @@ tracks/4/path = NodePath("CollisionShape2D:position")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.80776644),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(67, 2)]
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -305,6 +306,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("LuciferFiniteStateMachine/LuciferAttack1")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_k7k3s"]
@@ -1136,7 +1151,7 @@ autoplay = "idle"
 [node name="Attack1 and attack 2" type="Area2D" parent="Lucifer Animation Handler/Animation virk pls"]
 
 [node name="attack1 and attack 2" type="CollisionShape2D" parent="Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2"]
-position = Vector2(50.5, 6.5)
+position = Vector2(-16, 7)
 shape = SubResource("RectangleShape2D_gfgbr")
 disabled = true
 
@@ -1222,6 +1237,9 @@ script = ExtResource("17_g8vay")
 script = ExtResource("18_3n1r1")
 
 [node name="Counter" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 2
+monitoring = false
 
 [node name="Counter" type="CollisionShape2D" parent="Counter"]
 shape = SubResource("CircleShape2D_by1l1")
