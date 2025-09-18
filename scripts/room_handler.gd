@@ -22,7 +22,7 @@ func _ready() -> void:
 	ui = ui_scene.instantiate()
 	get_parent().add_child(ui)
 	if GameState.intro_watched:
-		load_room("forest")
+		load_room(GameState.current_room)
 	else:
 		load_room("control")
 	FadeLayer.fade_out(0.5)
@@ -65,6 +65,7 @@ func load_room(id: String) -> void:
 	add_child(next_room)
 
 	current_room = next_room
+	GameState.current_room = id
 	tilemap = current_room.get_node("TileMapLayer")
 	_update_map_bounds()
 	handle_logic()
@@ -82,7 +83,7 @@ func _on_room_animation_finished(anim_name: String) -> void:
 	if anim_name == "rah":
 		FadeLayer.fade_in(0.3).connect("finished", Callable(func():
 			GameState.intro_watched = true;
-			load_room("forest")
+			load_room(GameState.current_room)
 			FadeLayer.fade_out(0.3)
 		))
 

@@ -2,6 +2,8 @@ extends Node2D
 
 var bosses_defeated = {}
 var intro_watched = false;
+# var current_room = "tutorial_place"
+var current_room = "forest"
 
 const SAVE_GAME_PATH := "user://file1.save"
 
@@ -22,6 +24,7 @@ func _notification(what: int) -> void:
 func reset_data():
 	bosses_defeated = {}
 	intro_watched = false;
+	current_room = "forest"
 	save_game()
 
 func save_game():
@@ -29,9 +32,11 @@ func save_game():
 	
 	file.store_var(bosses_defeated)
 	file.store_var(intro_watched)
+	file.store_var(current_room)
 
 func load_game():
 	if FileAccess.file_exists(SAVE_GAME_PATH):
 		var file = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 		bosses_defeated = file.get_var()
 		intro_watched = file.get_var()
+		current_room = file.get_var()
