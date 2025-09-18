@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
+@onready var player = null
 @onready var logic_pos = get_parent().find_child("Logic")
 @onready var sprite : Sprite2D = $"Lucifer Animation Handler/Lucifer"
 @onready var idk : Node2D = $"Lucifer Animation Handler"
