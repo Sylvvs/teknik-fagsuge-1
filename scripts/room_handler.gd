@@ -61,7 +61,7 @@ func load_room(id: String) -> void:
 			previous_calm = player.get_node("CharacterBody2D").calm_energy
 		current_room.queue_free()
 
-	var next_room = load("res://scenes/%s.tscn" % id).instantiate()
+	var next_room = load("res://scenes/Levels/%s.tscn" % id).instantiate()
 	add_child(next_room)
 
 	current_room = next_room
