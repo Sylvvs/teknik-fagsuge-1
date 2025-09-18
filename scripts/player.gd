@@ -208,6 +208,7 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_released('jump') and velocity.y < 0):
 		velocity.y = 0
 		if wall_jump_timer:
+			wall_jump_timer = 0
 			velocity.x = 0
 		
 	velocity.y += GRAV * delta
