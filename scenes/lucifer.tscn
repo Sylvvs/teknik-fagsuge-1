@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://badnrj6kmwbc0"]
 
-[ext_resource type="Shader" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
+[ext_resource type="Shader" uid="uid://m6yvnupkxi6y" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
 [ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="1_gfgbr"]
 [ext_resource type="Texture2D" uid="uid://cbig04awuhwb6" path="res://sprites/Lucifer/Sprite/9. Death.png" id="2_26037"]
