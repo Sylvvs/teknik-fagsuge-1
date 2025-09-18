@@ -34,6 +34,8 @@ var dashing_velocity = Vector2.ZERO
 var state_timer = 0.0
 var immunity_timer = 0.0
 var direction = -1
+var time_since_floor = 0.0
+var coyote_time = 0.3
 
 # === Combo System ===
 var combo_step = 0
@@ -108,6 +110,7 @@ func _process(delta: float) -> void:
 		state_timer = 0.0
 	
 	immunity_timer += delta
+	time_since_floor += delta
 
 # === Physics Process ===
 func _physics_process(delta: float) -> void:
@@ -132,7 +135,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_wall() and ["parameters/AnimationNodeStateMachine/conditions/sliding"] and not is_on_floor():
 			at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = true
 			velocity.y = -JUMP
-			velocity.x = -direction * SPEED * 2
+			velocity.x = -direction * SPEED * 1.4
 			wall_jump_timer = WALL_JUMP_LOCK
 			touched_the_floor = true
 			
@@ -169,7 +172,7 @@ func _physics_process(delta: float) -> void:
 
 	
 	# Jumping
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and time_since_floor < coyote_time :
 		velocity.y = -JUMP
 
 	# Dash input
@@ -225,6 +228,7 @@ func _physics_process(delta: float) -> void:
 		direction = 1
 
 	if is_on_floor():
+		time_since_floor = 0
 		touched_the_floor = true
 		is_air_attacking = false
 		at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = false
