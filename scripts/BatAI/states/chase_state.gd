@@ -1,10 +1,9 @@
 extends BatState
 class_name BatChase
 
-@export var enemy: CharacterBody2D
-@export var move_speed := 80.0
-@onready var player : Node2D = null
-@onready var anim = $"../../Animation handler Bat/AnimationPlayer"
+
+@export var move_speed := 160
+
 
 var direction = Vector2.ZERO
 
@@ -26,3 +25,5 @@ func physics_update(delta: float):
 		Transitioned.emit(self,'BatAttack1')
 	if direction.length() > 250:
 		Transitioned.emit(self,'BatIdle')
+	if enemy.health <= 0:
+		Transitioned.emit(self,'BatDeath')

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgm2dymvpo7pj"]
+[gd_scene load_steps=23 format=3 uid="uid://bgm2dymvpo7pj"]
 
 [ext_resource type="Script" uid="uid://dgp6nniabo2ix" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Shader" uid="uid://c3hva5bn4dvdx" path="res://scripts/enemy.gdshader" id="2_ipns3"]
 [ext_resource type="Texture2D" uid="uid://blyevdelamh30" path="res://sprites/Enemy Sprites/NightBorne/NightBorne.png" id="2_md0e3"]
 [ext_resource type="Script" uid="uid://bib1q11j850bn" path="res://scripts/EnemyFiniteStateMachine.gd" id="4_md484"]
 [ext_resource type="Script" uid="uid://ci3w7vxset13p" path="res://scripts/EnemyRun.gd" id="6_8qclf"]
@@ -8,6 +9,11 @@
 [ext_resource type="Script" uid="uid://ca70wkdrgylit" path="res://scripts/EnemyDeath.gd" id="7_nenq2"]
 [ext_resource type="Script" uid="uid://6dbajf3hcxmr" path="res://scripts/EnemyAttack.gd" id="7_w8i8w"]
 [ext_resource type="Script" uid="uid://c0mtsc7tmsn5j" path="res://scenes/EnemeHurt.gd" id="8_md484"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qclf"]
+shader = ExtResource("2_ipns3")
+shader_parameter/flash_strength = 0.0
+shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
 
 [sub_resource type="Animation" id="Animation_md0e3"]
 resource_name = "Attack"
@@ -499,6 +505,7 @@ script = ExtResource("1_7p1mj")
 [node name="Animation Handler Enemy" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Animation Handler Enemy"]
+material = SubResource("ShaderMaterial_8qclf")
 texture = ExtResource("2_md0e3")
 region_enabled = true
 region_rect = Rect2(0, 0, 80, 80)

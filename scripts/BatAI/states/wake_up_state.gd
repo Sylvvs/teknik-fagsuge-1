@@ -1,9 +1,6 @@
 extends BatState
 class_name BatWakeUp
 
-@export var enemy: CharacterBody2D
-@onready var player : Node2D = null
-@onready var anim = $"../../Animation handler Bat/AnimationPlayer"
 
 func enter():
 	player = get_tree().get_first_node_in_group("player")
@@ -17,3 +14,5 @@ func physics_update(delta: float):
 	if anim.is_playing():
 		return
 	Transitioned.emit(self,'BatChase')
+	if enemy.health <= 0:
+		Transitioned.emit(self,'BatDeath')
