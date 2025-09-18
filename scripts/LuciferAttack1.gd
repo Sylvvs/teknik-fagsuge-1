@@ -3,6 +3,7 @@ extends LuciferState
 func enter():
 	super.enter()
 	await play_animation("attack 1", 1)
+	
 
 
 func play_animation(anim_name: String, speed: float = 1.0):
@@ -13,5 +14,5 @@ func play_animation(anim_name: String, speed: float = 1.0):
 
 
 func transition():
-		if owner.direction.length() > 45:
-			get_parent().change_state("LuciferFollow")
+	if owner.direction.length() > 45:
+		get_parent().change_state("LuciferFollow")

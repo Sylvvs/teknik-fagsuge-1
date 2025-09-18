@@ -70,7 +70,7 @@ func _physics_process(delta):
 			velocity.y = JUMP_FORCE
 	else:
 		move_dir = direction.normalized()
-
+	print(direction, player.global_position, position)
 	# Flip sprite
 	if direction.x > 0:
 		sprite.flip_h = false
