@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://vv5wy43wa1ns"]
+[gd_scene load_steps=21 format=4 uid="uid://vv5wy43wa1ns"]
 
 [ext_resource type="Script" uid="uid://bvvxw5em7cuwj" path="res://scripts/forest.gd" id="1_0afsd"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_xijx7"]
@@ -14,8 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://nduwpk3v31cb" path="res://icon.svg" id="12_dabdc"]
 [ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/test_npc.gd" id="13_cf55d"]
 [ext_resource type="AudioStream" uid="uid://wdktp62fr5jc" path="res://Audio/forest-tales-background-orchestral-mystical-music-for-halloween-video-252003.mp3" id="14_cf55d"]
-[ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="15_pyn53"]
-[ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="16_uwbj1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dabdc"]
 texture = ExtResource("1_xijx7")
@@ -3456,17 +3454,3 @@ texture = ExtResource("12_dabdc")
 stream = ExtResource("14_cf55d")
 volume_db = -25.0
 autoplay = true
-
-[node name="TutorialPrompts" type="Node2D" parent="."]
-position = Vector2(92, -66)
-script = ExtResource("15_pyn53")
-
-[node name="TutorialPrompt" type="Area2D" parent="TutorialPrompts"]
-position = Vector2(67, 635)
-scale = Vector2(1.1234056, 0.22735101)
-script = ExtResource("16_uwbj1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt"]
-position = Vector2(88, -100)
-scale = Vector2(2.5, 20)
-shape = SubResource("RectangleShape2D_j3csf")

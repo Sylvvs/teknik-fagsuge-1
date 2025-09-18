@@ -83,7 +83,7 @@ func _on_room_animation_finished(anim_name: String) -> void:
 	if anim_name == "rah":
 		FadeLayer.fade_in(0.3).connect("finished", Callable(func():
 			GameState.intro_watched = true;
-			load_room("forest")
+			load_room("tutorial_place")
 			FadeLayer.fade_out(0.3)
 		))
 
