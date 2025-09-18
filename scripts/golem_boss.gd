@@ -40,10 +40,10 @@ func _process(_delta):
 	
 	if flash_timer > 0:
 		flash_timer -= _delta
-		print('hello')
-		sprite.material.set("shader_param/flash_strength", 1.0)
+		sprite.material.set_shader_parameter("flash_strength", 1.0)
+
 	else:
-		sprite.material.set("shader_param/flash_strength", 0.0)
+		sprite.material.set_shader_parameter("flash_strength", 0.0)
 
 func _physics_process(delta):
 	if direction.x > 0:
