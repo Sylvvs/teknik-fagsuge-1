@@ -193,7 +193,7 @@ func _physics_process(delta: float) -> void:
 	  				  # Only air attack if not currently attacking in ai
 		else:
 			   # Only run ground combo logic if on floor
-			if combo_step == 0 and not is_attacking and wall_jump_timer > 0:
+			if combo_step == 0 and not is_attacking :
 				start_combo()
 			elif can_combo:
 				combo_input_buffered = true
@@ -205,7 +205,7 @@ func _physics_process(delta: float) -> void:
 	#	parry()
 	# Apply gravity
 	
-	if Input.is_action_just_released('jump') and velocity.y < 0:
+	if Input.is_action_just_released('jump') and velocity.y < 0 and wall_jump_timer > 0:
 		velocity.y = 0
 	velocity.y += GRAV * delta
 	
