@@ -1323,7 +1323,7 @@ height = 44.0
 radius = 6.0827627
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfgbr"]
-radius = 93.05912
+radius = 621.00323
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x5ceb"]
 radius = 6.0
@@ -1387,7 +1387,7 @@ offset_top = -30.0
 offset_right = 111.0
 offset_bottom = 15.0
 theme_override_font_sizes/font_size = 24
-text = "Lucifer, The Demon King"
+text = "Lucifer, The Devil Incarnate"
 
 [node name="Label" type="Label" parent="UI"]
 self_modulate = Color(1, 1, 1, 0)
@@ -1406,6 +1406,7 @@ theme_override_font_sizes/font_size = 64
 text = "Boss Slain"
 
 [node name="debug" type="Label" parent="."]
+visible = false
 offset_left = -16.0
 offset_top = -44.0
 offset_right = 24.0
@@ -1440,7 +1441,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_u7n25")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="PlayerDetectionLucifer" type="CollisionShape2D" parent="PlayerDetection"]
