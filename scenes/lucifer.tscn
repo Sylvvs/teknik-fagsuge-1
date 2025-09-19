@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://badnrj6kmwbc0"]
+[gd_scene load_steps=45 format=3 uid="uid://badnrj6kmwbc0"]
 
 [ext_resource type="Shader" uid="uid://m6yvnupkxi6y" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
 [ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
@@ -12,15 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://23qfgakeug6f" path="res://sprites/Lucifer/Sprite/2. run.png" id="8_by1l1"]
 [ext_resource type="Texture2D" uid="uid://dv1uc6dd3omjb" path="res://sprites/Lucifer/Sprite/6. shoot effect.png" id="9_k7h6p"]
 [ext_resource type="Script" uid="uid://dt1wf8aqhhw13" path="res://scripts/LuciferState.gd" id="10_26037"]
-[ext_resource type="Script" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
+[ext_resource type="Script" uid="uid://divyuelmy4jvq" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
 [ext_resource type="Animation" uid="uid://cm78vr8kskdyw" path="res://animations/shootEffect.anim" id="10_yb7wj"]
-[ext_resource type="Script" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
+[ext_resource type="Script" uid="uid://xt4plptbs514" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
 [ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
 [ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
 [ext_resource type="Script" uid="uid://dxidmm07vrkby" path="res://scripts/CounterHit.gd" id="16_by1l1"]
 [ext_resource type="Script" uid="uid://bflixcwjghotu" path="res://scripts/LuciferMagicAttack.gd" id="17_6blqp"]
 [ext_resource type="Script" uid="uid://dftea65yp8t8e" path="res://scripts/Counter1.gd" id="17_g8vay"]
 [ext_resource type="Script" uid="uid://sbyefjj8cx3t" path="res://scenes/Counter2.gd" id="18_3n1r1"]
+[ext_resource type="Script" uid="uid://cbu1650mbm0cc" path="res://scripts/LuciferIdleShield.gd" id="18_3nmxd"]
 [ext_resource type="PackedScene" uid="uid://chyjducmfwjja" path="res://scenes/Projectile.tscn" id="19_jrxvm"]
 
 [sub_resource type="Animation" id="Animation_rebt7"]
@@ -128,7 +129,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -140,7 +141,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Area2D/idleShield:position")
+tracks/6/path = NodePath("Idleshield/idleShield:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -152,7 +153,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Area2D/idleShield:scale")
+tracks/7/path = NodePath("Idleshield/idleShield:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -265,7 +266,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -405,7 +406,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -518,7 +519,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -636,7 +637,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -749,7 +750,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -761,7 +762,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Area2D/idleShield:position")
+tracks/6/path = NodePath("Idleshield/idleShield:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -773,7 +774,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Area2D/idleShield:scale")
+tracks/7/path = NodePath("Idleshield/idleShield:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -885,7 +886,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -998,7 +999,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Area2D/idleShield:disabled")
+tracks/5/path = NodePath("Idleshield/idleShield:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1180,9 +1181,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gfgbr")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Idleshield" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
-[node name="idleShield" type="CollisionShape2D" parent="Area2D"]
+[node name="idleShield" type="CollisionShape2D" parent="Idleshield"]
 shape = SubResource("CircleShape2D_u7n25")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
@@ -1216,7 +1219,7 @@ script = ExtResource("14_x5ceb")
 script = ExtResource("10_26037")
 
 [node name="LuciferIdleShield" type="Node2D" parent="LuciferFiniteStateMachine"]
-script = ExtResource("10_26037")
+script = ExtResource("18_3nmxd")
 
 [node name="LuciferMagicAttack" type="Node2D" parent="LuciferFiniteStateMachine"]
 script = ExtResource("17_6blqp")
@@ -1243,6 +1246,7 @@ monitoring = false
 shape = SubResource("CircleShape2D_by1l1")
 
 [connection signal="body_entered" from="Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2" to="." method="_on_attack_1_and_attack_2_body_entered"]
+[connection signal="area_entered" from="Idleshield" to="LuciferFiniteStateMachine/LuciferIdleShield" method="_on_idleshield_area_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="LuciferFiniteStateMachine/LuciferIdle" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="area_entered" from="Counter" to="LuciferFiniteStateMachine/CounterHit" method="_on_counter_area_entered"]
