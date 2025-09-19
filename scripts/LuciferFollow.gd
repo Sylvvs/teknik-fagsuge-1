@@ -21,7 +21,7 @@ func transition():
 	var distance = owner.direction.length()
 	if distance < 45:
 		get_parent().call_deferred("change_state", "LuciferAttack1")
-		
+	
 func _process(delta: float) -> void:
 	var distance = owner.direction.length()
 	if distance >= 0 and distance <= 1000: 
