@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://c7l78ji1kflsp"
-path="res://.godot/imported/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3-754c91c3f05759460941a5724ec8bcce.mp3str"
+path="res://.godot/imported/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3-219a9871ae5129f9a9692d5bf71eab61.mp3str"
 
 [deps]
 
-source_file="res://audio/Sound Effects/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3"
-dest_files=["res://.godot/imported/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3-754c91c3f05759460941a5724ec8bcce.mp3str"]
+source_file="res://Audio/Sound Effects/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3"
+dest_files=["res://.godot/imported/Granite Golem HitDamage (Terraria Sound) - Sound Effect for editing.mp3-219a9871ae5129f9a9692d5bf71eab61.mp3str"]
 
 [params]
 
