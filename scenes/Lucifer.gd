@@ -7,10 +7,22 @@ extends CharacterBody2D
 @onready var aniplayrot : Marker2D = $"Lucifer Animation Handler/Animation virk pls"
 @onready var debug_tag : Label = $debug
 @onready var collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var progress_bar = $UI/ProgressBar
 var direction : Vector2
 var SPEED : float = 80
 var GRAVITY : float = 500.0
+var health = 500
 
+
+func apply_damage(amount : float):
+	if get_node("LuciferFiniteStateMachine").current_state.name == "CounterHit":
+		return
+	health -= amount
+	progress_bar.value = health
+	if health <= 0:
+		progress_bar.visible = false
+		find_child("LuciferFiniteStateMachine").change_state("LuciferDeath")
+		print(health)
 
 func _ready():
 	set_physics_process(false)

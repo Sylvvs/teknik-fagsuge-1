@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://badnrj6kmwbc0"]
+[gd_scene load_steps=47 format=3 uid="uid://badnrj6kmwbc0"]
 
 [ext_resource type="Shader" uid="uid://m6yvnupkxi6y" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
 [ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
@@ -11,19 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://dv813pju7h3me" path="res://sprites/Lucifer/Sprite/7. jump.png" id="7_x5ceb"]
 [ext_resource type="Texture2D" uid="uid://23qfgakeug6f" path="res://sprites/Lucifer/Sprite/2. run.png" id="8_by1l1"]
 [ext_resource type="Texture2D" uid="uid://dv1uc6dd3omjb" path="res://sprites/Lucifer/Sprite/6. shoot effect.png" id="9_k7h6p"]
-[ext_resource type="Script" uid="uid://dt1wf8aqhhw13" path="res://scripts/LuciferState.gd" id="10_26037"]
-[ext_resource type="Script" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
+[ext_resource type="Script" uid="uid://divyuelmy4jvq" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
 [ext_resource type="Animation" uid="uid://cm78vr8kskdyw" path="res://animations/shootEffect.anim" id="10_yb7wj"]
-[ext_resource type="Script" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
+[ext_resource type="Script" uid="uid://xt4plptbs514" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
 [ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
 [ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
 [ext_resource type="Script" uid="uid://dxidmm07vrkby" path="res://scripts/CounterHit.gd" id="16_by1l1"]
-[ext_resource type="Script" uid="uid://c77waxkbwnfsj" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
+[ext_resource type="Script" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
 [ext_resource type="Script" uid="uid://bflixcwjghotu" path="res://scripts/LuciferMagicAttack.gd" id="17_6blqp"]
 [ext_resource type="Script" uid="uid://dftea65yp8t8e" path="res://scripts/Counter1.gd" id="17_g8vay"]
 [ext_resource type="Script" uid="uid://sbyefjj8cx3t" path="res://scenes/Counter2.gd" id="18_3n1r1"]
 [ext_resource type="Script" uid="uid://cbu1650mbm0cc" path="res://scripts/LuciferIdleShield.gd" id="18_3nmxd"]
 [ext_resource type="PackedScene" uid="uid://chyjducmfwjja" path="res://scenes/Projectile.tscn" id="19_jrxvm"]
+[ext_resource type="Script" uid="uid://dps226gshkr03" path="res://scenes/LuciferDeath.gd" id="21_bw0eu"]
 
 [sub_resource type="Animation" id="Animation_rebt7"]
 resource_name = "Death"
@@ -63,6 +63,54 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(8, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Idleshield/idleShield:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/Hitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Counter/Counter:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_mlt2a"]
@@ -194,6 +242,30 @@ tracks/10/path = NodePath("Hitbox/Hitbox:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("UI/Label:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Counter/Counter:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -340,6 +412,18 @@ tracks/10/keys = {
 "method": &"attack"
 }]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Counter/Counter:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_k7k3s"]
 resource_name = "attack 2"
@@ -470,6 +554,18 @@ tracks/9/keys = {
 "method": &"last_slash"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Counter/Counter:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_g8abq"]
 resource_name = "fall"
@@ -578,6 +674,18 @@ tracks/8/path = NodePath("Hitbox/Hitbox:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Counter/Counter:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -696,6 +804,18 @@ tracks/8/path = NodePath("Hitbox/Hitbox:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Counter/Counter:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -824,7 +944,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -833,6 +953,18 @@ tracks/10/path = NodePath("Hitbox/Hitbox:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Counter/Counter:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -950,6 +1082,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Counter/Counter:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_17aqd"]
 resource_name = "run"
@@ -1051,6 +1195,49 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Counter/Counter:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bw0eu"]
+resource_name = "boss_killed"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxct"]
 _data = {
@@ -1058,6 +1245,7 @@ _data = {
 &"RESET": SubResource("Animation_mlt2a"),
 &"attack 1": SubResource("Animation_ud3xp"),
 &"attack 2": SubResource("Animation_k7k3s"),
+&"boss_killed": SubResource("Animation_bw0eu"),
 &"fall": SubResource("Animation_g8abq"),
 &"fullShield": SubResource("Animation_qrma5"),
 &"idle": SubResource("Animation_dpop1"),
@@ -1144,7 +1332,7 @@ height = 38.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_by1l1"]
 radius = 25.019993
 
-[node name="Lucifer" type="CharacterBody2D"]
+[node name="Lucifer" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_axd3d")
@@ -1173,6 +1361,49 @@ position = Vector2(0, -6)
 texture = ExtResource("1_gfgbr")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 53)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+visible = false
+custom_minimum_size = Vector2(1000, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -27.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 500.0
+value = 500.0
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -30.0
+offset_right = 111.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 24
+text = "Lucifer, The Demon King"
+
+[node name="Label" type="Label" parent="UI"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -44.0
+offset_right = 156.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Boss Slain"
 
 [node name="debug" type="Label" parent="."]
 offset_left = -16.0
@@ -1246,7 +1477,7 @@ script = ExtResource("17_6blqp")
 beam_node = ExtResource("19_jrxvm")
 
 [node name="LuciferDeath" type="Node2D" parent="LuciferFiniteStateMachine"]
-script = ExtResource("10_26037")
+script = ExtResource("21_bw0eu")
 
 [node name="CounterHit" type="Node2D" parent="LuciferFiniteStateMachine"]
 script = ExtResource("16_by1l1")
@@ -1264,6 +1495,7 @@ monitoring = false
 
 [node name="Counter" type="CollisionShape2D" parent="Counter"]
 shape = SubResource("CircleShape2D_by1l1")
+disabled = true
 
 [connection signal="body_entered" from="Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2" to="." method="_on_attack_1_and_attack_2_body_entered"]
 [connection signal="area_entered" from="Idleshield" to="LuciferFiniteStateMachine/LuciferIdleShield" method="_on_idleshield_area_entered"]

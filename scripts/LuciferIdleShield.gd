@@ -30,6 +30,7 @@ func _on_idleshield_area_entered(area: Area2D) -> void:
 		print(knockback_dir)
 
 func _physics_process(delta):
+	owner.velocity.y += 500 * delta
 	knockback_time += delta
 	if knockback_time <= knockback_time_max:
 		player.velocity.y -= 800 * delta 

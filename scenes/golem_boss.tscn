@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bac0omqx3ux2n" path="res://scripts/golem_boss.gd" id="1_jiwok"]
 [ext_resource type="Texture2D" uid="uid://bspf732rxnf24" path="res://sprites/PNG sheet/Character_sheet.png" id="1_o8j3a"]
-[ext_resource type="Shader" uid="uid://gbh4b5hmejx3" path="res://scripts/golem_boss.gdshader" id="2_8f0rq"]
+[ext_resource type="Shader" path="res://scripts/golem_boss.gdshader" id="2_8f0rq"]
 [ext_resource type="Texture2D" uid="uid://c6h8k68dees6j" path="res://sprites/weapon PNG/Laser_sheet.png" id="2_s54pl"]
 [ext_resource type="Script" uid="uid://r3t6b3ksvn0s" path="res://scripts/FiniteStateMachine.gd" id="3_mwilj"]
 [ext_resource type="Script" uid="uid://dv3ta40clpgay" path="res://scripts/idle.gd" id="4_5raa4"]
@@ -1040,9 +1040,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -27.0
-offset_right = 2.0
+offset_left = -78.0
+offset_top = -22.0
+offset_right = 122.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
 max_value = 250.0
