@@ -6,6 +6,7 @@ var dialogue_box: CanvasLayer
 var current_npc_id: String
 var dialogue_waiting_close: bool = false
 
+signal dialogue_finished(npc_id: String, new_state: String)
 
 @onready var DialogueBoxScene := preload("res://scenes/dialogue_box2.tscn")
 
@@ -52,8 +53,11 @@ func show_dialogue(state_data: Dictionary, speaker: String):
 	var dialogues = state_data["dialogues"]
 	_run_dialogue(dialogues[0]) 
 
-func _set_state(npc_id, state):
+func set_npc_state(npc_id: String, state: String) -> void:
 	npc_states[npc_id] = state
+
+func get_npc_state(npc_id: String) -> String:
+	return npc_states.get(npc_id, "default")
 
 func _run_dialogue(dialogue: Dictionary):
 	var label: RichTextLabel = dialogue_box.label
@@ -113,9 +117,14 @@ func _close_dialogue():
 	if dialogue_box:
 		dialogue_box.queue_free()
 		dialogue_box = null
-		current_npc_id = ""
 		get_tree().root.get_node("RoomHandler").forcing_movement = false
 		dialogue_closed_recently = true
+		
+		var state = get_npc_state(current_npc_id)
+		print(state)
+		emit_signal("dialogue_finished", current_npc_id, state)
+		
+		current_npc_id = ""
 		
 func _process(delta):
 	if dialogue_closed_recently:

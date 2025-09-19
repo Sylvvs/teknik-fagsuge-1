@@ -8,5 +8,6 @@ func enter():
 	audio.play()
 	GameState.bosses_defeated["Golem"] = true;
 	GameState.boss_defeated_trigger()
+	GameState.orb_obtained = true;
 	await animation_player.animation_finished
 	animation_player.play("boss_slain")
