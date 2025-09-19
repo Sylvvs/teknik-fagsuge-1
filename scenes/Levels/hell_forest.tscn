@@ -202,7 +202,7 @@ texture = ExtResource("5_0wabp")
 12:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_f2c6g"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_o0kxg")
 
 [node name="Hell Forest" type="Node2D"]

@@ -8,7 +8,9 @@ func enter():
 	owner.set_physics_process(false)
 	await play_animation("attack 1", 1)
 
-
+func exit():
+	super.exit()
+	owner.set_physics_process(true)
 
 func attack():
 	dash_time = 0
@@ -32,4 +34,5 @@ func transition():
 		return
 	else:
 		if owner.direction.length() > 45:
+			owner.set_physics_process(true)
 			get_parent().change_state("LuciferFollow")
