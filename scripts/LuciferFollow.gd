@@ -3,8 +3,8 @@ var time = 0
 var has_countered : bool = false
 var counter_timer = randi_range(15,25)
 
-var attacks = ["LuciferAttack1", "LuciferAttack2", "CounterHit"]
-
+#var attacks = ["LuciferAttack1", "LuciferAttack2", "CounterHit",]
+var attacks = ["LuciferIdleShield"]
 func enter():
 	super.enter()
 	time = 0
