@@ -3465,7 +3465,7 @@ shape = SubResource("RectangleShape2D_helww")
 position = Vector2(315, 776.00006)
 scale = Vector2(1.1234056, 0.22735101)
 script = ExtResource("11_f5j7v")
-text = "Press %s to jump"
+text = "Hold %s to jump"
 action = "jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt3"]
