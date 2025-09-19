@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=4 uid="uid://fpchv7r8fwp0"]
 
-[ext_resource type="PackedScene" uid="uid://11k4gkw30r7i" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
+[ext_resource type="PackedScene" path="res://scenes/golem_boss.tscn" id="1_3n20u"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="1_g2a2m"]
 [ext_resource type="Texture2D" uid="uid://bf2k82iinf1n0" path="res://sprites/Cave background/Parallax Cave/1.png" id="1_qvmem"]
 [ext_resource type="Texture2D" uid="uid://xfle3fgvyng3" path="res://sprites/Cave background/Parallax Cave/2.png" id="2_010di"]
@@ -4385,11 +4385,11 @@ tile_set = SubResource("TileSet_pmh52")
 [node name="Spawn" type="Marker2D" parent="Logic"]
 position = Vector2(85, 550)
 
-[node name="forest" type="Area2D" parent="Logic"]
+[node name="well" type="Area2D" parent="Logic"]
 position = Vector2(1059, 569.00006)
 scale = Vector2(1.1234056, 0.22735101)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/forest"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Logic/well"]
 position = Vector2(103.25741, -92.36842)
 scale = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_c7j7s")

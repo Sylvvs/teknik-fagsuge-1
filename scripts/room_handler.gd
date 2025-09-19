@@ -59,13 +59,14 @@ func load_room(id: String) -> void:
 			player.queue_free()
 			previous_hp = player.get_node("CharacterBody2D").health
 			previous_calm = player.get_node("CharacterBody2D").calm_energy
-		current_room.queue_free()
+		current_room.free()
 
 	var next_room = load("res://scenes/Levels/%s.tscn" % id).instantiate()
 	add_child(next_room)
 
 	current_room = next_room
 	GameState.current_room = id
+	print(current_room.get_children())
 	tilemap = current_room.get_node("TileMapLayer")
 	_update_map_bounds()
 	handle_logic()

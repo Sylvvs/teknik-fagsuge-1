@@ -121,7 +121,6 @@ func _close_dialogue():
 		dialogue_closed_recently = true
 		
 		var state = get_npc_state(current_npc_id)
-		print(state)
 		emit_signal("dialogue_finished", current_npc_id, state)
 		
 		current_npc_id = ""
