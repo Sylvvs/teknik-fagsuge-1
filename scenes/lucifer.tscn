@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
 [ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
 [ext_resource type="Script" uid="uid://dxidmm07vrkby" path="res://scripts/CounterHit.gd" id="16_by1l1"]
-[ext_resource type="Script" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
+[ext_resource type="Script" uid="uid://c77waxkbwnfsj" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
 [ext_resource type="Script" uid="uid://bflixcwjghotu" path="res://scripts/LuciferMagicAttack.gd" id="17_6blqp"]
 [ext_resource type="Script" uid="uid://dftea65yp8t8e" path="res://scripts/Counter1.gd" id="17_g8vay"]
 [ext_resource type="Script" uid="uid://sbyefjj8cx3t" path="res://scenes/Counter2.gd" id="18_3n1r1"]
@@ -565,6 +565,37 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bw0eu"]
+resource_name = "boss_killed"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_g8abq"]
@@ -1208,37 +1239,6 @@ tracks/8/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_bw0eu"]
-resource_name = "boss_killed"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Label:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxct"]
 _data = {
 &"Death": SubResource("Animation_rebt7"),
@@ -1258,10 +1258,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfgbr"]
 size = Vector2(121, 34.5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3n1r1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw0eu"]
 shader = ExtResource("1_3n1r1")
 shader_parameter/flash_strength = 0.0
-shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
+shader_parameter/flash_color_target = Vector4(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_jrxvm"]
 resource_name = "Magic"
@@ -1356,7 +1356,7 @@ shape = SubResource("RectangleShape2D_gfgbr")
 disabled = true
 
 [node name="Lucifer" type="Sprite2D" parent="Lucifer Animation Handler/Animation virk pls"]
-material = SubResource("ShaderMaterial_3n1r1")
+material = SubResource("ShaderMaterial_bw0eu")
 position = Vector2(0, -6)
 texture = ExtResource("1_gfgbr")
 region_enabled = true

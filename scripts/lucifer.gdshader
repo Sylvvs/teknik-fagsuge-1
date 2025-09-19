@@ -3,7 +3,7 @@ shader_type canvas_item;
 
 // Uniform variables
 uniform float flash_strength : hint_range(0.0, 1.0) = 0.0;  // Flash strength, between 0 and 1
-uniform vec4 flash_color_target = vec4(0.3, 0.0, 0.3, 1.0);  // Dark purple (RGB: 0.3, 0.0, 0.3, Alpha: 1.0)
+uniform vec4 flash_color_target = vec4(1.0, 1.0, 1.0, 1.0);  // Dark purple (RGB: 0.3, 0.0, 0.3, Alpha: 1.0)
 
 // Fragment shader function
 void fragment() {

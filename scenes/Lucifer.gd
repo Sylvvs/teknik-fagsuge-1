@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = null
 @onready var logic_pos = get_parent().find_child("Logic")
-@onready var sprite : Sprite2D = $"Lucifer Animation Handler/Lucifer"
+@onready var sprite : Sprite2D = $"Lucifer Animation Handler/Animation virk pls/Lucifer"
 @onready var idk : Node2D = $"Lucifer Animation Handler"
 @onready var aniplayrot : Marker2D = $"Lucifer Animation Handler/Animation virk pls"
 @onready var debug_tag : Label = $debug
@@ -12,11 +12,15 @@ var direction : Vector2
 var SPEED : float = 80
 var GRAVITY : float = 500.0
 var health = 500
+var flash_time = 0.2
+var flash_timer = 0.0
 
 
 func apply_damage(amount : float):
 	if get_node("LuciferFiniteStateMachine").current_state.name == "CounterHit":
 		return
+	flash_timer = flash_time
+		
 	health -= amount
 	progress_bar.value = health
 	if health <= 0:
@@ -32,7 +36,12 @@ func _process(_delta: float) -> void:
 		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 		if not player:
 			return
-	
+	if flash_timer > 0:
+		flash_timer -= _delta
+		sprite.material.set_shader_parameter("flash_strength", 1.0)
+
+	else:
+		sprite.material.set_shader_parameter("flash_strength", 0.0)
 	# Calculate horizontal direction towards player
 	# Direction towards player
 	
