@@ -1,14 +1,14 @@
 extends LuciferState
 @onready var idle_shield : Area2D = $"../../Idleshield"
 var knockback_time = 0
-var knockback_time_max = 3.0
+var knockback_time_max = 0.1
 var knockback_dir
 var knockback_strength = 3000
 var shield_hit = false
 func enter():
 	super.enter()
-	knockback_time = 0
-	knockback_time_max = 3.0
+	knockback_time_max = 0.1
+	knockback_time = knockback_time_max
 	idle_shield.monitoring = true
 	shield_hit = false
 	animation_player.play("idleShield")
@@ -23,16 +23,21 @@ func _on_idleshield_area_entered(area: Area2D) -> void:
 	if area.owner and area.owner.is_in_group("player"):
 		player = get_tree().get_first_node_in_group("player").get_node("CharacterBody2D")
 		shield_hit = true
+		knockback_time = 0
+		player.global_position.y -= 20
+		knockback_dir = (player.global_position - owner.position).normalized()
+		player.global_position.y += 20
+		print(knockback_dir)
+
 func _physics_process(delta):
 	knockback_time += delta
-	
-	if knockback_time <= knockback_time_max and shield_hit:
-		knockback_time = 0
+	if knockback_time <= knockback_time_max:
+		player.velocity.y -= 800 * delta 
 		shield_hit = false
-		knockback_strength = 3000
-		knockback_dir = (player.global_position - owner.position).normalized()
-		player.position.y -= 1
-		player.velocity = knockback_strength * knockback_dir
+		var knockback_x = 600
+		var knockback_y = 100
+		player.velocity.y += knockback_y * knockback_dir.y
+		player.velocity.x += knockback_x * knockback_dir.x
 		player.move_and_slide()
 		
 func transition():
