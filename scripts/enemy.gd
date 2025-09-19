@@ -12,7 +12,7 @@ var switch_timer := 0.0
 const SPEED := 80
 const GRAVITY := 600.0
 const JUMP_FORCE := -300.0
-var health = 50
+var health = 25
 var flash_time = 0.2
 var flash_timer = 0.0
 

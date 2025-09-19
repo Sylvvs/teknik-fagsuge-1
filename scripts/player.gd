@@ -14,7 +14,7 @@ const IMMUNITY_TIME = 0.5
 # === State Variables ===
 var damage = 5
 var max_health = 10
-var health = max_health
+var health = 10
 var is_special_attacking = false
 var is_healing = false
 var is_jumping = false
@@ -26,6 +26,7 @@ var is_dashing = false
 var waiting_for_combo_input = false
 var is_air_attacking = false
 var touched_the_floor = false
+var is_dying = false
 
 # === Movement / Effects ===
 var knockback_velocity = Vector2.ZERO
@@ -127,7 +128,9 @@ func _physics_process(delta: float) -> void:
 	
 	#Die
 	if health <= 0:
-		get_tree().quit()
+		reset_all_conditions()
+		die()
+		#get_tree().quit()
 		
 	
 			# Jumping
@@ -157,7 +160,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y += GRAV * delta
 		move_and_slide()
 		return
-
+	elif is_dying:
+		velocity.x = 0
+		velocity.y += GRAV * delta
+		move_and_slide()
+		return
 	# Dash logic
 	elif is_dashing:
 		velocity.x = dashing_velocity
@@ -350,7 +357,7 @@ func _on_dash_animation_end():
 
 # === Damage & Knockback ===
 func take_damage(amount: int, from_position: Vector2) -> void:
-	if immunity_timer < IMMUNITY_TIME:
+	if (immunity_timer < IMMUNITY_TIME) or is_dying:
 		return
 	else:
 		immunity_timer = 0.0
@@ -477,3 +484,16 @@ func _on_slide():
 	if touched_the_floor:
 		sprite.flip_h = !sprite.flip_h
 	touched_the_floor = false
+
+func die(): 
+	at["parameters/AnimationNodeStateMachine/conditions/death"] = true
+	is_dying = true
+	pass
+func fade_to_title():
+	FadeLayer.fade_in(0.3).connect("finished", Callable(func():
+		FadeLayer.fade_out(0.3)
+		GameState.save_game()
+		get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
+		
+	))
+	pass

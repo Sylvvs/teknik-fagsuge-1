@@ -179,5 +179,33 @@
 				]
 			}
 		}
+	}, "well": {
+	"states": {
+		"default": {
+			"dialogues": [
+				{
+					"lines": [
+						"It's a well. Something about the depths looks...off, almost red.",
+						"Jump in?"
+					],
+					"choices": [
+						{
+							"text": "Yes",
+							"lines": [
+								"You leap into the darkness below...",
+							],
+							"set_state": "jumped_in"
+						},
+						{
+							"text": "No",
+							"lines": [
+								"You step back from the well. A feeling of unease overtakes you."
+							]
+						}
+					]
+				}
+			]
+		}
 	}
+}
 }
