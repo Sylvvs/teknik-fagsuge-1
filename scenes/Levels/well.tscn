@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=14 format=4 uid="uid://57nahvw4uftv"]
-=======
+
 [gd_scene load_steps=17 format=4 uid="uid://drxs6ptw70yur"]
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://bfdswae2b47cl" path="res://sprites/autumn forest.png" id="1_rgtmi"]
 [ext_resource type="Script" path="res://scripts/lucifer_npc_2.gd" id="2_2dnt1"]
@@ -11,13 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://qd8aqw8mdaaq" path="res://sprites/5W3UH8.png" id="4_vxbuk"]
 [ext_resource type="Script" path="res://scripts/well_npc.gd" id="5_8eepy"]
 [ext_resource type="Texture2D" uid="uid://bfm4le4v48d4t" path="res://sprites/GrassTilesWeenterMakesGames-2.png.png" id="6_iu0f7"]
-<<<<<<< Updated upstream
 [ext_resource type="AudioStream" uid="uid://b1hojj1a77imd" path="res://audio/Fleetwood Mac   Landslide Instrumental Original Official.mp3" id="7_vxbuk"]
-=======
 [ext_resource type="AudioStream" uid="uid://b1hojj1a77imd" path="res://Audio/Fleetwood Mac   Landslide Instrumental Original Official.mp3" id="7_vxbuk"]
 [ext_resource type="Texture2D" uid="uid://dbjv5i3ka8so2" path="res://sprites/glint/frame1.png" id="9_wfkoh"]
 [ext_resource type="Texture2D" uid="uid://d13kgqfdpqjye" path="res://sprites/glint/frame2.png" id="10_5wavf"]
->>>>>>> Stashed changes
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8eepy"]
 radius = 49.09175
