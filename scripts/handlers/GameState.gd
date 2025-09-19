@@ -24,6 +24,7 @@ func _notification(what: int) -> void:
 		get_tree().quit()
 
 func reset_data():
+	DialogueManager.npc_states = {}
 	bosses_defeated = {}
 	intro_watched = false;
 	current_room = "tutorial_place"

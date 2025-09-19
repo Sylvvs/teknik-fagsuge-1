@@ -35,4 +35,7 @@ func _on_dialogue_finished(_npc_id: String, new_state: String):
 		
 func hide_npc():
 	monitoring = false;
+	var sprite = $"../../../AnimatedSprite2D"
+	sprite.visible = true
+	sprite.play("default")
 	self.get_node("Sprite2D").visible = false;
