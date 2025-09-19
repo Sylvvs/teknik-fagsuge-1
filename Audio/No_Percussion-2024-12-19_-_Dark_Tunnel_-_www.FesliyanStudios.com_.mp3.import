@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bji2kw3erk0pe"
-path="res://.godot/imported/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3-bd2c8bf1ecccb91856b20f02574f0804.mp3str"
+path="res://.godot/imported/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3-5b9e00897c897d2679f32df942dc5184.mp3str"
 
 [deps]
 
-source_file="res://Audio/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3"
-dest_files=["res://.godot/imported/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3-bd2c8bf1ecccb91856b20f02574f0804.mp3str"]
+source_file="res://audio/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3"
+dest_files=["res://.godot/imported/No_Percussion-2024-12-19_-_Dark_Tunnel_-_www.FesliyanStudios.com_.mp3-5b9e00897c897d2679f32df942dc5184.mp3str"]
 
 [params]
 
