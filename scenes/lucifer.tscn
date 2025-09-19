@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://badnrj6kmwbc0"]
+[gd_scene load_steps=46 format=3 uid="uid://badnrj6kmwbc0"]
 
 [ext_resource type="Shader" uid="uid://m6yvnupkxi6y" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
 [ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
 [ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
 [ext_resource type="Script" uid="uid://dxidmm07vrkby" path="res://scripts/CounterHit.gd" id="16_by1l1"]
-[ext_resource type="Script" uid="uid://c77waxkbwnfsj" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
+[ext_resource type="Script" path="res://scripts/lucifer_attack_2.gd" id="17_3nmxd"]
 [ext_resource type="Script" uid="uid://bflixcwjghotu" path="res://scripts/LuciferMagicAttack.gd" id="17_6blqp"]
 [ext_resource type="Script" uid="uid://dftea65yp8t8e" path="res://scripts/Counter1.gd" id="17_g8vay"]
 [ext_resource type="Script" uid="uid://sbyefjj8cx3t" path="res://scenes/Counter2.gd" id="18_3n1r1"]
