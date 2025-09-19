@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://chyjducmfwjja"]
+
+[ext_resource type="Texture2D" uid="uid://dv1uc6dd3omjb" path="res://sprites/Lucifer/Sprite/6. shoot effect.png" id="1_dprbf"]
+[ext_resource type="Script" uid="uid://c7wo0dkiy5bgw" path="res://scripts/projectile.gd" id="1_vihyi"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vihyi"]
+a = Vector2(-64, -31)
+b = Vector2(66, 34)
+
+[sub_resource type="Animation" id="Animation_vihyi"]
+resource_name = "idle"
+length = 0.06667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_kdm4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13obt"]
+_data = {
+&"RESET": SubResource("Animation_kdm4f"),
+&"idle": SubResource("Animation_vihyi")
+}
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_vihyi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_vihyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dprbf")
+hframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_13obt")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

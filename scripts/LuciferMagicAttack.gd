@@ -1,7 +1,7 @@
 extends LuciferState
 
 @onready var magic = $"../../Magic"
-
+@export var beam_node: PackedScene
 
 
 func enter():
@@ -13,11 +13,10 @@ func play_animation(anim_name):
 	animation_player.play(anim_name)
 	await animation_player.animation_finished
 
-func set_target():
-	var dir = (owner.direction - magic.position).normalized()
-	var angle = dir.angle() - deg_to_rad(26)
-	magic.rotation = angle
-
+func launch_projectie():
+	var beam = beam_node.instantiate()
+	beam.position = owner.position 
+	get_tree().current_scene.add_child(beam)
 
 func transition(): 
 	get_parent().call_deferred("change_state", "LuciferFollow")

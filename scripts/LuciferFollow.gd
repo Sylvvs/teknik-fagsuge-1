@@ -17,19 +17,24 @@ func exit():
 func transition_to_counterhit():
 	get_parent().call_deferred("change_state", "CounterHit")
 
+var magic_timer = 0;
+
 func transition():
 	var distance = owner.direction.length()
 	if distance < 45:
 		get_parent().call_deferred("change_state", "LuciferAttack1")
-	elif distance > 130 and not magic_animation_player.is_playing():
+	elif distance > 130 and not magic_animation_player.is_playing() and magic_timer > 5:
 		get_parent().call_deferred("change_state", "LuciferMagicAttack")
+		magic_timer = 0
+		
 func _process(delta: float) -> void:
+	magic_timer += delta;
 	var distance = owner.direction.length()
 	if distance >= 0 and distance <= 1000: 
 		time += delta
 	else:
 		time = 0
-	if time > counter_timer and not has_countered and not get_parent().current_state.name == "LuciferAttack1":
+	if time > counter_timer and not has_countered and get_parent().current_state.name == "LuciferFollow":
 		has_countered = true
 		transition_to_counterhit()
 		time = 0
