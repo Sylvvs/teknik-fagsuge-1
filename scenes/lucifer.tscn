@@ -1202,7 +1202,6 @@ vertical_alignment = 1
 
 [node name="Magic" type="Node2D" parent="."]
 position = Vector2(0, -25)
-rotation = -0.4537856
 
 [node name="Sprite2D" type="Sprite2D" parent="Magic"]
 position = Vector2(63, 30)

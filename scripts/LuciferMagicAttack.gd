@@ -13,7 +13,9 @@ func play_animation(anim_name):
 	await animation_player.animation_finished
 
 func set_target():
-	magic.rotation = (owner.direction - magic.position).normalized().angle()
+	var dir = (owner.direction - magic.position).normalized()
+	var angle = dir.angle() - deg_to_rad(26)
+	magic.rotation = angle
 
 
 func transition(): 

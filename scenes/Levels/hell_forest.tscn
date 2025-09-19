@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://p0ww47wtlbua"]
+[gd_scene load_steps=10 format=4 uid="uid://bvf7rwfy3wgnp"]
 
 [ext_resource type="Texture2D" uid="uid://c3vr3jwm14umx" path="res://sprites/Hell Forest/parallax-demon-woods-bg.png" id="1_g5yrx"]
 [ext_resource type="Texture2D" uid="uid://d2gc14fo0ipv0" path="res://sprites/Hell Forest/parallax-demon-woods-far-trees.png" id="2_ykuev"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djeddn425vabd" path="res://sprites/Hell Forest/parallax-demon-woods-close-trees.png" id="4_cahsu"]
 [ext_resource type="Texture2D" uid="uid://qb8387xiqj81" path="res://sprites/Hell tileset/Tiles/Tileset.png" id="5_0wabp"]
 [ext_resource type="AudioStream" uid="uid://hnwohwuyp4ce" path="res://Audio/Kendrick Lamar - DNA (Official Instrumental).mp3" id="6_72see"]
+[ext_resource type="PackedScene" uid="uid://badnrj6kmwbc0" path="res://scenes/lucifer.tscn" id="7_jv651"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o0kxg"]
 texture = ExtResource("5_0wabp")
@@ -265,3 +266,6 @@ position = Vector2(33, 223)
 stream = ExtResource("6_72see")
 volume_db = -10.0
 autoplay = true
+
+[node name="Lucifer" parent="." instance=ExtResource("7_jv651")]
+position = Vector2(572, 208)
