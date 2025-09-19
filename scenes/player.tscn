@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dldgn7pias6m8" path="res://sprites/player sprites/DEFEND.png" id="14_oprun"]
 [ext_resource type="Texture2D" uid="uid://cxp8on2s7aymc" path="res://sprites/player sprites/WALL SLIDE.png" id="15_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://c6aa4mf87hrbp" path="res://sprites/player sprites/WALL JUMP.png" id="16_qfm1y"]
-[ext_resource type="AudioStream" uid="uid://brsiu12oixwl5" path="res://audio/Sound Effects/swordclash.mp3" id="18_fulsm"]
+[ext_resource type="AudioStream" uid="uid://brsiu12oixwl5" path="res://Audio/Sound Effects/swordclash.mp3" id="18_fulsm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qhqgy"]
 radius = 8.0

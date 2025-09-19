@@ -35,21 +35,20 @@ func _physics_process(delta):
 func end_counter():
 	is_countering = false
 	counter_area.monitoring = false
-	#transition()
 	get_parent().call_deferred("change_state", "LuciferFollow")
+	#transition()
 	
 func enter():
-	super.enter()
+	super.enter() 
 	player_hit = false
 	is_countering = false
 	start_counter()
-	owner.set_physics_process(true)
 
 func exit():
 	super.exit()
 	counter_area.monitoring = false
 	sprite.material.set_shader_parameter("flash_strength", 0.0)
-	owner.set_physics_process(false)
+
 
 func transition():
 	if player_hit:
@@ -66,4 +65,9 @@ func _on_counter_area_entered(area: Area2D) -> void:
 		print("hit")
 		#transition()
 		flashing = false
-		get_parent().call_deferred("change_state", "Counter2")
+		var chance = randi_range(0,1)
+		match chance:
+			0:
+				get_parent().call_deferred("change_state", "Counter1")
+			1:
+				get_parent().call_deferred("change_state", "Counter2")
