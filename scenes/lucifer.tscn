@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://badnrj6kmwbc0"]
+[gd_scene load_steps=43 format=3 uid="uid://badnrj6kmwbc0"]
 
 [ext_resource type="Shader" uid="uid://m6yvnupkxi6y" path="res://scripts/lucifer.gdshader" id="1_3n1r1"]
 [ext_resource type="Script" uid="uid://yp6uturw58ly" path="res://scenes/Lucifer.gd" id="1_axd3d"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dv1uc6dd3omjb" path="res://sprites/Lucifer/Sprite/6. shoot effect.png" id="9_k7h6p"]
 [ext_resource type="Script" uid="uid://dt1wf8aqhhw13" path="res://scripts/LuciferState.gd" id="10_26037"]
 [ext_resource type="Script" uid="uid://divyuelmy4jvq" path="res://scripts/LuciferFiniteStateMachine.gd" id="10_u7n25"]
+[ext_resource type="Animation" uid="uid://cm78vr8kskdyw" path="res://animations/shootEffect.anim" id="10_yb7wj"]
 [ext_resource type="Script" uid="uid://xt4plptbs514" path="res://scripts/LuciferIdle.gd" id="11_x86qi"]
 [ext_resource type="Script" uid="uid://c2rtw176atpa8" path="res://scripts/LuciferFollow.gd" id="13_x5ceb"]
 [ext_resource type="Script" uid="uid://bk85wyd5yqf2e" path="res://scripts/LuciferAttack1.gd" id="14_x5ceb"]
@@ -340,7 +341,6 @@ tracks/10/keys = {
 [sub_resource type="Animation" id="Animation_k7k3s"]
 resource_name = "attack 2"
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -369,13 +369,13 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.80040455),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(53, -1)]
+"values": [Vector2(53, -1), Vector2(-11, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -384,10 +384,10 @@ tracks/3/path = NodePath("CollisionShape2D:position")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8046851),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 0), Vector2(68, 3)]
+"values": [Vector2(1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -684,6 +684,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_23e4a"]
 resource_name = "idleShield"
 length = 3.9
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1030,97 +1031,6 @@ tracks/7/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_gtxct"]
-resource_name = "shootEffect"
-length = 2.5000124
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lucifer Animation Handler/Animation virk pls/Lucifer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lucifer Animation Handler/Animation virk pls/Attack1 and attack 2/attack1 and attack 2:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Area2D/idleShield:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Magic/Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75, 1.875, 2, 2.181417, 2.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox/Hitbox:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LuciferFiniteStateMachine/LuciferMagicAttack")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.25),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"set_target"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtxct"]
 _data = {
 &"Death": SubResource("Animation_rebt7"),
@@ -1133,7 +1043,7 @@ _data = {
 &"idleShield": SubResource("Animation_23e4a"),
 &"jump": SubResource("Animation_62g64"),
 &"run": SubResource("Animation_17aqd"),
-&"shootEffect": SubResource("Animation_gtxct")
+&"shootEffect": ExtResource("10_yb7wj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfgbr"]
@@ -1143,6 +1053,58 @@ size = Vector2(121, 27)
 shader = ExtResource("1_3n1r1")
 shader_parameter/flash_strength = 0.0
 shader_parameter/flash_color_target = Vector4(0.3, 0, 0.3, 1)
+
+[sub_resource type="Animation" id="Animation_jrxvm"]
+resource_name = "Magic"
+length = 1.5000125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.3710517),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../LuciferFiniteStateMachine/LuciferMagicAttack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_target"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3nmxd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bw0eu"]
+_data = {
+&"Magic": SubResource("Animation_jrxvm"),
+&"RESET": SubResource("Animation_3nmxd")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfgbr"]
 radius = 9.0
@@ -1207,6 +1169,12 @@ position = Vector2(0, -25)
 position = Vector2(63, 30)
 texture = ExtResource("9_k7h6p")
 hframes = 20
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Magic"]
+libraries = {
+&"": SubResource("AnimationLibrary_bw0eu")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_gfgbr")

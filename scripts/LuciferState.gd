@@ -4,6 +4,7 @@ class_name LuciferState
 @onready var room_handler = get_tree().root.get_node("RoomHandler")
 @onready var player = null;
 @onready var animation_player = owner.find_child("AnimationPlayer")
+@onready var magic_animation_player = $"../../Magic/AnimationPlayer"
 
 func _ready():
 	call_deferred("_find_player")

@@ -21,7 +21,7 @@ func transition():
 	var distance = owner.direction.length()
 	if distance < 45:
 		get_parent().call_deferred("change_state", "LuciferAttack1")
-	elif distance > 130:
+	elif distance > 130 and not magic_animation_player.is_playing():
 		get_parent().call_deferred("change_state", "LuciferMagicAttack")
 func _process(delta: float) -> void:
 	var distance = owner.direction.length()

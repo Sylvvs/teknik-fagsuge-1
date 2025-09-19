@@ -21,12 +21,12 @@ func counter_move():
 	var offset = Vector2(-50 * dir, -100) 
 	# Teleport Lucifer
 	owner.global_position += offset
-	play_animation("attack 1", 1) 
+	play_animation("attack 2", 1) 
 func play_animation(anim_name: String, speed: float = 1.0):
 	animation_player.play(anim_name, -1.0, speed)
 	await animation_player.animation_finished
 	#play_animation(anim_name, speed)
-	
+
 func transition():
 	if animation_player.is_playing():
 		return
