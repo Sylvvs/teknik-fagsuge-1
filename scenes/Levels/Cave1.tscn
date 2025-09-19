@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://16e6dkw8b3nx"]
+[gd_scene load_steps=14 format=4 uid="uid://16e6dkw8b3nx"]
 
 [ext_resource type="Texture2D" uid="uid://dlajtyfjp2tfj" path="res://sprites/Parallax_Backgrounds_Cave/7.png" id="1_tfyl4"]
 [ext_resource type="Texture2D" uid="uid://c2dk0a25kjjis" path="res://sprites/Parallax_Backgrounds_Cave/6.png" id="2_yilfl"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://drmsv2sii2c0c" path="res://sprites/Parallax_Backgrounds_Cave/1.png" id="7_bbgjf"]
 [ext_resource type="AudioStream" uid="uid://dlmffakolxb3c" path="res://Audio/echoes pink floyd.mp3" id="9_cjp3x"]
 [ext_resource type="Texture2D" uid="uid://tesdnukw5clv" path="res://sprites/Cave background/Cave Tileset Pack/PNG files/CaveBG.png" id="9_yilfl"]
-[ext_resource type="PackedScene" uid="uid://badnrj6kmwbc0" path="res://scenes/lucifer.tscn" id="10_cjp3x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjp3x"]
 texture = ExtResource("9_yilfl")
@@ -1017,6 +1016,3 @@ shape = SubResource("RectangleShape2D_fghph")
 stream = ExtResource("9_cjp3x")
 volume_db = -25.0
 autoplay = true
-
-[node name="Lucifer" parent="." instance=ExtResource("10_cjp3x")]
-position = Vector2(397, 188)
