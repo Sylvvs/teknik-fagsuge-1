@@ -29,7 +29,6 @@ func _process(delta: float) -> void:
 	# Flip sprite depending on x-direction
 
 
-
 func _physics_process(delta: float) -> void:
 	# Apply gravity
 	if not is_on_floor():
