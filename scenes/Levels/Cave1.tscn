@@ -1019,15 +1019,3 @@ volume_db = -25.0
 autoplay = true
 
 [node name="Enemies" type="Node2D" parent="."]
-
-[node name="Enemy" parent="Enemies" instance=ExtResource("10_fghph")]
-position = Vector2(281, 186)
-
-[node name="Bat" parent="Enemies" instance=ExtResource("11_7vmuq")]
-position = Vector2(175, 170)
-
-[node name="Bat2" parent="Enemies" instance=ExtResource("11_7vmuq")]
-position = Vector2(493, -57)
-
-[node name="Bat3" parent="Enemies" instance=ExtResource("11_7vmuq")]
-position = Vector2(495, 102)
