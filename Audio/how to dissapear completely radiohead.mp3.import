@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b6gr6riupaboo"
-path="res://.godot/imported/how to dissapear completely radiohead.mp3-63050b6135c2def8834a15689cd8b808.mp3str"
+path="res://.godot/imported/how to dissapear completely radiohead.mp3-f5a881256051ca5b56f9d6945b6e3c0e.mp3str"
 
 [deps]
 
-source_file="res://audio/how to dissapear completely radiohead.mp3"
-dest_files=["res://.godot/imported/how to dissapear completely radiohead.mp3-63050b6135c2def8834a15689cd8b808.mp3str"]
+source_file="res://Audio/how to dissapear completely radiohead.mp3"
+dest_files=["res://.godot/imported/how to dissapear completely radiohead.mp3-f5a881256051ca5b56f9d6945b6e3c0e.mp3str"]
 
 [params]
 

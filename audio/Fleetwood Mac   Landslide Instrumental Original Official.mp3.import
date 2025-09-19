@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b1hojj1a77imd"
-path="res://.godot/imported/Fleetwood Mac   Landslide Instrumental Original Official.mp3-a788c9f9dfd5fe0c35e500fd095c5ef8.mp3str"
+path="res://.godot/imported/Fleetwood Mac   Landslide Instrumental Original Official.mp3-72aa267c892e7a8abe32a761eb733fe3.mp3str"
 
 [deps]
 
-source_file="res://audio/Fleetwood Mac   Landslide Instrumental Original Official.mp3"
-dest_files=["res://.godot/imported/Fleetwood Mac   Landslide Instrumental Original Official.mp3-a788c9f9dfd5fe0c35e500fd095c5ef8.mp3str"]
+source_file="res://Audio/Fleetwood Mac   Landslide Instrumental Original Official.mp3"
+dest_files=["res://.godot/imported/Fleetwood Mac   Landslide Instrumental Original Official.mp3-72aa267c892e7a8abe32a761eb733fe3.mp3str"]
 
 [params]
 
