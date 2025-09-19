@@ -3,7 +3,7 @@ var time = 0
 var has_countered : bool = false
 var counter_timer = randi_range(15,25)
 
-
+var attacks = ["LuciferAttack1", "LuciferAttack2", "CounterHit"]
 
 func enter():
 	super.enter()
@@ -24,10 +24,13 @@ var magic_timer = 0;
 
 func transition():
 	var distance = owner.direction.length()
-		
-	#if distance < 45:
-	#	owner.set_physics_process(true)
-	#	get_parent().call_deferred("change_state", "LuciferAttack2")
+	
+	var attack = ""
+	if time > 2:
+		attack = attacks[randi() % attacks.size()]
+		print("loading timeee!! we loadin " + attack)
+		get_parent().call_deferred("change_state", attack)
+	
 	if distance > 130 and not magic_animation_player.is_playing() and magic_timer > 5:
 		get_parent().call_deferred("change_state", "LuciferMagicAttack")
 		magic_timer = 0
@@ -39,14 +42,3 @@ func _process(delta: float) -> void:
 		time += delta
 	else:
 		time = 0
-	
-	
-	
-	#if time > counter_timer and not has_countered and get_parent().current_state.name == "LuciferFollow":
-	#	has_countered = true
-	#	transition_to_counterhit()
-	#	time = 0
-	#	counter_timer = randi_range(15,25)
-	#if time > counter_timer + 5:
-	#	time = 0
-	#	counter_timer = randi_range(15,25)
