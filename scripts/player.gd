@@ -37,6 +37,7 @@ var immunity_timer = 0.0
 var direction = -1
 var time_since_floor = 0.0
 var coyote_time = 0.3
+var dir : int
 
 # === Combo System ===
 var combo_step = 0
@@ -86,10 +87,11 @@ func _ready():
 
 # === Process ===
 func _process(delta: float) -> void:
-	if is_knockback_hurt:
+	if is_knockback_hurt or is_knockback_push:
 		knockback_timer -= delta
 		if knockback_timer <= 0:
 			is_knockback_hurt = false
+			is_knockback_push = false
 
 	if waiting_for_combo_input:
 		combo_continue_timer += delta
@@ -135,8 +137,8 @@ func _physics_process(delta: float) -> void:
 		at["parameters/AnimationNodeStateMachine/conditions/jump"] = true
 		if is_on_wall() and ["parameters/AnimationNodeStateMachine/conditions/sliding"] and not is_on_floor():
 			at["parameters/AnimationNodeStateMachine/Walls/conditions/wall_jumping"] = true
-			velocity.y = -JUMP
-			velocity.x = -direction * SPEED * 1.4
+			velocity.y = -JUMP * 1.2
+			velocity.x = -direction * SPEED * 1.2
 			wall_jump_timer = WALL_JUMP_LOCK
 			touched_the_floor = true
 			
@@ -174,15 +176,24 @@ func _physics_process(delta: float) -> void:
 	
 	# Jumping
 	if Input.is_action_just_pressed("jump") and time_since_floor < coyote_time :
-		time_since_floor = 0.3
+		time_since_floor = coyote_time
 		velocity.y = -JUMP
 
 	# Dash input
 	if Input.is_action_just_pressed("dash"):
-		dashing_velocity = (
-			sign(velocity.x) if velocity.x != 0
-			else (-1 if sprite.flip_h else 1)
-		) * SPEED * 3
+		var input_dir = 0
+		if Input.is_action_pressed('right'):
+			input_dir = 1
+		elif Input.is_action_pressed('left'):
+			input_dir = -1
+		
+		if input_dir != 0:
+			dashing_velocity = input_dir * SPEED * 3
+		else:
+			dashing_velocity = (
+				sign(velocity.x) if velocity.x != 0
+				else (-1 if sprite.flip_h else 1)
+			) * SPEED * 3
 		is_dashing = true
 	if Input.is_action_just_pressed('heal'):
 		heal_player()
@@ -217,17 +228,18 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 		
 	velocity.y += GRAV * delta
-	
+	if is_knockback_push:
+		velocity.x = direction * SPEED + knockback_velocity.x
 	move_and_slide()
-	
-	if velocity.x < 0:
-		sprite.flip_h = true
-		sword.scale.x = -1
-		direction = -1
-	elif velocity.x > 0:
-		sprite.flip_h = false
-		sword.scale.x = 1
-		direction = 1
+	if not is_knockback_push:
+		if velocity.x < 0:
+			sprite.flip_h = true
+			sword.scale.x = -1
+			direction = -1
+		elif velocity.x > 0:
+			sprite.flip_h = false
+			sword.scale.x = 1
+			direction = 1
 
 	if is_on_floor():
 		time_since_floor = 0
@@ -375,7 +387,11 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
 			emit_signal("calm_changed", calm_energy)
-		
+		is_knockback_push = true
+		knockback_timer = knockback_duration
+		var knockback_dir = (global_position - body.global_position).normalized()
+		knockback_velocity = knockback_dir * SPEED * 2
+		#knockback_velocity.y = -100
 		body.apply_damage(damage)
 func _on_air_attack_animation_finished():
 	is_air_attacking = false
