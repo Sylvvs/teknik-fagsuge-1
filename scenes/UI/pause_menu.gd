@@ -42,6 +42,7 @@ func _input(event):
 func _on_title_pressed() -> void:
 	FadeLayer.fade_in(0.3).connect("finished", Callable(func():
 		FadeLayer.fade_out(0.3)
+		GameState.save_game()
 		get_tree().change_scene_to_file("res://scenes/titlescreen.tscn")
 		
 	))

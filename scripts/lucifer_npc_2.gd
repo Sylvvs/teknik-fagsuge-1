@@ -4,10 +4,11 @@ extends Area2D
 var player_in_range: bool = false
 
 func _ready():
-	# DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
-	if GameState.orb_obtained:
+	if DialogueManager.get_npc_state("lucifer") != "core_given":
 		DialogueManager.set_npc_state("lucifer", "awaiting_core")
-	if DialogueManager.get_npc_state("lucifer") != "default":
+	DialogueManager.dialogue_finished.connect(_on_dialogue_finished)
+	
+	if DialogueManager.get_npc_state("lucifer") == "core_given":
 		hide_npc()
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b28x5p136tgsb"]
+[gd_scene load_steps=21 format=4 uid="uid://b28x5p136tgsb"]
 
 [ext_resource type="Texture2D" uid="uid://boxar3mlmbg3s" path="res://sprites/forest background/Layer_0011_0.png" id="1_7vhfy"]
 [ext_resource type="Texture2D" uid="uid://v8apbym05g4l" path="res://sprites/forest background/Layer_0008_3.png" id="2_yai6n"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="11_b15gw"]
 [ext_resource type="Script" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
+[ext_resource type="Texture2D" uid="uid://qd8aqw8mdaaq" path="res://sprites/5W3UH8.png" id="12_hlmik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvi8d"]
 texture = ExtResource("9_frlmr")
@@ -3422,11 +3423,19 @@ region_enabled = true
 region_rect = Rect2(5.4856873, 10.7727585, 19.1268, 44.784706)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Logic/NPCS/Lucifer"]
-position = Vector2(6, -5)
+position = Vector2(-21, 28)
 emitting = false
+amount = 40
+texture = ExtResource("12_hlmik")
+lifetime = 0.4
+speed_scale = 0.4
 emission_shape = 1
-emission_sphere_radius = 16.83
+emission_sphere_radius = 24.74
 direction = Vector2(0, -1)
+gravity = Vector2(0, -980)
+scale_amount_min = 0.0
+scale_amount_max = 0.3
+color = Color(0.34781694, 0.34781697, 0.3478169, 1)
 
 [node name="forest" type="Area2D" parent="Logic"]
 
