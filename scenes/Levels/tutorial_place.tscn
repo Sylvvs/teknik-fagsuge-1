@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="7_2dn5b"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_elvxc"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_frlmr"]
-[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/lucifer_npc.gd" id="10_b15gw"]
+[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/Lucifer_npc.gd" id="10_b15gw"]
 [ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="11_b15gw"]
 [ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
@@ -3458,7 +3458,7 @@ shape = SubResource("RectangleShape2D_helww")
 position = Vector2(315, 776.00006)
 scale = Vector2(1.1234056, 0.22735101)
 script = ExtResource("11_f5j7v")
-text = "Press %s to jump"
+text = "Hold %s to jump"
 action = "jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt3"]
