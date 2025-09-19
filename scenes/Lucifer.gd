@@ -14,12 +14,14 @@ var GRAVITY : float = 500.0
 var health = 500
 var flash_time = 0.2
 var flash_timer = 0.0
+var is_flashing = false
 
 
 func apply_damage(amount : float):
 	if get_node("LuciferFiniteStateMachine").current_state.name == "CounterHit":
 		return
 	flash_timer = flash_time
+	is_flashing = true
 		
 	health -= amount
 	progress_bar.value = health
@@ -39,9 +41,9 @@ func _process(_delta: float) -> void:
 	if flash_timer > 0:
 		flash_timer -= _delta
 		sprite.material.set_shader_parameter("flash_strength", 1.0)
-
-	else:
+	elif is_flashing:
 		sprite.material.set_shader_parameter("flash_strength", 0.0)
+		is_flashing = false
 	# Calculate horizontal direction towards player
 	# Direction towards player
 	
