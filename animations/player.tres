@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=97 format=3 uid="uid://db6xhv4t0h1td"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=107 format=3 uid="uid://db6xhv4t0h1td"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0uk38"]
 animation = &"air attack"
@@ -168,6 +168,9 @@ timeline_length = 0.2
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rf3xd"]
+animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xvbpu"]
 animation = &"fall"
@@ -465,15 +468,53 @@ advance_condition = &"hurting"
 advance_mode = 2
 advance_condition = &"sliding"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_46b0s"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wymqt"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8rec7"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vllv5"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7uolq"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sj31l"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nrxfl"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yqydx"]
+advance_mode = 2
+advance_condition = &"death"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aylul"]
+advance_mode = 2
+advance_condition = &"death"
+
 [resource]
 states/Attack/node = SubResource("AnimationNodeStateMachine_wem7h")
 states/Attack/position = Vector2(520.886, -12.5657)
 states/End/position = Vector2(899.5, 100.016)
 states/Start/position = Vector2(203.5, 100.00624)
 states/Walls/node = SubResource("AnimationNodeStateMachine_6e7wa")
-states/Walls/position = Vector2(699.5, 371.031)
+states/Walls/position = Vector2(782.5, 354.031)
 states/dash/node = SubResource("AnimationNodeAnimation_v1el1")
 states/dash/position = Vector2(318.801, 199.05)
+states/death/node = SubResource("AnimationNodeAnimation_rf3xd")
+states/death/position = Vector2(650.79663, 418.43225)
 states/fall/node = SubResource("AnimationNodeAnimation_xvbpu")
 states/fall/position = Vector2(691.011, 42.437897)
 states/heal/node = SubResource("AnimationNodeAnimation_xg1qe")
@@ -485,6 +526,6 @@ states/idle/position = Vector2(367, 75.062)
 states/jump/node = SubResource("AnimationNodeAnimation_ghsaa")
 states/jump/position = Vector2(352.801, 328.031)
 states/walk/node = SubResource("AnimationNodeAnimation_tuyoq")
-states/walk/position = Vector2(542.761, 411.031)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_smehm"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_2lmno"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_ykrpm"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_ghsaa"), "jump", "hurt", SubResource("AnimationNodeStateMachineTransition_vfr2u"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_weyxy"), "hurt", "fall", SubResource("AnimationNodeStateMachineTransition_xg1qe"), "fall", "hurt", SubResource("AnimationNodeStateMachineTransition_jmvei"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_nmifs"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_ujvqm"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rf3xd"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_b61eh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_yw52n"), "hurt", "walk", SubResource("AnimationNodeStateMachineTransition_icigv"), "idle", "Attack", SubResource("AnimationNodeStateMachineTransition_xvbpu"), "Attack", "idle", SubResource("AnimationNodeStateMachineTransition_v1el1"), "jump", "Attack", SubResource("AnimationNodeStateMachineTransition_0uk38"), "fall", "Attack", SubResource("AnimationNodeStateMachineTransition_prr72"), "Attack", "fall", SubResource("AnimationNodeStateMachineTransition_aa7ow"), "walk", "Attack", SubResource("AnimationNodeStateMachineTransition_wem7h"), "Attack", "walk", SubResource("AnimationNodeStateMachineTransition_k4bve"), "idle", "dash", SubResource("AnimationNodeStateMachineTransition_t6md8"), "dash", "idle", SubResource("AnimationNodeStateMachineTransition_puttd"), "jump", "dash", SubResource("AnimationNodeStateMachineTransition_1cgjn"), "dash", "jump", SubResource("AnimationNodeStateMachineTransition_y3ju5"), "walk", "dash", SubResource("AnimationNodeStateMachineTransition_roa1r"), "dash", "walk", SubResource("AnimationNodeStateMachineTransition_5jthn"), "fall", "dash", SubResource("AnimationNodeStateMachineTransition_fni7m"), "dash", "fall", SubResource("AnimationNodeStateMachineTransition_hras3"), "dash", "Attack", SubResource("AnimationNodeStateMachineTransition_3a5us"), "Attack", "dash", SubResource("AnimationNodeStateMachineTransition_qswls"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_xfwb8"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_lcheb"), "idle", "heal", SubResource("AnimationNodeStateMachineTransition_lsuja"), "walk", "heal", SubResource("AnimationNodeStateMachineTransition_k3wkj"), "fall", "heal", SubResource("AnimationNodeStateMachineTransition_el7n3"), "jump", "heal", SubResource("AnimationNodeStateMachineTransition_qryjv"), "Attack", "heal", SubResource("AnimationNodeStateMachineTransition_d4qjs"), "heal", "walk", SubResource("AnimationNodeStateMachineTransition_j2wf1"), "heal", "fall", SubResource("AnimationNodeStateMachineTransition_cmf17"), "heal", "idle", SubResource("AnimationNodeStateMachineTransition_7y1pc"), "heal", "hurt", SubResource("AnimationNodeStateMachineTransition_tjgyl"), "Walls", "idle", SubResource("AnimationNodeStateMachineTransition_53mau"), "dash", "Walls", SubResource("AnimationNodeStateMachineTransition_6amlv"), "Walls", "dash", SubResource("AnimationNodeStateMachineTransition_lkaxs"), "walk", "Walls", SubResource("AnimationNodeStateMachineTransition_acgu7"), "Walls", "walk", SubResource("AnimationNodeStateMachineTransition_iq3ki"), "jump", "Walls", SubResource("AnimationNodeStateMachineTransition_srdqt"), "Walls", "Attack", SubResource("AnimationNodeStateMachineTransition_2n214"), "Attack", "Walls", SubResource("AnimationNodeStateMachineTransition_ghnhm"), "fall", "Walls", SubResource("AnimationNodeStateMachineTransition_8oiuj"), "Walls", "fall", SubResource("AnimationNodeStateMachineTransition_hoq6c"), "heal", "Walls", SubResource("AnimationNodeStateMachineTransition_efirb"), "Walls", "heal", SubResource("AnimationNodeStateMachineTransition_uds5p"), "Walls", "hurt", SubResource("AnimationNodeStateMachineTransition_j0bub"), "hurt", "Walls", SubResource("AnimationNodeStateMachineTransition_rg5tj")]
-graph_offset = Vector2(-26.7034, 130.3335)
+states/walk/position = Vector2(476.261, 416.531)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_fjrip"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_smehm"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_ur7pv"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_2lmno"), "walk", "jump", SubResource("AnimationNodeStateMachineTransition_ykrpm"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_ghsaa"), "jump", "hurt", SubResource("AnimationNodeStateMachineTransition_vfr2u"), "walk", "fall", SubResource("AnimationNodeStateMachineTransition_weyxy"), "hurt", "fall", SubResource("AnimationNodeStateMachineTransition_xg1qe"), "fall", "hurt", SubResource("AnimationNodeStateMachineTransition_jmvei"), "fall", "walk", SubResource("AnimationNodeStateMachineTransition_nmifs"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_ujvqm"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_rf3xd"), "walk", "hurt", SubResource("AnimationNodeStateMachineTransition_b61eh"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_yw52n"), "hurt", "walk", SubResource("AnimationNodeStateMachineTransition_icigv"), "idle", "Attack", SubResource("AnimationNodeStateMachineTransition_xvbpu"), "Attack", "idle", SubResource("AnimationNodeStateMachineTransition_v1el1"), "jump", "Attack", SubResource("AnimationNodeStateMachineTransition_0uk38"), "fall", "Attack", SubResource("AnimationNodeStateMachineTransition_prr72"), "Attack", "fall", SubResource("AnimationNodeStateMachineTransition_aa7ow"), "walk", "Attack", SubResource("AnimationNodeStateMachineTransition_wem7h"), "Attack", "walk", SubResource("AnimationNodeStateMachineTransition_k4bve"), "idle", "dash", SubResource("AnimationNodeStateMachineTransition_t6md8"), "dash", "idle", SubResource("AnimationNodeStateMachineTransition_puttd"), "jump", "dash", SubResource("AnimationNodeStateMachineTransition_1cgjn"), "dash", "jump", SubResource("AnimationNodeStateMachineTransition_y3ju5"), "walk", "dash", SubResource("AnimationNodeStateMachineTransition_roa1r"), "dash", "walk", SubResource("AnimationNodeStateMachineTransition_5jthn"), "fall", "dash", SubResource("AnimationNodeStateMachineTransition_fni7m"), "dash", "fall", SubResource("AnimationNodeStateMachineTransition_hras3"), "dash", "Attack", SubResource("AnimationNodeStateMachineTransition_3a5us"), "Attack", "dash", SubResource("AnimationNodeStateMachineTransition_qswls"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_xfwb8"), "jump", "walk", SubResource("AnimationNodeStateMachineTransition_lcheb"), "idle", "heal", SubResource("AnimationNodeStateMachineTransition_lsuja"), "walk", "heal", SubResource("AnimationNodeStateMachineTransition_k3wkj"), "fall", "heal", SubResource("AnimationNodeStateMachineTransition_el7n3"), "jump", "heal", SubResource("AnimationNodeStateMachineTransition_qryjv"), "Attack", "heal", SubResource("AnimationNodeStateMachineTransition_d4qjs"), "heal", "walk", SubResource("AnimationNodeStateMachineTransition_j2wf1"), "heal", "fall", SubResource("AnimationNodeStateMachineTransition_cmf17"), "heal", "idle", SubResource("AnimationNodeStateMachineTransition_7y1pc"), "heal", "hurt", SubResource("AnimationNodeStateMachineTransition_tjgyl"), "Walls", "idle", SubResource("AnimationNodeStateMachineTransition_53mau"), "dash", "Walls", SubResource("AnimationNodeStateMachineTransition_6amlv"), "Walls", "dash", SubResource("AnimationNodeStateMachineTransition_lkaxs"), "walk", "Walls", SubResource("AnimationNodeStateMachineTransition_acgu7"), "Walls", "walk", SubResource("AnimationNodeStateMachineTransition_iq3ki"), "jump", "Walls", SubResource("AnimationNodeStateMachineTransition_srdqt"), "Walls", "Attack", SubResource("AnimationNodeStateMachineTransition_2n214"), "Attack", "Walls", SubResource("AnimationNodeStateMachineTransition_ghnhm"), "fall", "Walls", SubResource("AnimationNodeStateMachineTransition_8oiuj"), "Walls", "fall", SubResource("AnimationNodeStateMachineTransition_hoq6c"), "heal", "Walls", SubResource("AnimationNodeStateMachineTransition_efirb"), "Walls", "heal", SubResource("AnimationNodeStateMachineTransition_uds5p"), "Walls", "hurt", SubResource("AnimationNodeStateMachineTransition_j0bub"), "hurt", "Walls", SubResource("AnimationNodeStateMachineTransition_rg5tj"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_46b0s"), "jump", "death", SubResource("AnimationNodeStateMachineTransition_wymqt"), "dash", "death", SubResource("AnimationNodeStateMachineTransition_8rec7"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_vllv5"), "Attack", "death", SubResource("AnimationNodeStateMachineTransition_7uolq"), "fall", "death", SubResource("AnimationNodeStateMachineTransition_sj31l"), "heal", "death", SubResource("AnimationNodeStateMachineTransition_nrxfl"), "hurt", "death", SubResource("AnimationNodeStateMachineTransition_yqydx"), "Walls", "death", SubResource("AnimationNodeStateMachineTransition_aylul")]
+graph_offset = Vector2(162.2966, 131.3335)
