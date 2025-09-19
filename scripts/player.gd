@@ -20,7 +20,8 @@ var is_healing = false
 var is_jumping = false
 var is_parrying = false
 var is_attacking = false
-var is_knockback = false
+var is_knockback_hurt = false
+var is_knockback_push = false
 var is_dashing = false
 var waiting_for_combo_input = false
 var is_air_attacking = false
@@ -85,10 +86,10 @@ func _ready():
 
 # === Process ===
 func _process(delta: float) -> void:
-	if is_knockback:
+	if is_knockback_hurt:
 		knockback_timer -= delta
 		if knockback_timer <= 0:
-			is_knockback = false
+			is_knockback_hurt = false
 
 	if waiting_for_combo_input:
 		combo_continue_timer += delta
@@ -149,7 +150,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 	# Knockback logic
-	if is_knockback:
+	if is_knockback_hurt:
 		velocity = knockback_velocity
 		velocity.y += GRAV * delta
 		move_and_slide()
@@ -173,6 +174,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Jumping
 	if Input.is_action_just_pressed("jump") and time_since_floor < coyote_time :
+		time_since_floor = 0.3
 		velocity.y = -JUMP
 
 	# Dash input
@@ -349,7 +351,7 @@ func take_damage(amount: int, from_position: Vector2) -> void:
 	reset_all_conditions()
 	health -= amount
 	emit_signal("health_changed", health)
-	is_knockback = true
+	is_knockback_hurt = true
 	knockback_timer = knockback_duration
 	
 	var knockback_dir = (global_position - from_position).normalized()
@@ -373,6 +375,7 @@ func _on_sword_hitbox_body_entered(body: Node2D) -> void:
 		if calm_energy < max_calm_energy:
 			calm_energy += 1
 			emit_signal("calm_changed", calm_energy)
+		
 		body.apply_damage(damage)
 func _on_air_attack_animation_finished():
 	is_air_attacking = false
