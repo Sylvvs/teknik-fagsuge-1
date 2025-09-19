@@ -1,73 +1,96 @@
 {
-  "npc_villager": {
-	"states": {
-	  "default": {
-		"dialogues": [
-		  {
-			"lines": ["* human... i remember you're [color=red]genocides[/color]","i just realized we're [wavy]NEVER[/wavy] gonna use these effects. [shake]AAAAAA[/shake]", "this is a quick test for how quick the text scrolls when you yap for four billion hours uhm idk what to write so hows your day been oh imagine this just goes out of the dialogue box eventually lol uhm uh m uhm im running out of stuff to write this should be good"],
-			"choices": [
-			  {
-				"text": "Tell me about the woods",
-				"lines": ["The woods are dark and full of monsters."],
-				"set_state": "asked_about_woods"
-			  },
-			  {
-				"text": "Tell me about the village",
-				"lines": ["The village is peaceful, but danger is near."],
-				"set_state": "asked_about_village"
-			  }
-			]
-		  }
-		]
-	  },
-	  "asked_about_woods": {
-		"dialogues": [
-		  {
-			"lines": ["You should really avoid the woods at night."]
-		  }
-		]
-	  },
-	  "asked_about_village": {
-		"dialogues": [
-		  {
-			"lines": ["The village chief has been worried lately..."]
-		  }
-		]
-	  }
-	}
-  },"boss_old": {
-	"states": {
-	  "default": {
-		"dialogues": [
-		  {
-			"lines": ["holy fuck [color=red][wavy]KILL YOURSELF[/wavy][/color]"],
-			"set_state": "entered"
-		  }
-		]
-	  },
-		"entered": {
-			"dialogues": [
-				{
-					"lines": ["bro."]
-				}
-			]
+	"npc_villager": {
+		"states": {
+			"default": {
+				"dialogues": [
+					{
+						"lines": [
+							"* human... i remember you're [color=red]genocides[/color]",
+							"i just realized we're [wavy]NEVER[/wavy] gonna use these effects. [shake]AAAAAA[/shake]",
+							"this is a quick test for how quick the text scrolls when you yap for four billion hours uhm idk what to write so hows your day been oh imagine this just goes out of the dialogue box eventually lol uhm uh m uhm im running out of stuff to write this should be good"
+						],
+						"choices": [
+							{
+								"text": "Tell me about the woods",
+								"lines": [
+									"The woods are dark and full of monsters."
+								],
+								"set_state": "asked_about_woods"
+							},
+							{
+								"text": "Tell me about the village",
+								"lines": [
+									"The village is peaceful, but danger is near."
+								],
+								"set_state": "asked_about_village"
+							}
+						]
+					}
+				]
+			},
+			"asked_about_woods": {
+				"dialogues": [
+					{
+						"lines": [
+							"You should really avoid the woods at night."
+						]
+					}
+				]
+			},
+			"asked_about_village": {
+				"dialogues": [
+					{
+						"lines": [
+							"The village chief has been worried lately..."
+						]
+					}
+				]
+			}
 		}
-	}
-  },
+	},
+	"boss_old": {
+		"states": {
+			"default": {
+				"dialogues": [
+					{
+						"lines": [
+							"holy fuck [color=red][wavy]KILL YOURSELF[/wavy][/color]"
+						],
+						"set_state": "entered"
+					}
+				]
+			},
+			"entered": {
+				"dialogues": [
+					{
+						"lines": [
+							"bro."
+						]
+					}
+				]
+			}
+		}
+	},
 	"lucifer": {
 		"states": {
 			"default": {
 				"dialogues": [
 					{
-						"lines": ["Hello, I am Lucifer. Would you like to make a deal with me?"],
+						"lines": [
+							"Hello, I am Lucifer. Would you like to make a deal with me?"
+						],
 						"choices": [
 							{
 								"text": "Yes",
-								"lines": ["Thou shall be rewarded, if thou bestow upon me the [color=yellow]Core of Ragna[/color]. This relic is the heart of the golem king, and only by felling him may one obtain it."]
+								"lines": [
+									"Thou shall be rewarded, if thou bestow upon me the [color=yellow]Core of Ragna[/color]. This relic is the heart of the golem king, and only by felling him may one obtain it."
+								]
 							},
 							{
 								"text": "No",
-								"lines": ["Unfortunate. Perhaps you shall reconsider… when you hold the Core."]
+								"lines": [
+									"Unfortunate. Perhaps you shall reconsider… when you hold the Core."
+								]
 							}
 						]
 					}
@@ -76,7 +99,9 @@
 			"awaiting_core": {
 				"dialogues": [
 					{
-						"lines": ["Ah… I sense the [color=yellow]Core of Ragna[/color] upon thee. Dost thou offer it to me?"],
+						"lines": [
+							"Ah… I sense the [color=yellow]Core of Ragna[/color] upon thee. Dost thou offer it to me?"
+						],
 						"choices": [
 							{
 								"text": "Yes",
@@ -101,7 +126,9 @@
 			"core_given": {
 				"dialogues": [
 					{
-						"lines": ["Lucifer vanishes in a cloud of smoke."]
+						"lines": [
+							"Lucifer vanishes in a cloud of smoke."
+						]
 					}
 				]
 			}
@@ -112,14 +139,18 @@
 			"default": {
 				"dialogues": [
 					{
-						"lines": ["[shake]Who dares step in my chamber?[/shake] I am Golem Ragna, king of the underground. The weight of my fingers would crush you."]
+						"lines": [
+							"[shake]Who dares step in my chamber?[/shake] I am Golem Ragna, king of the underground. The weight of my fingers would crush you."
+						]
 					}
 				]
 			},
 			"half_hp": {
 				"dialogues": [
 					{
-						"lines": ["Impossible! How can a mere mortal withstand the pressure of the earth itself?!"]
+						"lines": [
+							"Impossible! How can a mere mortal withstand the pressure of the earth itself?!"
+						]
 					}
 				]
 			},

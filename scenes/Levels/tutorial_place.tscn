@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="7_2dn5b"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_elvxc"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_frlmr"]
-[ext_resource type="Script" uid="uid://bvl8xd6o2laa2" path="res://scripts/Lucifer_npc.gd" id="10_b15gw"]
-[ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
+[ext_resource type="Script" uid="uid://di84oidrly012" path="res://scripts/lucifer_npc.gd" id="10_b15gw"]
+[ext_resource type="Script" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="11_b15gw"]
-[ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
+[ext_resource type="Script" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvi8d"]
 texture = ExtResource("9_frlmr")
@@ -3401,7 +3401,7 @@ tile_set = SubResource("TileSet_hlmik")
 [node name="Logic" type="Node2D" parent="."]
 
 [node name="Spawn" type="Marker2D" parent="Logic"]
-position = Vector2(174, 710)
+position = Vector2(83, 706)
 
 [node name="NPCS" type="Node2D" parent="Logic"]
 
@@ -3420,6 +3420,13 @@ texture = ExtResource("11_b15gw")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(5.4856873, 10.7727585, 19.1268, 44.784706)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Logic/NPCS/Lucifer"]
+position = Vector2(6, -5)
+emitting = false
+emission_shape = 1
+emission_sphere_radius = 16.83
+direction = Vector2(0, -1)
 
 [node name="forest" type="Area2D" parent="Logic"]
 
@@ -3462,6 +3469,18 @@ text = "Hold %s to jump"
 action = "jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt3"]
+position = Vector2(88, -100)
+scale = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_helww")
+
+[node name="TutorialPrompt4" type="Area2D" parent="TutorialPrompts"]
+position = Vector2(42, 781)
+scale = Vector2(0.8499308, 0.22729874)
+script = ExtResource("11_f5j7v")
+text = "Press %s while near an NPC to talk"
+action = "interact"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialPrompts/TutorialPrompt4"]
 position = Vector2(88, -100)
 scale = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_helww")

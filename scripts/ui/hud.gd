@@ -19,6 +19,11 @@ func _on_player_calm_changed(current: int) -> void:
 	calm_ring.set_calm(current)
 
 func set_health(new_value: int) -> void:
+	if !GameState.healPrompt and new_value < 5:
+		var ui = get_tree().root.get_node("Ui/TutorialText")
+		ui.display("You're hurt! Press %s to heal for 7 calm energy", "special attack")
+		GameState.healPrompt = true
+		
 	if tween and tween.is_running():
 		tween.kill()
 	#830525

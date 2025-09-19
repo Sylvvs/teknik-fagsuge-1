@@ -28,5 +28,9 @@ func _draw():
 
 
 func set_calm(value: int) -> void:
+	if !GameState.calmPrompt and value > 5:
+		var ui = get_tree().root.get_node("Ui/TutorialText")
+		ui.display("Press %s to perform a special attack for 5 calm energy", "special attack")
+		GameState.calmPrompt = true
 	current_calm = clamp(value, 0, max_calm)
 	queue_redraw()

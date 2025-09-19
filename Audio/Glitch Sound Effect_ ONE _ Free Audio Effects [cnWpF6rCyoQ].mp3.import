@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://diq0c3pw5tqsb"
-path="res://.godot/imported/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3-1ad004aa44db5a86bded18cdfb168d21.mp3str"
+path="res://.godot/imported/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3-8c8be0743bd6d4580b45740b7434fa55.mp3str"
 
 [deps]
 
-source_file="res://Audio/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3"
-dest_files=["res://.godot/imported/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3-1ad004aa44db5a86bded18cdfb168d21.mp3str"]
+source_file="res://audio/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3"
+dest_files=["res://.godot/imported/Glitch Sound Effect_ ONE _ Free Audio Effects [cnWpF6rCyoQ].mp3-8c8be0743bd6d4580b45740b7434fa55.mp3str"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dlmffakolxb3c"
-path="res://.godot/imported/echoes pink floyd.mp3-41fd58f8f5c45bfdc3dea4b5f051bd88.mp3str"
+path="res://.godot/imported/echoes pink floyd.mp3-d1c20891779d318e8f16dc8e50af2487.mp3str"
 
 [deps]
 
-source_file="res://Audio/echoes pink floyd.mp3"
-dest_files=["res://.godot/imported/echoes pink floyd.mp3-41fd58f8f5c45bfdc3dea4b5f051bd88.mp3str"]
+source_file="res://audio/echoes pink floyd.mp3"
+dest_files=["res://.godot/imported/echoes pink floyd.mp3-d1c20891779d318e8f16dc8e50af2487.mp3str"]
 
 [params]
 
