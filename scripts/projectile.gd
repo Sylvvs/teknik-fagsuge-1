@@ -5,22 +5,29 @@ extends Area2D
 var life_span = 5.0
 
 var velocity: Vector2 = Vector2.ZERO
+var dir;
 
 func _ready() -> void:
 	animation_player.play("idle")
-	set_target()
+	monitoring = false;
+	visible = false;
+	dir = (player.global_position - global_position).normalized()
 
 func set_target():
 	if player:
 		global_position.y += -25.0
-		var dir = (player.global_position - global_position).normalized()
 		var angle = dir.angle() - deg_to_rad(26)
 		rotation = angle
 		position += dir * 60
-		velocity = dir * 500
+		velocity = dir * 1000
 
 func _physics_process(delta: float) -> void:
-	life_span += delta
+	if life_span < 4.85 and not monitoring:
+		monitoring = true;
+		visible = true;
+		set_target()
+		life_span = 5.0
+	life_span -= delta
 	if life_span <= 0: queue_free()
 	
 	position += velocity * delta
