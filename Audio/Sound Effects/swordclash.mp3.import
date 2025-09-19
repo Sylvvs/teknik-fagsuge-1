@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://brsiu12oixwl5"
-path="res://.godot/imported/swordclash.mp3-cbb052572569f13919c5a172d7ffdd45.mp3str"
+path="res://.godot/imported/swordclash.mp3-445d7cf1193fc22a569571f37d42a802.mp3str"
 
 [deps]
 
-source_file="res://audio/Sound Effects/swordclash.mp3"
-dest_files=["res://.godot/imported/swordclash.mp3-cbb052572569f13919c5a172d7ffdd45.mp3str"]
+source_file="res://Audio/Sound Effects/swordclash.mp3"
+dest_files=["res://.godot/imported/swordclash.mp3-445d7cf1193fc22a569571f37d42a802.mp3str"]
 
 [params]
 

@@ -66,7 +66,6 @@ func load_room(id: String) -> void:
 
 	current_room = next_room
 	GameState.current_room = id
-	print(current_room.get_children())
 	tilemap = current_room.get_node("TileMapLayer")
 	_update_map_bounds()
 	handle_logic()
