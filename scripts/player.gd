@@ -127,6 +127,8 @@ func _physics_process(delta: float) -> void:
 	
 	#Die
 	if health <= 0:
+		reset_all_conditions()
+		die()
 		get_tree().quit()
 		
 	
@@ -477,3 +479,6 @@ func _on_slide():
 	if touched_the_floor:
 		sprite.flip_h = !sprite.flip_h
 	touched_the_floor = false
+
+func die(): 
+	pass
