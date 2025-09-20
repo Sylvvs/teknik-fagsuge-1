@@ -11,7 +11,8 @@ func _ready() -> void:
 	var buttons = [
 		$VBoxContainer/VBoxContainer/StartContainer/Start,
 		$VBoxContainer/VBoxContainer/SettingsContainer/Settings,
-		$VBoxContainer/VBoxContainer/QuitContainer/Quit
+		$VBoxContainer/VBoxContainer/QuitContainer/Quit,
+		$Reset
 	]
 	for button in buttons:
 		button.mouse_entered.connect(func(): _on_button_hovered(button))
@@ -53,6 +54,6 @@ func _on_quit_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-	GameState.reset_data()
+	# GameState.reset_data()
 	GameState.load_game()
-	$Button.text = "okay its done"
+	$Reset/RichTextLabel.text = "DONE"

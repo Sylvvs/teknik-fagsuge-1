@@ -143,16 +143,35 @@ stream = ExtResource("6_v6ms7")
 volume_db = -25.0
 autoplay = true
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 0
-offset_left = 22.0
-offset_top = 527.0
-offset_right = 322.0
-offset_bottom = 627.0
-text = "reset my data twin"
+[node name="Reset" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+offset_right = 208.0
+grow_vertical = 0
+texture_normal = ExtResource("1_3jj3l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Reset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.494118)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_vhbaf")
+theme_override_font_sizes/normal_font_size = 40
+text = "DELETE DATA"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/StartContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/SettingsContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_button_pressed"]
