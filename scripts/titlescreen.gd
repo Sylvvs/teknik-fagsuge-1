@@ -54,6 +54,6 @@ func _on_quit_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-	# GameState.reset_data()
+	GameState.reset_data()
 	GameState.load_game()
 	$Reset/RichTextLabel.text = "DONE"
