@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://de4cg3kyjjv2q" path="res://scenes/UI/pause_menu.gd" id="4_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://k8ih2rio23jq" path="res://sprites/titlescreen/button.png" id="5_wgnrc"]
 [ext_resource type="Texture2D" uid="uid://b55cccb3dw5pm" path="res://sprites/titlescreen/pause_menu_background_transparent.png" id="7_84lt7"]
-[ext_resource type="Script" path="res://scripts/UI/tutorial_text.gd" id="9_u6q2i"]
+[ext_resource type="Script" uid="uid://bus3j2r54e80n" path="res://scripts/UI/tutorial_text.gd" id="9_u6q2i"]
 [ext_resource type="Script" uid="uid://cbxyy3px53kh0" path="res://scripts/item_pop_up.gd" id="10_ob0dx"]
 [ext_resource type="Texture2D" uid="uid://dh8deycw2ug32" path="res://sprites/Core.png" id="11_81vvl"]
 
@@ -328,7 +328,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 bbcode_enabled = true
-text = "[color=yellow]Orb of Ragna[/color] obtained!"
+text = "[color=yellow]Core of Ragna[/color] obtained!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
