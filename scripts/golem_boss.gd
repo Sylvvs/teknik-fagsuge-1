@@ -13,7 +13,7 @@ var flash_time = 0.1
 var flash_timer = 0.0
 var direction : Vector2
 var DEF = 0
-var health = 2:
+var health = 250:
 	
 	set(value):
 		health = value

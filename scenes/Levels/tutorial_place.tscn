@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bkrisdxbg4vpo" path="res://sprites/forest background/Layer_0003_6.png" id="7_2dn5b"]
 [ext_resource type="Texture2D" uid="uid://b1ej33ipmjce0" path="res://sprites/forest background/Layer_0002_7.png" id="8_elvxc"]
 [ext_resource type="Texture2D" uid="uid://bplbhiy7fylhj" path="res://sprites/forest background/Layer_0001_8.png" id="9_frlmr"]
-[ext_resource type="Script" uid="uid://di84oidrly012" path="res://scripts/lucifer_npc.gd" id="10_b15gw"]
-[ext_resource type="Script" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
+[ext_resource type="Script" uid="uid://dxwksy8ltb67s" path="res://scripts/lucifer_npc.gd" id="10_b15gw"]
+[ext_resource type="Script" uid="uid://dr5316t1xwk4e" path="res://scripts/tutorial_prompts.gd" id="10_n4nkd"]
 [ext_resource type="Texture2D" uid="uid://cm1qfo7onkbwa" path="res://sprites/Lucifer/Sprite/1. idle.png" id="11_b15gw"]
-[ext_resource type="Script" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
+[ext_resource type="Script" uid="uid://ct0hbtsaowikg" path="res://scripts/tutorial_prompt.gd" id="11_f5j7v"]
 [ext_resource type="Texture2D" uid="uid://qd8aqw8mdaaq" path="res://sprites/5W3UH8.png" id="12_hlmik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvi8d"]
