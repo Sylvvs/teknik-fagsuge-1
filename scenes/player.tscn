@@ -1141,11 +1141,12 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tuyoq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjrip"]
-graph_offset = Vector2(-484.5, 518.5)
+graph_offset = Vector2(-719.97296, 538.2312)
+nodes/output/position = Vector2(200, 140)
 nodes/AnimationNodeStateMachine/node = ExtResource("5_qlg0r")
-nodes/AnimationNodeStateMachine/position = Vector2(-370, 150)
+nodes/AnimationNodeStateMachine/position = Vector2(-360, 160)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_tuyoq")
-nodes/TimeScale/position = Vector2(30, 150)
+nodes/TimeScale/position = Vector2(-20, 120)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"AnimationNodeStateMachine"]
 
 [node name="Player" type="Node2D" groups=["player"]]

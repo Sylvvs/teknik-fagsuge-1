@@ -66,6 +66,7 @@ func _input(event):
 			if event is InputEventMouseButton && event.double_click:
 				event.double_click = false;
 			
+			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
 			ConfigFileHandler.save_keybinding(action_to_remap, event)
 			_update_action_list(remapping_button, event)
