@@ -9,4 +9,4 @@ func enter():
 func physics_update(delta: float):
 	if anim.is_playing():
 		return
-	queue_free()
+	enemy.queue_free()
